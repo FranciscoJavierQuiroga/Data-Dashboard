@@ -1,0 +1,818 @@
+[
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA CCU",
+    "NOMBRE_INDICADOR": " Proporción de mujeres entre 25 y 29 años tamizadas para cáncer de cuello uterino con citologia cervico uterina. ",
+    "Avance_Cumplimiento": 0.7588509908972735,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.13885740194967125
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD CCU",
+    "NOMBRE_INDICADOR": "Proporción de citologias anormales  en mujeres de 25 a 65 años  en el periodo evaluado. ",
+    "Avance_Cumplimiento": 0.0782519068233354,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.034013605442176874
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 30 y 65 años tamizadas para cáncer de cuello uterino con ADN-VPH, según esquema en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.07657071692910634,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.011169024571854059
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción  de ADN VPH Positivo en el periodo evaluado",
+    "Avance_Cumplimiento": 0.09579798979004539,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.40476190476190477
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA COLPOSCOPIA Y  BIOPSIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con citología anormal o citología de triage anormal a quienes se realizó colposcopia y biopsia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 1.0
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA EXAMEN CLINICO DE LA MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 40 y 69 años tamizadas con examen clínico de la mama en el periodo evaluado",
+    "Avance_Cumplimiento": 0.10016505244501328,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.06420718958656504
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.20774678901241206,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.1081026875250702
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "POSITIVIDAD MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con reporte anormal  de mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.011274823060537347,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.0018552875695732839
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con resultados de Biopsia de mama. ",
+    "Avance_Cumplimiento": 0.010679584965299251,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.0018552875695732839
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA TACTO RECTAL",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años con tacto rectal",
+    "Avance_Cumplimiento": 0.3234221224409182,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.10215782341290523
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA PSA",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años tamizados con PSA",
+    "Avance_Cumplimiento": 0.4391918123172352,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.08235171479203586
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA  (PSA   Y TACTO RECTAL)",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizaje combinado para cáncer de próstata (PSA y Tacto Rectal)",
+    "Avance_Cumplimiento": 0.31239579663531003,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.08235171479203586
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "POSITIVIDAD CANCER DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizacion de cancer de prostata resultado anormal ",
+    "Avance_Cumplimiento": 0.13688673781748986,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.10759493670886076
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres con pruebas de tamizaje anormal a quienes se les realizó biopsia de próstata",
+    "Avance_Cumplimiento": null,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas entre 50 y 75 años tamizadas para cáncer de colon y recto (sangre oculta en materia fecal con inmunoquímica)",
+    "Avance_Cumplimiento": 0.11377257412632365,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.09175243457792957
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "POSITIVIDAD SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas con pruebas anormal de sangre oculta en heces. ",
+    "Avance_Cumplimiento": 0.03010881179895264,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.0482897384305835
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA COLONOSCOPIA ",
+    "NOMBRE_INDICADOR": "Proporción de personas mayores de 50 años con test de sangre oculta en materia fecal positivos a los que se les realizó colonoscopia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Nueva_Eps",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA CCU",
+    "NOMBRE_INDICADOR": " Proporción de mujeres entre 25 y 29 años tamizadas para cáncer de cuello uterino con citologia cervico uterina. ",
+    "Avance_Cumplimiento": 0.7588509908972735,
+    "EPS": "Sanitas",
+    "EJECUCION": 1.0771780303030303
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD CCU",
+    "NOMBRE_INDICADOR": "Proporción de citologias anormales  en mujeres de 25 a 65 años  en el periodo evaluado. ",
+    "Avance_Cumplimiento": 0.0782519068233354,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.006593406593406593
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 30 y 65 años tamizadas para cáncer de cuello uterino con ADN-VPH, según esquema en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.07657071692910634,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.0030596634370219276
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción  de ADN VPH Positivo en el periodo evaluado",
+    "Avance_Cumplimiento": 0.09579798979004539,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA COLPOSCOPIA Y  BIOPSIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con citología anormal o citología de triage anormal a quienes se realizó colposcopia y biopsia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA EXAMEN CLINICO DE LA MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 40 y 69 años tamizadas con examen clínico de la mama en el periodo evaluado",
+    "Avance_Cumplimiento": 0.10016505244501328,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.004894420360788701
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.20774678901241206,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.1432225063938619
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "POSITIVIDAD MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con reporte anormal  de mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.011274823060537347,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.0035714285714285713
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con resultados de Biopsia de mama. ",
+    "Avance_Cumplimiento": 0.010679584965299251,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA TACTO RECTAL",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años con tacto rectal",
+    "Avance_Cumplimiento": 0.3234221224409182,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.2345860967821174
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA PSA",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años tamizados con PSA",
+    "Avance_Cumplimiento": 0.4391918123172352,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.22844509948415623
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA  (PSA   Y TACTO RECTAL)",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizaje combinado para cáncer de próstata (PSA y Tacto Rectal)",
+    "Avance_Cumplimiento": 0.31239579663531003,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.04175878162613608
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "POSITIVIDAD CANCER DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizacion de cancer de prostata resultado anormal ",
+    "Avance_Cumplimiento": 0.13688673781748986,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.14705882352941177
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres con pruebas de tamizaje anormal a quienes se les realizó biopsia de próstata",
+    "Avance_Cumplimiento": null,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas entre 50 y 75 años tamizadas para cáncer de colon y recto (sangre oculta en materia fecal con inmunoquímica)",
+    "Avance_Cumplimiento": 0.11377257412632365,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.06883677517209194
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "POSITIVIDAD SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas con pruebas anormal de sangre oculta en heces. ",
+    "Avance_Cumplimiento": 0.03010881179895264,
+    "EPS": "Sanitas",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA COLONOSCOPIA ",
+    "NOMBRE_INDICADOR": "Proporción de personas mayores de 50 años con test de sangre oculta en materia fecal positivos a los que se les realizó colonoscopia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Sanitas",
+    "EJECUCION": null
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA CCU",
+    "NOMBRE_INDICADOR": " Proporción de mujeres entre 25 y 29 años tamizadas para cáncer de cuello uterino con citologia cervico uterina. ",
+    "Avance_Cumplimiento": 0.7588509908972735,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.23148148148148148
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD CCU",
+    "NOMBRE_INDICADOR": "Proporción de citologias anormales  en mujeres de 25 a 65 años  en el periodo evaluado. ",
+    "Avance_Cumplimiento": 0.0782519068233354,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.12121212121212122
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 30 y 65 años tamizadas para cáncer de cuello uterino con ADN-VPH, según esquema en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.07657071692910634,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.10200153964588145
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción  de ADN VPH Positivo en el periodo evaluado",
+    "Avance_Cumplimiento": 0.09579798979004539,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.03773584905660377
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA COLPOSCOPIA Y  BIOPSIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con citología anormal o citología de triage anormal a quienes se realizó colposcopia y biopsia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.25
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA EXAMEN CLINICO DE LA MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 40 y 69 años tamizadas con examen clínico de la mama en el periodo evaluado",
+    "Avance_Cumplimiento": 0.10016505244501328,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.061394380853277836
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.20774678901241206,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.08
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "POSITIVIDAD MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con reporte anormal  de mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.011274823060537347,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con resultados de Biopsia de mama. ",
+    "Avance_Cumplimiento": 0.010679584965299251,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA TACTO RECTAL",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años con tacto rectal",
+    "Avance_Cumplimiento": 0.3234221224409182,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.23709167544783982
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA PSA",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años tamizados con PSA",
+    "Avance_Cumplimiento": 0.4391918123172352,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.15279241306638566
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA  (PSA   Y TACTO RECTAL)",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizaje combinado para cáncer de próstata (PSA y Tacto Rectal)",
+    "Avance_Cumplimiento": 0.31239579663531003,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.031612223393045306
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "POSITIVIDAD CANCER DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizacion de cancer de prostata resultado anormal ",
+    "Avance_Cumplimiento": 0.13688673781748986,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.16666666666666666
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres con pruebas de tamizaje anormal a quienes se les realizó biopsia de próstata",
+    "Avance_Cumplimiento": null,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas entre 50 y 75 años tamizadas para cáncer de colon y recto (sangre oculta en materia fecal con inmunoquímica)",
+    "Avance_Cumplimiento": 0.11377257412632365,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.03402298850574713
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "POSITIVIDAD SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas con pruebas anormal de sangre oculta en heces. ",
+    "Avance_Cumplimiento": 0.03010881179895264,
+    "EPS": "Coosalud",
+    "EJECUCION": 0.08108108108108109
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA COLONOSCOPIA ",
+    "NOMBRE_INDICADOR": "Proporción de personas mayores de 50 años con test de sangre oculta en materia fecal positivos a los que se les realizó colonoscopia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Coosalud",
+    "EJECUCION": 1.0
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA CCU",
+    "NOMBRE_INDICADOR": " Proporción de mujeres entre 25 y 29 años tamizadas para cáncer de cuello uterino con citologia cervico uterina. ",
+    "Avance_Cumplimiento": 0.7588509908972735,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.08715473317243229
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD CCU",
+    "NOMBRE_INDICADOR": "Proporción de citologias anormales  en mujeres de 25 a 65 años  en el periodo evaluado. ",
+    "Avance_Cumplimiento": 0.0782519068233354,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.3076923076923077
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 30 y 65 años tamizadas para cáncer de cuello uterino con ADN-VPH, según esquema en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.07657071692910634,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.09283387622149837
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción  de ADN VPH Positivo en el periodo evaluado",
+    "Avance_Cumplimiento": 0.09579798979004539,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.10526315789473684
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA COLPOSCOPIA Y  BIOPSIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con citología anormal o citología de triage anormal a quienes se realizó colposcopia y biopsia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.75
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA EXAMEN CLINICO DE LA MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 40 y 69 años tamizadas con examen clínico de la mama en el periodo evaluado",
+    "Avance_Cumplimiento": 0.10016505244501328,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.35220935220935223
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.20774678901241206,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.2552552552552553
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "POSITIVIDAD MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con reporte anormal  de mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.011274823060537347,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con resultados de Biopsia de mama. ",
+    "Avance_Cumplimiento": 0.010679584965299251,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA TACTO RECTAL",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años con tacto rectal",
+    "Avance_Cumplimiento": 0.3234221224409182,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.5544077134986225
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA PSA",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años tamizados con PSA",
+    "Avance_Cumplimiento": 0.4391918123172352,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.26515151515151514
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA  (PSA   Y TACTO RECTAL)",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizaje combinado para cáncer de próstata (PSA y Tacto Rectal)",
+    "Avance_Cumplimiento": 0.31239579663531003,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.034435261707988975
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "POSITIVIDAD CANCER DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizacion de cancer de prostata resultado anormal ",
+    "Avance_Cumplimiento": 0.13688673781748986,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.4
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres con pruebas de tamizaje anormal a quienes se les realizó biopsia de próstata",
+    "Avance_Cumplimiento": null,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas entre 50 y 75 años tamizadas para cáncer de colon y recto (sangre oculta en materia fecal con inmunoquímica)",
+    "Avance_Cumplimiento": 0.11377257412632365,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.10365448504983389
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "POSITIVIDAD SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas con pruebas anormal de sangre oculta en heces. ",
+    "Avance_Cumplimiento": 0.03010881179895264,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.05128205128205128
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA COLONOSCOPIA ",
+    "NOMBRE_INDICADOR": "Proporción de personas mayores de 50 años con test de sangre oculta en materia fecal positivos a los que se les realizó colonoscopia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Famisanar",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA CCU",
+    "NOMBRE_INDICADOR": " Proporción de mujeres entre 25 y 29 años tamizadas para cáncer de cuello uterino con citologia cervico uterina. ",
+    "Avance_Cumplimiento": 0.7588509908972735,
+    "EPS": "Salud_Total",
+    "EJECUCION": 1.83587701835877
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD CCU",
+    "NOMBRE_INDICADOR": "Proporción de citologias anormales  en mujeres de 25 a 65 años  en el periodo evaluado. ",
+    "Avance_Cumplimiento": 0.0782519068233354,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 30 y 65 años tamizadas para cáncer de cuello uterino con ADN-VPH, según esquema en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.07657071692910634,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.16532618409294011
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción  de ADN VPH Positivo en el periodo evaluado",
+    "Avance_Cumplimiento": 0.09579798979004539,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.02702702702702703
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA COLPOSCOPIA Y  BIOPSIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con citología anormal o citología de triage anormal a quienes se realizó colposcopia y biopsia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Salud_Total",
+    "EJECUCION": null
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA EXAMEN CLINICO DE LA MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 40 y 69 años tamizadas con examen clínico de la mama en el periodo evaluado",
+    "Avance_Cumplimiento": 0.10016505244501328,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.06974128233970754
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.20774678901241206,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.2849002849002849
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "POSITIVIDAD MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con reporte anormal  de mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.011274823060537347,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.006666666666666667
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con resultados de Biopsia de mama. ",
+    "Avance_Cumplimiento": 0.010679584965299251,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.006666666666666667
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA TACTO RECTAL",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años con tacto rectal",
+    "Avance_Cumplimiento": 0.3234221224409182,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.40999057492931196
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA PSA",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años tamizados con PSA",
+    "Avance_Cumplimiento": 0.4391918123172352,
+    "EPS": "Salud_Total",
+    "EJECUCION": 1.1592836946277096
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA  (PSA   Y TACTO RECTAL)",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizaje combinado para cáncer de próstata (PSA y Tacto Rectal)",
+    "Avance_Cumplimiento": 0.31239579663531003,
+    "EPS": "Salud_Total",
+    "EJECUCION": 1.5692742695570217
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "POSITIVIDAD CANCER DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizacion de cancer de prostata resultado anormal ",
+    "Avance_Cumplimiento": 0.13688673781748986,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres con pruebas de tamizaje anormal a quienes se les realizó biopsia de próstata",
+    "Avance_Cumplimiento": null,
+    "EPS": "Salud_Total",
+    "EJECUCION": null
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas entre 50 y 75 años tamizadas para cáncer de colon y recto (sangre oculta en materia fecal con inmunoquímica)",
+    "Avance_Cumplimiento": 0.11377257412632365,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.2828459188127455
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "POSITIVIDAD SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas con pruebas anormal de sangre oculta en heces. ",
+    "Avance_Cumplimiento": 0.03010881179895264,
+    "EPS": "Salud_Total",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA COLONOSCOPIA ",
+    "NOMBRE_INDICADOR": "Proporción de personas mayores de 50 años con test de sangre oculta en materia fecal positivos a los que se les realizó colonoscopia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Salud_Total",
+    "EJECUCION": null
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA CCU",
+    "NOMBRE_INDICADOR": " Proporción de mujeres entre 25 y 29 años tamizadas para cáncer de cuello uterino con citologia cervico uterina. ",
+    "Avance_Cumplimiento": 0.7588509908972735,
+    "EPS": "Cajacopi",
+    "EJECUCION": 1.1825572801182556
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD CCU",
+    "NOMBRE_INDICADOR": "Proporción de citologias anormales  en mujeres de 25 a 65 años  en el periodo evaluado. ",
+    "Avance_Cumplimiento": 0.0782519068233354,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 30 y 65 años tamizadas para cáncer de cuello uterino con ADN-VPH, según esquema en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.07657071692910634,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.08503401360544217
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "POSITIVIDAD ADN VPH",
+    "NOMBRE_INDICADOR": "Proporción  de ADN VPH Positivo en el periodo evaluado",
+    "Avance_Cumplimiento": 0.09579798979004539,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT cervix",
+    "TIPO_INDICADOR": "COBERTURA COLPOSCOPIA Y  BIOPSIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con citología anormal o citología de triage anormal a quienes se realizó colposcopia y biopsia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Cajacopi",
+    "EJECUCION": null
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA EXAMEN CLINICO DE LA MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 40 y 69 años tamizadas con examen clínico de la mama en el periodo evaluado",
+    "Avance_Cumplimiento": 0.10016505244501328,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.04854368932038835
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.20774678901241206,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.375
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "POSITIVIDAD MAMOGRAFIA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres entre 50 y 69 años tamizadas para cáncer de mama con reporte anormal  de mamografía en el periodo evaluado.",
+    "Avance_Cumplimiento": 0.011274823060537347,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.05555555555555555
+  },
+  {
+    "PROGRAMA": "DT mama",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE MAMA",
+    "NOMBRE_INDICADOR": "Proporción de mujeres con resultados de Biopsia de mama. ",
+    "Avance_Cumplimiento": 0.010679584965299251,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.05555555555555555
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA TACTO RECTAL",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años con tacto rectal",
+    "Avance_Cumplimiento": 0.3234221224409182,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.4022988505747126
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA PSA",
+    "NOMBRE_INDICADOR": "Proporción de hombres entre 50 y 75 años tamizados con PSA",
+    "Avance_Cumplimiento": 0.4391918123172352,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.7471264367816091
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA  (PSA   Y TACTO RECTAL)",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizaje combinado para cáncer de próstata (PSA y Tacto Rectal)",
+    "Avance_Cumplimiento": 0.31239579663531003,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.11494252873563217
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "POSITIVIDAD CANCER DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres mayores de 50 años con tamizacion de cancer de prostata resultado anormal ",
+    "Avance_Cumplimiento": 0.13688673781748986,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Prostata",
+    "TIPO_INDICADOR": "COBERTURA BIOPSIA DE PROSTATA",
+    "NOMBRE_INDICADOR": "Proporción de hombres con pruebas de tamizaje anormal a quienes se les realizó biopsia de próstata",
+    "Avance_Cumplimiento": null,
+    "EPS": "Cajacopi",
+    "EJECUCION": null
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas entre 50 y 75 años tamizadas para cáncer de colon y recto (sangre oculta en materia fecal con inmunoquímica)",
+    "Avance_Cumplimiento": 0.11377257412632365,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.10152284263959391
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "POSITIVIDAD SANGRE OCULTA EN HECES",
+    "NOMBRE_INDICADOR": "Proporción de personas con pruebas anormal de sangre oculta en heces. ",
+    "Avance_Cumplimiento": 0.03010881179895264,
+    "EPS": "Cajacopi",
+    "EJECUCION": 0.0
+  },
+  {
+    "PROGRAMA": "DT Colon y Recto",
+    "TIPO_INDICADOR": "COBERTURA COLONOSCOPIA ",
+    "NOMBRE_INDICADOR": "Proporción de personas mayores de 50 años con test de sangre oculta en materia fecal positivos a los que se les realizó colonoscopia",
+    "Avance_Cumplimiento": null,
+    "EPS": "Cajacopi",
+    "EJECUCION": null
+  }
+]

@@ -1,0 +1,1682 @@
+[
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.0164
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.111
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.0022
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.0045
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.0419
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.7701
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.7448
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.6842
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.6875
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.75
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.5767
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.6988
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.7654
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.6803
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.6843
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.6719
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.75
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.6559
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.6968
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.0104
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.0173
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.0455
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.0119
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.0087
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.3524
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.5268
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.2048
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.0784
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.069
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.2511
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.3274
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.1186
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.1358
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.1127
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.1832
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.1243
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.09
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.0886
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.3019
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.1535
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.1765
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.2757
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.2243
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2021,
+    "VALOR": 0.0007
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2021,
+    "VALOR": 0.0059
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2021,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2021,
+    "VALOR": 0.0343
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2021,
+    "VALOR": 0.0178
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.1729
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.3803
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.0833
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.0147
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.0942
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.1091
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.1661
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.6864
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.6744
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.6471
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.5614
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.7213
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.588
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.6524
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.6802
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.6684
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.6471
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.5539
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.7213
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.5079
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.6449
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.0283
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.0388
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.0253
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.0696
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.0981
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.029
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.3333
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.6502
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.4375
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.1923
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.3962
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.2534
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.4236
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.049
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.0331
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.1034
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.0741
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.1209
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.1513
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.0439
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.468
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.349
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.2759
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.2593
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.2747
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.4608
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.3638
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2022,
+    "VALOR": 0.0598
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2022,
+    "VALOR": 0.0401
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2022,
+    "VALOR": 0.1034
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2022,
+    "VALOR": 0.0741
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2022,
+    "VALOR": 0.1429
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2022,
+    "VALOR": 0.2077
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2022,
+    "VALOR": 0.0573
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.3421
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.5087
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.25
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.037
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.2511
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.2463
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.3253
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.71
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.7122
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.5976
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.5689
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.796
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.5904
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.6857
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.7057
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.6991
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.5976
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.5329
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.797
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.4458
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.6645
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.0329
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.0649
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.006
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.0956
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.2881
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.067
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.5128
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.7111
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.5172
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.4324
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.5
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.4908
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.5341
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.1887
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.131
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.1057
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.1429
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.129
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.1557
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.1037
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.502
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.4521
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.25
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.4286
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.2796
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.5
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.4187
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2023,
+    "VALOR": 0.2024
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2023,
+    "VALOR": 0.1834
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2023,
+    "VALOR": 0.1429
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2023,
+    "VALOR": 0.1429
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2023,
+    "VALOR": 0.129
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2023,
+    "VALOR": 0.2172
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2023,
+    "VALOR": 0.1391
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.4357
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.4156
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.3843
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.15
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.2879
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.2274
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.3448
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.76
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.6708
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.6885
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.6861
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.7791
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.6141
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.7089
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.7522
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.6459
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.6885
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.6278
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.7791
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.3257
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.6721
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.063
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.091
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.02
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.1534
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.4701
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.0992
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.5378
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.6006
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.4023
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.6316
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.46
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.4874
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.5133
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.2628
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.2835
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.0952
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.1594
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.1429
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.1467
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.1883
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.5417
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.5029
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.2381
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.4928
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.2727
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.4943
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.4488
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2024,
+    "VALOR": 0.3329
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2024,
+    "VALOR": 0.38
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2024,
+    "VALOR": 0.1905
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2024,
+    "VALOR": 0.2029
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2024,
+    "VALOR": 0.1688
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2024,
+    "VALOR": 0.2151
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2024,
+    "VALOR": 0.2675
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.4886
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.4301
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.5
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.4544
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.3352
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.2813
+  },
+  {
+    "INDICADOR_CLEAN": "Colon y Recto",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.4145
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.7463
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.6305
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.7603
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.702
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.7617
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.6367
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.6953
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.7404
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.5924
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.73
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.6527
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.7617
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.2993
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - Citología",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.6471
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.0845
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.12477
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.2278
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.1841
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.0
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.5215
+  },
+  {
+    "INDICADOR_CLEAN": "Cuello Uterino - ADN VPH",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.1319
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.5141
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.5859
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.5857
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.5024
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.4545
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.4063
+  },
+  {
+    "INDICADOR_CLEAN": "Mama",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.5299
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.3232
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.3769
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.2007
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.2029
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.169
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.1505
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.2872
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.5442
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.5589
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.488
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.6286
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.1972
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.4993
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - PSA",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.4709
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Nueva Eps",
+    "AÑO": 2025,
+    "VALOR": 0.4887
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Sanitas",
+    "AÑO": 2025,
+    "VALOR": 0.4974
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Coosalud",
+    "AÑO": 2025,
+    "VALOR": 0.3574
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Salud Total",
+    "AÑO": 2025,
+    "VALOR": 0.244
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Proteger",
+    "AÑO": 2025,
+    "VALOR": 0.2944
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Famisanar",
+    "AÑO": 2025,
+    "VALOR": 0.2152
+  },
+  {
+    "INDICADOR_CLEAN": "Próstata - Tacto Rectal",
+    "EPS_CLEAN": "Total Municipio",
+    "AÑO": 2025,
+    "VALOR": 0.4551
+  }
+]
