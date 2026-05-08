@@ -1,0 +1,142 @@
+[
+  {
+    "nivel": "crítico",
+    "programa": "Dt Prostata",
+    "eps": "Nueva Eps",
+    "tipo": "Biopsia pendiente",
+    "mensaje": "Nueva Eps: 17 tamizajes anormales de próstata sin biopsia confirmada"
+  },
+  {
+    "nivel": "crítico",
+    "programa": "Dt Colon Y Recto",
+    "eps": "Nueva Eps",
+    "tipo": "Colonoscopia pendiente",
+    "mensaje": "Nueva Eps: 48 SOMF positivas sin colonoscopia"
+  },
+  {
+    "nivel": "alto",
+    "programa": "Dt Cervix",
+    "eps": "Sanitas",
+    "tipo": "Resolución incompleta",
+    "mensaje": "Sanitas: 3 citologías anormales, solo 0 colposcopias/biopsias"
+  },
+  {
+    "nivel": "crítico",
+    "programa": "Dt Mama",
+    "eps": "Sanitas",
+    "tipo": "Biopsia pendiente",
+    "mensaje": "Sanitas: 1 mamografías BI-RADS 4+ sin biopsia de mama confirmada"
+  },
+  {
+    "nivel": "crítico",
+    "programa": "Dt Prostata",
+    "eps": "Sanitas",
+    "tipo": "Biopsia pendiente",
+    "mensaje": "Sanitas: 5 tamizajes anormales de próstata sin biopsia confirmada"
+  },
+  {
+    "nivel": "alto",
+    "programa": "Dt Cervix",
+    "eps": "Coosalud",
+    "tipo": "Resolución incompleta",
+    "mensaje": "Coosalud: 4 citologías anormales, solo 1 colposcopias/biopsias"
+  },
+  {
+    "nivel": "crítico",
+    "programa": "Dt Prostata",
+    "eps": "Coosalud",
+    "tipo": "Biopsia pendiente",
+    "mensaje": "Coosalud: 1 tamizajes anormales de próstata sin biopsia confirmada"
+  },
+  {
+    "nivel": "alto",
+    "programa": "Dt Cervix",
+    "eps": "Famisanar",
+    "tipo": "Resolución incompleta",
+    "mensaje": "Famisanar: 4 citologías anormales, solo 3 colposcopias/biopsias"
+  },
+  {
+    "nivel": "crítico",
+    "programa": "Dt Prostata",
+    "eps": "Famisanar",
+    "tipo": "Biopsia pendiente",
+    "mensaje": "Famisanar: 4 tamizajes anormales de próstata sin biopsia confirmada"
+  },
+  {
+    "nivel": "crítico",
+    "programa": "Dt Colon Y Recto",
+    "eps": "Famisanar",
+    "tipo": "Colonoscopia pendiente",
+    "mensaje": "Famisanar: 8 SOMF positivas sin colonoscopia"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Cervix",
+    "eps": "Nueva Eps",
+    "tipo": "Cobertura baja",
+    "mensaje": "Nueva Eps: COBERTURA ADN VPH solo 1.1% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Prostata",
+    "eps": "Nueva Eps",
+    "tipo": "Cobertura baja",
+    "mensaje": "Nueva Eps: COBERTURA PSA solo 8.2% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Colon Y Recto",
+    "eps": "Nueva Eps",
+    "tipo": "Cobertura baja",
+    "mensaje": "Nueva Eps: COBERTURA TAMIZACION SANGRE OCULTA EN HECES solo 9.2% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Cervix",
+    "eps": "Sanitas",
+    "tipo": "Cobertura baja",
+    "mensaje": "Sanitas: COBERTURA ADN VPH solo 0.3% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Colon Y Recto",
+    "eps": "Sanitas",
+    "tipo": "Cobertura baja",
+    "mensaje": "Sanitas: COBERTURA TAMIZACION SANGRE OCULTA EN HECES solo 6.9% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Mama",
+    "eps": "Coosalud",
+    "tipo": "Cobertura baja",
+    "mensaje": "Coosalud: COBERTURA MAMOGRAFIA solo 8.0% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Colon Y Recto",
+    "eps": "Coosalud",
+    "tipo": "Cobertura baja",
+    "mensaje": "Coosalud: COBERTURA TAMIZACION SANGRE OCULTA EN HECES solo 3.4% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Cervix",
+    "eps": "Famisanar",
+    "tipo": "Cobertura baja",
+    "mensaje": "Famisanar: COBERTURA CCU solo 8.7% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Cervix",
+    "eps": "Famisanar",
+    "tipo": "Cobertura baja",
+    "mensaje": "Famisanar: COBERTURA ADN VPH solo 9.3% de meta"
+  },
+  {
+    "nivel": "medio",
+    "programa": "Dt Cervix",
+    "eps": "Proteger",
+    "tipo": "Cobertura baja",
+    "mensaje": "Proteger: COBERTURA ADN VPH solo 8.5% de meta"
+  }
+]

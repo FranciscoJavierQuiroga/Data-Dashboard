@@ -1,0 +1,86 @@
+[
+  {
+    "PROGRAMA": "Dt Cervix",
+    "MES": "ENERO",
+    "VALOR_MES": 454.0,
+    "MES_ORDEN": 0,
+    "ACUMULADO_CALCULADO": 454.0
+  },
+  {
+    "PROGRAMA": "Dt Cervix",
+    "MES": "FEBRERO",
+    "VALOR_MES": 389.0,
+    "MES_ORDEN": 1,
+    "ACUMULADO_CALCULADO": 843.0
+  },
+  {
+    "PROGRAMA": "Dt Cervix",
+    "MES": "MARZO",
+    "VALOR_MES": 281.0,
+    "MES_ORDEN": 2,
+    "ACUMULADO_CALCULADO": 1124.0
+  },
+  {
+    "PROGRAMA": "Dt Colon Y Recto",
+    "MES": "ENERO",
+    "VALOR_MES": 664.0,
+    "MES_ORDEN": 0,
+    "ACUMULADO_CALCULADO": 664.0
+  },
+  {
+    "PROGRAMA": "Dt Colon Y Recto",
+    "MES": "FEBRERO",
+    "VALOR_MES": 1063.0,
+    "MES_ORDEN": 1,
+    "ACUMULADO_CALCULADO": 1727.0
+  },
+  {
+    "PROGRAMA": "Dt Colon Y Recto",
+    "MES": "MARZO",
+    "VALOR_MES": 151.0,
+    "MES_ORDEN": 2,
+    "ACUMULADO_CALCULADO": 1878.0
+  },
+  {
+    "PROGRAMA": "Dt Mama",
+    "MES": "ENERO",
+    "VALOR_MES": 1290.0,
+    "MES_ORDEN": 0,
+    "ACUMULADO_CALCULADO": 1290.0
+  },
+  {
+    "PROGRAMA": "Dt Mama",
+    "MES": "FEBRERO",
+    "VALOR_MES": 1571.0,
+    "MES_ORDEN": 1,
+    "ACUMULADO_CALCULADO": 2861.0
+  },
+  {
+    "PROGRAMA": "Dt Mama",
+    "MES": "MARZO",
+    "VALOR_MES": 406.0,
+    "MES_ORDEN": 2,
+    "ACUMULADO_CALCULADO": 3267.0
+  },
+  {
+    "PROGRAMA": "Dt Prostata",
+    "MES": "ENERO",
+    "VALOR_MES": 681.0,
+    "MES_ORDEN": 0,
+    "ACUMULADO_CALCULADO": 681.0
+  },
+  {
+    "PROGRAMA": "Dt Prostata",
+    "MES": "FEBRERO",
+    "VALOR_MES": 896.0,
+    "MES_ORDEN": 1,
+    "ACUMULADO_CALCULADO": 1577.0
+  },
+  {
+    "PROGRAMA": "Dt Prostata",
+    "MES": "MARZO",
+    "VALOR_MES": 389.0,
+    "MES_ORDEN": 2,
+    "ACUMULADO_CALCULADO": 1966.0
+  }
+]

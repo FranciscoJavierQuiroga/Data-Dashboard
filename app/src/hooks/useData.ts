@@ -1,0 +1,102 @@
+import { useState, useEffect } from 'react';
+
+export interface KpiData {
+  programa: string;
+  indicador: string;
+  label: string;
+  acumulado_2026: number;
+  meta_2026: number;
+  poblacion: number;
+  tasa_cobertura: number;
+  pct_avance_meta: number;
+}
+
+export interface FunnelData {
+  programa: string;
+  eps: string;
+  stage: string;
+  tipo_indicador: string;
+  poblacion_elegible: number;
+  acumulado: number;
+  meta: number;
+  pct_ejecucion: number;
+  enero: number;
+  febrero: number;
+  marzo: number;
+}
+
+export interface HistoricoData {
+  INDICADOR_CLEAN: string;
+  EPS_CLEAN: string;
+  AÑO: number;
+  VALOR: number;
+}
+
+export interface AlertaData {
+  nivel: string;
+  programa: string;
+  eps: string;
+  tipo: string;
+  mensaje: string;
+}
+
+export interface ConsolidadoData {
+  PROGRAMA: string;
+  TIPO_INDICADOR: string;
+  NOMBRE_INDICADOR: string;
+  EPS: string;
+  EJECUCION: number;
+  Avance_Cumplimiento: number;
+}
+
+export interface BurnupData {
+  PROGRAMA: string;
+  MES: string;
+  VALOR_MES: number;
+  MES_ORDEN: number;
+  ACUMULADO_CALCULADO: number;
+}
+
+export interface MensualData {
+  PROGRAMA: string;
+  TIPO_INDICADOR: string;
+  EPS: string;
+  MES: string;
+  VALOR_MES: number;
+  ACUMULADO_ACTIVIDADES: number;
+  META_2026: number;
+  PCT_EJECUCION: number;
+  POBLACION_CORTE: number;
+}
+
+export interface DashboardData {
+  kpis: KpiData[];
+  funnel: FunnelData[];
+  historico: HistoricoData[];
+  alertas: AlertaData[];
+  consolidado: ConsolidadoData[];
+  burnup: BurnupData[];
+  mensual: MensualData[];
+}
+
+export function useData(): DashboardData | null {
+  const [data, setData] = useState<DashboardData | null>(null);
+
+  useEffect(() => {
+    async function load() {
+      const [kpis, funnel, historico, alertas, consolidado, burnup, mensual] = await Promise.all([
+        fetch('/data/kpis.json').then(r => r.json()),
+        fetch('/data/funnel.json').then(r => r.json()),
+        fetch('/data/historico.json').then(r => r.json()),
+        fetch('/data/alertas.json').then(r => r.json()),
+        fetch('/data/consolidado_eps.json').then(r => r.json()),
+        fetch('/data/burnup.json').then(r => r.json()),
+        fetch('/data/operativo_mensual.json').then(r => r.json()),
+      ]);
+      setData({ kpis, funnel, historico, alertas, consolidado, burnup, mensual });
+    }
+    load();
+  }, []);
+
+  return data;
+}
