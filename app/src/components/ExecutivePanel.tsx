@@ -1,5 +1,7 @@
+import { useMemo, useState } from 'react';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AlertTriangle, CheckCircle2, Info, ArrowUpRight, ArrowDownRight, Users, Target, Activity } from 'lucide-react';
 
 function kpiColor(val: number | null) {
@@ -16,16 +18,71 @@ function kpiBg(val: number | null) {
   return 'bg-red-50';
 }
 
+function normalizeEpsName(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/_/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function formatEpsLabel(value: string) {
+  return value
+    .replace(/_/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export function ExecutivePanel({ data }: { data: DashboardData }) {
-  const { kpis, alertas } = data;
+  const { kpis, alertas, funnel, consolidado } = data;
+  const [selectedEps, setSelectedEps] = useState<string>('Municipio');
+
+  const epsList = useMemo(() => {
+    const fromFunnel = funnel.map(f => f.eps).filter(Boolean);
+    const fromConsolidado = consolidado.map(c => c.EPS).filter(Boolean);
+    const labelByKey = new Map<string, string>();
+    for (const eps of [...fromFunnel, ...fromConsolidado]) {
+      const key = normalizeEpsName(eps);
+      if (!labelByKey.has(key)) {
+        labelByKey.set(key, formatEpsLabel(eps));
+      }
+    }
+    return Array.from(labelByKey.entries())
+      .map(([value, label]) => ({ value, label }))
+      .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+  }, [funnel, consolidado]);
+
+  const filteredAlertas = useMemo(() => {
+    if (selectedEps === 'Municipio') return alertas;
+    return alertas.filter(a => normalizeEpsName(a.eps) === selectedEps);
+  }, [alertas, selectedEps]);
 
   const coberturas = kpis.filter(k => k.indicador.includes('COBERTURA'));
-  const totalAlertasCriticas = alertas.filter(a => a.nivel === 'crítico').length;
-  const totalAlertasAltas = alertas.filter(a => a.nivel === 'alto').length;
-  const totalAlertasMedias = alertas.filter(a => a.nivel === 'medio').length;
+  const totalAlertasCriticas = filteredAlertas.filter(a => a.nivel === 'crítico').length;
+  const totalAlertasAltas = filteredAlertas.filter(a => a.nivel === 'alto').length;
+  const totalAlertasMedias = filteredAlertas.filter(a => a.nivel === 'medio').length;
 
   return (
     <div className="space-y-6">
+      <div className="flex flex-wrap gap-4 items-end justify-between">
+        <div>
+          <label className="text-xs font-medium text-slate-600 mb-1 block">EPS</label>
+          <Select value={selectedEps} onValueChange={setSelectedEps}>
+            <SelectTrigger className="w-64">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Municipio">Municipio (totales generales)</SelectItem>
+              {epsList.map(eps => (
+                <SelectItem key={eps.value} value={eps.value}>{eps.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="text-xs text-slate-500">
+          KPIs por programa se muestran a nivel municipal.
+        </div>
+      </div>
       {/* Resumen alertas */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="border-red-200 bg-red-50">
@@ -124,7 +181,7 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
                 </tr>
               </thead>
               <tbody>
-                {alertas.map((a, i) => (
+                {filteredAlertas.map((a, i) => (
                   <tr key={i} className="border-b border-slate-100">
                     <td className="px-3 py-2">
                       <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wide ${
@@ -142,7 +199,7 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
                     <td className="px-3 py-2 text-slate-800">{a.mensaje}</td>
                   </tr>
                 ))}
-                {alertas.length === 0 && (
+                {filteredAlertas.length === 0 && (
                   <tr><td colSpan={5} className="px-3 py-6 text-center text-slate-400">No hay alertas registradas</td></tr>
                 )}
               </tbody>

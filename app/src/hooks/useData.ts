@@ -84,14 +84,15 @@ export function useData(): DashboardData | null {
 
   useEffect(() => {
     async function load() {
+      const base = import.meta.env.BASE_URL;
       const [kpis, funnel, historico, alertas, consolidado, burnup, mensual] = await Promise.all([
-        fetch('/data/kpis.json').then(r => r.json()),
-        fetch('/data/funnel.json').then(r => r.json()),
-        fetch('/data/historico.json').then(r => r.json()),
-        fetch('/data/alertas.json').then(r => r.json()),
-        fetch('/data/consolidado_eps.json').then(r => r.json()),
-        fetch('/data/burnup.json').then(r => r.json()),
-        fetch('/data/operativo_mensual.json').then(r => r.json()),
+        fetch(`${base}data/kpis.json`).then(r => r.json()),
+        fetch(`${base}data/funnel.json`).then(r => r.json()),
+        fetch(`${base}data/historico.json`).then(r => r.json()),
+        fetch(`${base}data/alertas.json`).then(r => r.json()),
+        fetch(`${base}data/consolidado_eps.json`).then(r => r.json()),
+        fetch(`${base}data/burnup.json`).then(r => r.json()),
+        fetch(`${base}data/operativo_mensual.json`).then(r => r.json()),
       ]);
       setData({ kpis, funnel, historico, alertas, consolidado, burnup, mensual });
     }
