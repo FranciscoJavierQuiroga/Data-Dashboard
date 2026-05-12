@@ -18,71 +18,91 @@ function kpiBg(val: number | null) {
   return 'bg-red-50';
 }
 
-function normalizeEpsName(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/_/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function formatEpsLabel(value: string) {
-  return value
-    .replace(/_/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
 export function ExecutivePanel({ data }: { data: DashboardData }) {
-  const { kpis, alertas, funnel, consolidado } = data;
-  const [selectedEps, setSelectedEps] = useState<string>('Municipio');
+  const { kpis, alertas, funnel } = data;
+  const [selectedEps, setSelectedEps] = useState<string>('Todas');
 
   const epsList = useMemo(() => {
-    const fromFunnel = funnel.map(f => f.eps).filter(Boolean);
-    const fromConsolidado = consolidado.map(c => c.EPS).filter(Boolean);
-    const labelByKey = new Map<string, string>();
-    for (const eps of [...fromFunnel, ...fromConsolidado]) {
-      const key = normalizeEpsName(eps);
-      if (!labelByKey.has(key)) {
-        labelByKey.set(key, formatEpsLabel(eps));
-      }
-    }
-    return Array.from(labelByKey.entries())
-      .map(([value, label]) => ({ value, label }))
-      .sort((a, b) => a.label.localeCompare(b.label, 'es'));
-  }, [funnel, consolidado]);
+    const list = [...new Set(funnel.map(f => f.eps))].sort();
+    return ['Todas', ...list];
+  }, [funnel]);
 
+  // Filtrar alertas por EPS
   const filteredAlertas = useMemo(() => {
-    if (selectedEps === 'Municipio') return alertas;
-    return alertas.filter(a => normalizeEpsName(a.eps) === selectedEps);
+    if (selectedEps === 'Todas') return alertas;
+    return alertas.filter(a => a.eps === selectedEps);
   }, [alertas, selectedEps]);
 
-  const coberturas = kpis.filter(k => k.indicador.includes('COBERTURA'));
+  // Calcular KPIs por EPS usando datos del funnel
+  const kpisPorEps = useMemo(() => {
+    if (selectedEps === 'Todas') {
+      // Usar KPIs municipales pre-calculados
+      return kpis.filter(k => k.indicador.includes('COBERTURA'));
+    }
+
+    // Para una EPS específica, calcular desde funnel
+    const epsFunnel = funnel.filter(f => f.eps === selectedEps);
+
+    const indicadoresClave = [
+      { programa: 'Dt Cervix', tipo_indicador: 'COBERTURA CCU', label: 'Cobertura CCU' },
+      { programa: 'Dt Cervix', tipo_indicador: 'COBERTURA ADN VPH', label: 'Cobertura ADN VPH' },
+      { programa: 'Dt Mama', tipo_indicador: 'COBERTURA EXAMEN CLINICO DE LA MAMA', label: 'Examen Clínico Mama' },
+      { programa: 'Dt Mama', tipo_indicador: 'COBERTURA MAMOGRAFIA', label: 'Cobertura Mamografía' },
+      { programa: 'Dt Prostata', tipo_indicador: 'COBERTURA TACTO RECTAL', label: 'Tacto Rectal' },
+      { programa: 'Dt Prostata', tipo_indicador: 'COBERTURA PSA', label: 'Cobertura PSA' },
+      { programa: 'Dt Colon Y Recto', tipo_indicador: 'COBERTURA TAMIZACION SANGRE OCULTA EN HECES', label: 'Cobertura SOMF' },
+    ];
+
+    return indicadoresClave.map(ind => {
+      const row = epsFunnel.find(f =>
+        f.programa === ind.programa && f.tipo_indicador === ind.tipo_indicador
+      );
+      const acum = row?.acumulado ?? 0;
+      const meta = row?.meta ?? 0;
+      const poblacion = row?.poblacion_elegible ?? 0;
+      const tasa = poblacion > 0 ? acum / poblacion : null;
+      const pctAvance = meta > 0 ? acum / meta : null;
+      return {
+        programa: ind.programa,
+        indicador: ind.tipo_indicador,
+        label: ind.label,
+        acumulado_2026: acum,
+        meta_2026: meta,
+        poblacion: poblacion,
+        tasa_cobertura: tasa !== null ? Math.round(tasa * 10000) / 10000 : null,
+        pct_avance_meta: pctAvance !== null ? Math.round(pctAvance * 10000) / 10000 : null,
+      };
+    });
+  }, [kpis, funnel, selectedEps]);
+
   const totalAlertasCriticas = filteredAlertas.filter(a => a.nivel === 'crítico').length;
   const totalAlertasAltas = filteredAlertas.filter(a => a.nivel === 'alto').length;
   const totalAlertasMedias = filteredAlertas.filter(a => a.nivel === 'medio').length;
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap gap-4 items-end justify-between">
+      {/* Filtro EPS */}
+      <div className="flex items-center gap-4">
         <div>
-          <label className="text-xs font-medium text-slate-600 mb-1 block">EPS</label>
+          <label className="text-xs font-medium text-slate-600 mb-1 block">Filtrar por EPS</label>
           <Select value={selectedEps} onValueChange={setSelectedEps}>
-            <SelectTrigger className="w-64">
+            <SelectTrigger className="w-56">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Municipio">Municipio (totales generales)</SelectItem>
-              {epsList.map(eps => (
-                <SelectItem key={eps.value} value={eps.value}>{eps.label}</SelectItem>
+              {epsList.map(e => (
+                <SelectItem key={e} value={e}>{e}</SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <div className="text-xs text-slate-500">
-          KPIs por programa se muestran a nivel municipal.
-        </div>
+        {selectedEps !== 'Todas' && (
+          <div className="text-sm text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+            Mostrando datos solo para <strong className="text-slate-700">{selectedEps}</strong>
+          </div>
+        )}
       </div>
+
       {/* Resumen alertas */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="border-red-200 bg-red-50">
@@ -125,7 +145,7 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
 
       {/* KPIs por programa */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        {coberturas.map((k) => (
+        {kpisPorEps.map((k) => (
           <Card key={k.indicador} className={`${kpiBg(k.pct_avance_meta)} border-0`}>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-slate-600">{k.label}</CardTitle>
@@ -166,7 +186,10 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
       {/* Alertas detalladas */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Registro de Alertas y Gestión Clínica</CardTitle>
+          <CardTitle className="text-base">
+            Registro de Alertas y Gestión Clínica
+            {selectedEps !== 'Todas' && <span className="text-slate-400 font-normal"> — {selectedEps}</span>}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -175,7 +198,7 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
                 <tr>
                   <th className="text-left px-3 py-2 font-medium">Nivel</th>
                   <th className="text-left px-3 py-2 font-medium">Programa</th>
-                  <th className="text-left px-3 py-2 font-medium">EPS</th>
+                  {selectedEps === 'Todas' && <th className="text-left px-3 py-2 font-medium">EPS</th>}
                   <th className="text-left px-3 py-2 font-medium">Tipo</th>
                   <th className="text-left px-3 py-2 font-medium">Descripción</th>
                 </tr>
@@ -194,13 +217,13 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
                       </span>
                     </td>
                     <td className="px-3 py-2 text-slate-700">{a.programa}</td>
-                    <td className="px-3 py-2 text-slate-700">{a.eps}</td>
+                    {selectedEps === 'Todas' && <td className="px-3 py-2 text-slate-700">{a.eps}</td>}
                     <td className="px-3 py-2 text-slate-600">{a.tipo}</td>
                     <td className="px-3 py-2 text-slate-800">{a.mensaje}</td>
                   </tr>
                 ))}
                 {filteredAlertas.length === 0 && (
-                  <tr><td colSpan={5} className="px-3 py-6 text-center text-slate-400">No hay alertas registradas</td></tr>
+                  <tr><td colSpan={selectedEps === 'Todas' ? 5 : 4} className="px-3 py-6 text-center text-slate-400">No hay alertas registradas{selectedEps !== 'Todas' ? ` para ${selectedEps}` : ''}</td></tr>
                 )}
               </tbody>
             </table>
