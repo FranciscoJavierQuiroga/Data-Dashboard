@@ -1,4 +1,8 @@
 import pandas as pd
+import numpy as np
+import json
+import re
+import os
 
 # Cargar el archivo de consolidado de indicadores (operativo)
 xl_consolidado = pd.ExcelFile('app/public/data/4. CONSOLIDADO_INDICADORES CANCER_SOGAMOSO.xlsx')
@@ -30,8 +34,7 @@ print(df_cons.head(3).iloc[:, :15].to_string())
 
 
 # Función para limpiar y extraer datos de cada hoja EPS
-import numpy as np
-import json
+
 
 def limpiar_hoja_eps(xl, sheet_name):
     df = pd.read_excel(xl, sheet_name=sheet_name, header=0)
@@ -102,8 +105,6 @@ print(df_hist.columns.tolist())
 print(df_hist.head(10).to_string())
 
 # Limpiar histórico: convertir todo a float, manejar comas como decimales
-import re
-
 def clean_pct(x):
     if pd.isna(x):
         return None
@@ -355,8 +356,6 @@ print(f"Total alertas: {len(df_alertas)}")
 print(df_alertas.to_string())
 
 # Crear los datasets JSON para el dashboard
-import os, json
-
 out_dir = '/mnt/agents/output/app/public/data'
 os.makedirs(out_dir, exist_ok=True)
 
@@ -526,7 +525,6 @@ print("Burn-up guardado. Shape:", df_burn.shape)
 print(df_burn.to_string())
 
 # Verificar que todos los archivos existen
-import os
 for fname in ['kpis.json','funnel.json','historico.json','operativo_mensual.json','alertas.json','consolidado_eps.json','burnup.json']:
     path = f'{out_dir}/{fname}'
     size = os.path.getsize(path) if os.path.exists(path) else 0
