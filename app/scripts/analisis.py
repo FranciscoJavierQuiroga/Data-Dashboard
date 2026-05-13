@@ -1,11 +1,11 @@
 import pandas as pd
 
 # Cargar el archivo de consolidado de indicadores (operativo)
-xl_consolidado = pd.ExcelFile('/mnt/agents/upload/4. CONSOLIDADO_INDICADORES CANCER_SOGAMOSO.xlsx')
+xl_consolidado = pd.ExcelFile('app/public/data/4. CONSOLIDADO_INDICADORES CANCER_SOGAMOSO.xlsx')
 print("Hojas en consolidado:", xl_consolidado.sheet_names)
 
 # Cargar el archivo de cumplimiento histórico
-xl_historico = pd.ExcelFile('/mnt/agents/upload/3. Cumplimiento tamizacion 5 años.xlsx')
+xl_historico = pd.ExcelFile('app/public/data/3. Cumplimiento tamizacion 5 años.xlsx')
 print("Hojas en histórico:", xl_historico.sheet_names)
 
 # Revisar las primeras filas de cada hoja del consolidado para entender la estructura
