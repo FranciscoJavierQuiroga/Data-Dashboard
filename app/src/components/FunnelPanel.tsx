@@ -2,16 +2,39 @@ import { useMemo, useState } from 'react';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { FunnelChart, Funnel, Tooltip, ResponsiveContainer, LabelList, Cell } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-const EPS_COLORS: Record<string, string> = {
-  'Nueva_Eps': '#0ea5e9',
-  'Sanitas': '#059669',
-  'Coosalud': '#d97706',
-  'Famisanar': '#7c3aed',
-  'Salud_Total': '#dc2626',
-  'Cajacopi': '#0891b2',
+const STAGE_COLORS = ['#059669', '#10b981', '#34d399', '#6ee7b7'];
+
+const STAGE_MERGE: Record<string, Record<string, string>> = {
+  'Dt Cervix': {
+    'CCU Realizadas': 'Tamizaje (CCU + ADN VPH)',
+    'ADN VPH Realizados': 'Tamizaje (CCU + ADN VPH)',
+    'CCU Anormales': 'Anormales',
+    'ADN VPH Positivos': 'Anormales',
+    'Colposcopia + Biopsia': 'Colposcopia + Biopsia',
+  },
+  'Dt Mama': {
+    'Examen Clínico Mama': 'Tamizaje (Ex. Clínico + Mamografía)',
+    'Mamografías': 'Tamizaje (Ex. Clínico + Mamografía)',
+    'Mamografías BI-RADS 4+': 'Mamografías BI-RADS 4+',
+    'Biopsias de Mama': 'Biopsias de Mama',
+  },
+  'Dt Prostata': {
+    'Tacto Rectal': 'Tamizaje (TR + PSA)',
+    'PSA': 'Tamizaje (TR + PSA)',
+    'Tamizaje Combinado': 'Tamizaje (TR + PSA)',
+    'Resultados Anormales': 'Resultados Anormales',
+    'Biopsias de Próstata': 'Biopsias de Próstata',
+  },
+};
+
+const STAGE_ORDER: Record<string, Record<string, number>> = {
+  'Dt Cervix': { 'Tamizaje (CCU + ADN VPH)': 0, 'Anormales': 1, 'Colposcopia + Biopsia': 2 },
+  'Dt Mama': { 'Tamizaje (Ex. Clínico + Mamografía)': 0, 'Mamografías BI-RADS 4+': 1, 'Biopsias de Mama': 2 },
+  'Dt Prostata': { 'Tamizaje (TR + PSA)': 0, 'Resultados Anormales': 1, 'Biopsias de Próstata': 2 },
+  'Dt Colon Y Recto': { 'SOMF Realizadas': 0, 'SOMF Positivas': 1, 'Colonoscopias': 2 },
 };
 
 export function FunnelPanel({ data }: { data: DashboardData }) {
@@ -22,12 +45,12 @@ export function FunnelPanel({ data }: { data: DashboardData }) {
   const programs = useMemo(() => [...new Set(funnel.map(f => f.programa))].sort(), [funnel]);
   const epsList = useMemo(() => [...new Set(funnel.map(f => f.eps))].sort(), [funnel]);
 
+  // Filtrar por programa y EPS (sumando todas las EPS si 'Todas')
   const filtered = useMemo(() => {
     let rows = funnel.filter(f => f.programa === selectedProgram);
     if (selectedEps !== 'Todas') {
       rows = rows.filter(f => f.eps === selectedEps);
     } else {
-      // Agregar todos sumando acumulados por stage
       const byStage: Record<string, any> = {};
       for (const r of rows) {
         if (!byStage[r.stage]) {
@@ -39,55 +62,66 @@ export function FunnelPanel({ data }: { data: DashboardData }) {
       }
       rows = Object.values(byStage);
     }
-    return rows.sort((a, b) => {
-      const order: Record<string, Record<string, number>> = {
-        'Dt Cervix': { 'CCU Realizadas': 0, 'CCU Anormales': 1, 'ADN VPH Realizados': 2, 'ADN VPH Positivos': 3, 'Colposcopia + Biopsia': 4 },
-        'Dt Mama': { 'Examen Clínico Mama': 0, 'Mamografías': 1, 'Mamografías BI-RADS 4+': 2, 'Biopsias de Mama': 3 },
-        'Dt Prostata': { 'Tacto Rectal': 0, 'PSA': 1, 'Tamizaje Combinado': 2, 'Resultados Anormales': 3, 'Biopsias de Próstata': 4 },
-        'Dt Colon Y Recto': { 'SOMF Realizadas': 0, 'SOMF Positivas': 1, 'Colonoscopias': 2 },
-      };
-      const orderMap = order[selectedProgram] || {};
-      return (orderMap[a.stage] ?? 99) - (orderMap[b.stage] ?? 99);
-    });
+    const order = STAGE_ORDER[selectedProgram] || {};
+    const stageKeys = Object.keys(STAGE_MERGE[selectedProgram] || {});
+    if (stageKeys.length > 0) {
+      // Usar el orden original para que mergeStages funcione
+      return rows.sort((a, b) => {
+        const aIdx = stageKeys.indexOf(a.stage);
+        const bIdx = stageKeys.indexOf(b.stage);
+        return (aIdx >= 0 ? aIdx : 99) - (bIdx >= 0 ? bIdx : 99);
+      });
+    }
+    return rows.sort((a, b) => (order[a.stage] ?? 99) - (order[b.stage] ?? 99));
   }, [funnel, selectedProgram, selectedEps]);
 
-  // Datos para barras apiladas por EPS
-  const epsFunnelData = useMemo(() => {
-    const rows = funnel.filter(f => f.programa === selectedProgram);
-    const epsPresent = [...new Set(rows.map(r => r.eps))].sort();
-    const order: Record<string, Record<string, number>> = {
-      'Dt Cervix': { 'CCU Realizadas': 0, 'CCU Anormales': 1, 'ADN VPH Realizados': 2, 'ADN VPH Positivos': 3, 'Colposcopia + Biopsia': 4 },
-      'Dt Mama': { 'Examen Clínico Mama': 0, 'Mamografías': 1, 'Mamografías BI-RADS 4+': 2, 'Biopsias de Mama': 3 },
-      'Dt Prostata': { 'Tacto Rectal': 0, 'PSA': 1, 'Tamizaje Combinado': 2, 'Resultados Anormales': 3, 'Biopsias de Próstata': 4 },
-      'Dt Colon Y Recto': { 'SOMF Realizadas': 0, 'SOMF Positivas': 1, 'Colonoscopias': 2 },
-    };
-    const orderMap = order[selectedProgram] || {};
-    const stages = [...new Set(rows.map(r => r.stage))].sort((a, b) => (orderMap[a] ?? 99) - (orderMap[b] ?? 99));
-    const chartData = stages.map(stage => {
-      const obj: Record<string, any> = { stage };
-      for (const eps of epsPresent) {
-        const match = rows.find(r => r.stage === stage && r.eps === eps);
-        obj[eps] = match?.acumulado ?? 0;
-      }
-      return obj;
-    });
-    return { chartData, epsList: epsPresent };
-  }, [funnel, selectedProgram]);
+  // Fusionar etapas paralelas según STAGE_MERGE
+  const mergedStages = useMemo(() => {
+    const mergeMap = STAGE_MERGE[selectedProgram];
+    if (!mergeMap) return filtered;
 
+    const grouped: Record<string, any> = {};
+    for (const row of filtered) {
+      const mergedName = mergeMap[row.stage] || row.stage;
+      if (!grouped[mergedName]) {
+        grouped[mergedName] = { ...row, stage: mergedName, acumulado: 0, meta: 0, poblacion_elegible: 0, pct_ejecucion: null };
+      }
+      grouped[mergedName].acumulado += row.acumulado || 0;
+      grouped[mergedName].meta += row.meta || 0;
+      grouped[mergedName].poblacion_elegible = row.poblacion_elegible || grouped[mergedName].poblacion_elegible;
+    }
+
+    const order = STAGE_ORDER[selectedProgram] || {};
+    return Object.values(grouped).map(r => ({
+      ...r,
+      pct_ejecucion: r.meta > 0 ? r.acumulado / r.meta : null,
+    })).sort((a, b) => (order[a.stage] ?? 99) - (order[b.stage] ?? 99));
+  }, [filtered, selectedProgram]);
+
+  // Datos para el FunnelChart
+  const funnelChartData = useMemo(() => {
+    return mergedStages.map((f, i) => ({
+      name: f.stage,
+      value: f.acumulado || 0,
+      fill: STAGE_COLORS[i % STAGE_COLORS.length]
+    }));
+  }, [mergedStages]);
+
+  // Tasas de conversión entre etapas
   const conversionRates = useMemo(() => {
     const rates: { from: string; to: string; rate: string }[] = [];
-    for (let i = 0; i < filtered.length - 1; i++) {
-      const a = filtered[i].acumulado || 0;
-      const b = filtered[i + 1].acumulado || 0;
+    for (let i = 0; i < mergedStages.length - 1; i++) {
+      const a = mergedStages[i].acumulado || 0;
+      const b = mergedStages[i + 1].acumulado || 0;
       const rate = a > 0 ? (b / a) * 100 : 0;
       rates.push({
-        from: filtered[i].stage,
-        to: filtered[i + 1].stage,
+        from: mergedStages[i].stage,
+        to: mergedStages[i + 1].stage,
         rate: `${rate.toFixed(1)}%`
       });
     }
     return rates;
-  }, [filtered]);
+  }, [mergedStages]);
 
   return (
     <div className="space-y-6">
@@ -130,16 +164,19 @@ export function FunnelPanel({ data }: { data: DashboardData }) {
           <CardContent>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={epsFunnelData.chartData} margin={{ top: 10, right: 10, left: 10, bottom: 50 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis dataKey="stage" tick={{ fontSize: 11 }} angle={-20} textAnchor="end" height={60} />
-                  <YAxis tick={{ fontSize: 12 }} tickFormatter={(v: number) => v.toLocaleString('es-CO')} />
+                <FunnelChart>
                   <Tooltip formatter={(val: number, name: string) => [val.toLocaleString('es-CO'), name]} />
-                  <Legend wrapperStyle={{ fontSize: 12 }} />
-                  {epsFunnelData.epsList.map((eps) => (
-                    <Bar key={eps} dataKey={eps} stackId="eps" fill={EPS_COLORS[eps] || '#94a3b8'} />
-                  ))}
-                </BarChart>
+                  <Funnel
+                    dataKey="value"
+                    data={funnelChartData}
+                    isAnimationActive
+                  >
+                    <LabelList position="inside" fill="#1e293b" stroke="none" dataKey="name" className="text-[11px] font-medium" />
+                    {funnelChartData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.fill} stroke="#fff" strokeWidth={2} />
+                    ))}
+                  </Funnel>
+                </FunnelChart>
               </ResponsiveContainer>
             </div>
           </CardContent>
@@ -185,7 +222,7 @@ export function FunnelPanel({ data }: { data: DashboardData }) {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {filtered.map((f, i) => (
+                  {mergedStages.map((f, i) => (
                     <TableRow key={i}>
                       <TableCell className="text-sm text-slate-700">{f.stage}</TableCell>
                       <TableCell className="text-sm text-right font-medium">{f.acumulado.toLocaleString('es-CO')}</TableCell>
