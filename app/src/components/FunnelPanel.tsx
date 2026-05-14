@@ -2,10 +2,17 @@ import { useMemo, useState } from 'react';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { FunnelChart, Funnel, Tooltip, ResponsiveContainer, LabelList, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-const STAGE_COLORS = ['#059669', '#10b981', '#34d399', '#6ee7b7', '#a7f3d0'];
+const EPS_COLORS: Record<string, string> = {
+  'Nueva_Eps': '#0ea5e9',
+  'Sanitas': '#059669',
+  'Coosalud': '#d97706',
+  'Famisanar': '#7c3aed',
+  'Salud_Total': '#dc2626',
+  'Cajacopi': '#0891b2',
+};
 
 export function FunnelPanel({ data }: { data: DashboardData }) {
   const { funnel } = data;
@@ -44,13 +51,28 @@ export function FunnelPanel({ data }: { data: DashboardData }) {
     });
   }, [funnel, selectedProgram, selectedEps]);
 
-  const funnelChartData = useMemo(() => {
-    return filtered.map(f => ({
-      name: f.stage,
-      value: f.acumulado || 0,
-      fill: STAGE_COLORS[filtered.indexOf(f) % STAGE_COLORS.length]
-    }));
-  }, [filtered]);
+  // Datos para barras apiladas por EPS
+  const epsFunnelData = useMemo(() => {
+    const rows = funnel.filter(f => f.programa === selectedProgram);
+    const epsPresent = [...new Set(rows.map(r => r.eps))].sort();
+    const order: Record<string, Record<string, number>> = {
+      'Dt Cervix': { 'CCU Realizadas': 0, 'CCU Anormales': 1, 'ADN VPH Realizados': 2, 'ADN VPH Positivos': 3, 'Colposcopia + Biopsia': 4 },
+      'Dt Mama': { 'Examen Clínico Mama': 0, 'Mamografías': 1, 'Mamografías BI-RADS 4+': 2, 'Biopsias de Mama': 3 },
+      'Dt Prostata': { 'Tacto Rectal': 0, 'PSA': 1, 'Tamizaje Combinado': 2, 'Resultados Anormales': 3, 'Biopsias de Próstata': 4 },
+      'Dt Colon Y Recto': { 'SOMF Realizadas': 0, 'SOMF Positivas': 1, 'Colonoscopias': 2 },
+    };
+    const orderMap = order[selectedProgram] || {};
+    const stages = [...new Set(rows.map(r => r.stage))].sort((a, b) => (orderMap[a] ?? 99) - (orderMap[b] ?? 99));
+    const chartData = stages.map(stage => {
+      const obj: Record<string, any> = { stage };
+      for (const eps of epsPresent) {
+        const match = rows.find(r => r.stage === stage && r.eps === eps);
+        obj[eps] = match?.acumulado ?? 0;
+      }
+      return obj;
+    });
+    return { chartData, epsList: epsPresent };
+  }, [funnel, selectedProgram]);
 
   const conversionRates = useMemo(() => {
     const rates: { from: string; to: string; rate: string }[] = [];
@@ -108,19 +130,16 @@ export function FunnelPanel({ data }: { data: DashboardData }) {
           <CardContent>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
-                <FunnelChart>
+                <BarChart data={epsFunnelData.chartData} margin={{ top: 10, right: 10, left: 10, bottom: 50 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis dataKey="stage" tick={{ fontSize: 11 }} angle={-20} textAnchor="end" height={60} />
+                  <YAxis tick={{ fontSize: 12 }} tickFormatter={(v: number) => v.toLocaleString('es-CO')} />
                   <Tooltip formatter={(val: number, name: string) => [val.toLocaleString('es-CO'), name]} />
-                  <Funnel
-                    dataKey="value"
-                    data={funnelChartData}
-                    isAnimationActive
-                  >
-                    <LabelList position="inside" fill="#1e293b" stroke="none" dataKey="name" className="text-[11px] font-medium" />
-                    {funnelChartData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.fill} stroke="#fff" strokeWidth={2} />
-                    ))}
-                  </Funnel>
-                </FunnelChart>
+                  <Legend wrapperStyle={{ fontSize: 12 }} />
+                  {epsFunnelData.epsList.map((eps) => (
+                    <Bar key={eps} dataKey={eps} stackId="eps" fill={EPS_COLORS[eps] || '#94a3b8'} />
+                  ))}
+                </BarChart>
               </ResponsiveContainer>
             </div>
           </CardContent>

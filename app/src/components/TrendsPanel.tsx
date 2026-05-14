@@ -1,22 +1,72 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, BarChart, Bar } from 'recharts';
 
 const PROGRAM_COLORS: Record<string, string> = {
-  'Dt Cervix': '#059669',
-  'Dt Mama': '#d97706',
-  'Dt Prostata': '#2563eb',
-  'Dt Colon Y Recto': '#7c3aed',
+  'DT cervix': '#059669',
+  'DT mama': '#d97706',
+  'DT Prostata': '#2563eb',
+  'DT Colon y Recto': '#7c3aed',
+};
+
+const INDICATOR_TO_PROGRAM: Record<string, string> = {
+  'Cuello Uterino': 'DT cervix',
+  'Cuello Uterino - ADN VPH': 'DT cervix',
+  'Cuello Uterino - Citología': 'DT cervix',
+  'Mama': 'DT mama',
+  'Próstata': 'DT Prostata',
+  'Próstata - PSA': 'DT Prostata',
+  'Próstata - Tacto Rectal': 'DT Prostata',
+  'Colon y Recto': 'DT Colon y Recto',
+};
+
+const EPS_MAP: Record<string, string> = {
+  'Nueva Eps': 'Nueva_Eps',
+  'Salud Total': 'Salud_Total',
 };
 
 export function TrendsPanel({ data }: { data: DashboardData }) {
   const { historico, consolidado } = data;
+  const [selectedProgram, setSelectedProgram] = useState<string>('Todos');
+  const [selectedEps, setSelectedEps] = useState<string>('Todas');
+
+  const programList = useMemo(() => {
+    return [...new Set(consolidado.map(c => c.PROGRAMA))].sort();
+  }, [consolidado]);
+
+  const epsList = useMemo(() => {
+    return [...new Set(historico.map(h => h.EPS_CLEAN))].filter(e => e !== 'Total Municipio').sort();
+  }, [historico]);
+
+  const filteredHistorico = useMemo(() => {
+    let filtered = historico;
+    if (selectedProgram !== 'Todos') {
+      filtered = filtered.filter(h => INDICATOR_TO_PROGRAM[h.INDICADOR_CLEAN] === selectedProgram);
+    }
+    if (selectedEps !== 'Todas') {
+      filtered = filtered.filter(h => h.EPS_CLEAN === selectedEps);
+    }
+    return filtered;
+  }, [historico, selectedProgram, selectedEps]);
+
+  const filteredConsolidado = useMemo(() => {
+    let filtered = consolidado;
+    if (selectedProgram !== 'Todos') {
+      filtered = filtered.filter(c => c.PROGRAMA === selectedProgram);
+    }
+    if (selectedEps !== 'Todas') {
+      const mappedEps = EPS_MAP[selectedEps] || selectedEps;
+      filtered = filtered.filter(c => c.EPS === mappedEps);
+    }
+    return filtered;
+  }, [consolidado, selectedProgram, selectedEps]);
 
   // Agrupar histórico por indicador y año (promediando EPS excepto Total Municipio)
   const histByIndicator = useMemo(() => {
     const map: Record<string, Record<number, { total: number; count: number; total_mun: number | null }>> = {};
-    for (const row of historico) {
+    for (const row of filteredHistorico) {
       const ind = row.INDICADOR_CLEAN;
       const year = row.AÑO;
       if (!map[ind]) map[ind] = {};
@@ -45,27 +95,27 @@ export function TrendsPanel({ data }: { data: DashboardData }) {
       return obj;
     });
     return { rows, indicators };
-  }, [historico]);
+  }, [filteredHistorico]);
 
   // Radar data por EPS (último año 2025)
   const radarData = useMemo(() => {
-    const epsList = [...new Set(historico.map(h => h.EPS_CLEAN))].filter(e => e !== 'Total Municipio');
-    const indicators = [...new Set(historico.map(h => h.INDICADOR_CLEAN))];
+    const epsList = [...new Set(filteredHistorico.map(h => h.EPS_CLEAN))].filter(e => e !== 'Total Municipio');
+    const indicators = [...new Set(filteredHistorico.map(h => h.INDICADOR_CLEAN))];
     // Para cada indicador, obtener valor de cada EPS en 2025
     const rows = indicators.map(ind => {
       const obj: Record<string, any> = { indicator: ind };
       for (const eps of epsList) {
-        const val = historico.find(h => h.INDICADOR_CLEAN === ind && h.EPS_CLEAN === eps && h.AÑO === 2025)?.VALOR ?? 0;
+        const val = filteredHistorico.find(h => h.INDICADOR_CLEAN === ind && h.EPS_CLEAN === eps && h.AÑO === 2025)?.VALOR ?? 0;
         obj[eps] = val;
       }
       return obj;
     });
     return { rows, epsList };
-  }, [historico]);
+  }, [filteredHistorico]);
 
   // Comparativo EPS para coberturas principales (consolidado)
   const epsComparison = useMemo(() => {
-    const coberturas = consolidado.filter(c =>
+    const coberturas = filteredConsolidado.filter(c =>
       c.TIPO_INDICADOR.includes('COBERTURA') &&
       !c.TIPO_INDICADOR.includes('POSITIVIDAD') &&
       !c.TIPO_INDICADOR.includes('BIOPSIA')
@@ -83,10 +133,51 @@ export function TrendsPanel({ data }: { data: DashboardData }) {
       return obj;
     });
     return { rows, programs };
-  }, [consolidado]);
+  }, [filteredConsolidado]);
 
   return (
     <div className="space-y-6">
+      {/* Filtros */}
+      <div className="flex flex-wrap gap-4 items-center">
+        <div>
+          <label className="text-xs font-medium text-slate-600 mb-1 block">Programa</label>
+          <Select value={selectedProgram} onValueChange={setSelectedProgram}>
+            <SelectTrigger className="w-56">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Todos">Todos los programas</SelectItem>
+              {programList.map(p => (
+                <SelectItem key={p} value={p}>{p}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div>
+          <label className="text-xs font-medium text-slate-600 mb-1 block">EPS</label>
+          <Select value={selectedEps} onValueChange={setSelectedEps}>
+            <SelectTrigger className="w-56">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Todas">Todas las EPS</SelectItem>
+              {epsList.map(e => (
+                <SelectItem key={e} value={e}>{e}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        {(selectedProgram !== 'Todos' || selectedEps !== 'Todas') && (
+          <div className="text-sm text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md mt-5">
+            {selectedProgram !== 'Todos' && selectedEps !== 'Todas'
+              ? `Mostrando: ${selectedProgram} — ${selectedEps}`
+              : selectedProgram !== 'Todos'
+                ? `Mostrando solo programa: ${selectedProgram}`
+                : `Mostrando solo EPS: ${selectedEps}`}
+          </div>
+        )}
+      </div>
+
       {/* Evolución histórica anual */}
       <Card>
         <CardHeader>

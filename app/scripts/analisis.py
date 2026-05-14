@@ -5,11 +5,11 @@ import re
 import os
 
 # Cargar el archivo de consolidado de indicadores (operativo)
-xl_consolidado = pd.ExcelFile('app/public/data/4. CONSOLIDADO_INDICADORES CANCER_SOGAMOSO.xlsx')
+xl_consolidado = pd.ExcelFile('public/data/4. CONSOLIDADO_INDICADORES CANCER_SOGAMOSO.xlsx')
 print("Hojas en consolidado:", xl_consolidado.sheet_names)
 
 # Cargar el archivo de cumplimiento histórico
-xl_historico = pd.ExcelFile('app/public/data/3. Cumplimiento tamizacion 5 años.xlsx')
+xl_historico = pd.ExcelFile('public/data/3. Cumplimiento tamizacion 5 años.xlsx')
 print("Hojas en histórico:", xl_historico.sheet_names)
 
 # Revisar las primeras filas de cada hoja del consolidado para entender la estructura
@@ -34,8 +34,6 @@ print(df_cons.head(3).iloc[:, :15].to_string())
 
 
 # Función para limpiar y extraer datos de cada hoja EPS
-
-
 def limpiar_hoja_eps(xl, sheet_name):
     df = pd.read_excel(xl, sheet_name=sheet_name, header=0)
     # Renombrar columnas clave para unificar
@@ -251,6 +249,9 @@ for prog, info in programas_funnel.items():
                 acum = row['ACUMULADO_ACTIVIDADES'].values[0]
                 meta = row['META_2026'].values[0]
                 pct = row['PCT_EJECUCION'].values[0]
+                enero_v = row['ENERO'].values[0] if 'ENERO' in row.columns and len(row)>0 else None
+                febrero_v = row['FEBRERO'].values[0] if 'FEBRERO' in row.columns and len(row)>0 else None
+                marzo_v = row['MARZO'].values[0] if 'MARZO' in row.columns and len(row)>0 else None
                 funnels.append({
                     'programa': prog,
                     'eps': eps,
@@ -260,9 +261,9 @@ for prog, info in programas_funnel.items():
                     'acumulado': acum if pd.notna(acum) else 0,
                     'meta': meta if pd.notna(meta) else None,
                     'pct_ejecucion': pct if pd.notna(pct) else None,
-                    'enero': row['ENERO'].values[0] if 'ENERO' in row.columns and len(row)>0 else None,
-                    'febrero': row['FEBRERO'].values[0] if 'FEBRERO' in row.columns and len(row)>0 else None,
-                    'marzo': row['MARZO'].values[0] if 'MARZO' in row.columns and len(row)>0 else None,
+                    'enero': enero_v if pd.notna(enero_v) else None,
+                    'febrero': febrero_v if pd.notna(febrero_v) else None,
+                    'marzo': marzo_v if pd.notna(marzo_v) else None,
                 })
 
 df_funnel = pd.DataFrame(funnels)
@@ -356,7 +357,7 @@ print(f"Total alertas: {len(df_alertas)}")
 print(df_alertas.to_string())
 
 # Crear los datasets JSON para el dashboard
-out_dir = '/mnt/agents/output/app/public/data'
+out_dir = 'public/data'
 os.makedirs(out_dir, exist_ok=True)
 
 # 1. KPIs resumidos por programa (tomando Total Municipio del histórico 2025 como referencia, + operativo 2026)
@@ -424,24 +425,24 @@ print("\nMensual shape:", df_mensual.shape)
 
 # 3. Guardar todo
 with open(f'{out_dir}/kpis.json', 'w', encoding='utf-8') as f:
-    json.dump(df_kpis.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_kpis.astype(object).where(pd.notna(df_kpis), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 with open(f'{out_dir}/funnel.json', 'w', encoding='utf-8') as f:
-    json.dump(df_funnel.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(funnels, f, ensure_ascii=False, indent=2)
 
 with open(f'{out_dir}/historico.json', 'w', encoding='utf-8') as f:
-    json.dump(df_hist_long.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_hist_long.astype(object).where(pd.notna(df_hist_long), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 with open(f'{out_dir}/operativo_mensual.json', 'w', encoding='utf-8') as f:
-    json.dump(df_mensual.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_mensual.astype(object).where(pd.notna(df_mensual), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 with open(f'{out_dir}/alertas.json', 'w', encoding='utf-8') as f:
-    json.dump(df_alertas.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_alertas.astype(object).where(pd.notna(df_alertas), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 # 4. Dataset consolidado (hoja consolidado) reshaped
 df_cons_clean = df_cons[['PROGRAMA','TIPO INDICADOR','NOMBRE INDICADOR','Nueva EPS','Sanitas','Coosalud','Famisanar','Salud total','Cajacopi','Avance en el cumplimiento']].copy()
 df_cons_clean.columns = ['PROGRAMA','TIPO_INDICADOR','NOMBRE_INDICADOR','Nueva_Eps','Sanitas','Coosalud','Famisanar','Salud_Total','Cajacopi','Avance_Cumplimiento']
-df_cons_melt = df_cons_clean.melt(id_vars=['PROGRAMA','TIPO_INDICADOR','NOMBRE_INDICADOR'], 
+df_cons_melt = df_cons_clean.melt(id_vars=['PROGRAMA','TIPO_INDICADOR','NOMBRE_INDICADOR','Avance_Cumplimiento'], 
                                   value_vars=['Nueva_Eps','Sanitas','Coosalud','Famisanar','Salud_Total','Cajacopi'],
                                   var_name='EPS', value_name='EJECUCION')
 df_cons_melt['EJECUCION'] = pd.to_numeric(df_cons_melt['EJECUCION'], errors='coerce')
@@ -449,12 +450,18 @@ df_cons_melt['Avance_Cumplimiento'] = pd.to_numeric(df_cons_melt['Avance_Cumplim
 print("\nConsolidado melt:", df_cons_melt.head(10).to_string())
 
 with open(f'{out_dir}/consolidado_eps.json', 'w', encoding='utf-8') as f:
-    json.dump(df_cons_melt.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_cons_melt.astype(object).where(pd.notna(df_cons_melt), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
-# 5. Burn-up: acumulado mensual por programa (sumando todas las EPS)
-df_burn = df_mensual.groupby(['PROGRAMA','MES'])['VALOR_MES'].sum().reset_index()
-# Ordenar meses
+# 5. Burn-up: acumulado mensual solo con indicadores de cobertura real
+COVERAGE_INDICATORS = [
+    'COBERTURA CCU',                    # Dt Cervix → citología
+    'COBERTURA TAMIZACION SANGRE OCULTA EN HECES',  # Dt Colon → sangre
+    'COBERTURA MAMOGRAFIA',             # Dt Mama → mamografía
+    'COBERTURA PSA',                    # Dt Prostata → PSA
+]
+df_burn_input = df_mensual[df_mensual['TIPO_INDICADOR'].isin(COVERAGE_INDICATORS)]
 orden_meses = {m:i for i,m in enumerate(meses)}
+df_burn = df_burn_input.groupby(['PROGRAMA','MES'])['VALOR_MES'].sum().reset_index()
 df_burn = df_burn[df_burn['MES'].isin(orden_meses)]
 df_burn['MES_ORDEN'] = df_burn['MES'].map(orden_meses)
 df_burn = df_burn.sort_values(['PROGRAMA','MES_ORDEN'])
@@ -462,7 +469,7 @@ df_burn['ACUMULADO_CALCULADO'] = df_burn.groupby('PROGRAMA')['VALOR_MES'].cumsum
 print("\nBurn-up:", df_burn.to_string())
 
 with open(f'{out_dir}/burnup.json', 'w', encoding='utf-8') as f:
-    json.dump(df_burn.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_burn.astype(object).where(pd.notna(df_burn), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 print("\n✅ Todos los JSON guardados en", out_dir)
 
@@ -488,11 +495,11 @@ df_cons_melt['Avance_Cumplimiento'] = pd.to_numeric(df_cons_melt['Avance_Cumplim
 print("Consolidado melt head:", df_cons_melt.head(10).to_string())
 
 with open(f'{out_dir}/consolidado_eps.json', 'w', encoding='utf-8') as f:
-    json.dump(df_cons_melt.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_cons_melt.astype(object).where(pd.notna(df_cons_melt), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 # Re-guardar burnup también
 with open(f'{out_dir}/burnup.json', 'w', encoding='utf-8') as f:
-    json.dump(df_burn.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_burn.astype(object).where(pd.notna(df_burn), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 print("\n✅ JSONs actualizados correctamente")
 
@@ -509,9 +516,10 @@ df_mensual = df_op.melt(
 df_mensual['VALOR_MES'] = pd.to_numeric(df_mensual['VALOR_MES'], errors='coerce')
 df_mensual = df_mensual.dropna(subset=['VALOR_MES'])
 
-# Burn-up: acumulado mensual por programa (sumando todas las EPS)
-df_burn = df_mensual.groupby(['PROGRAMA','MES'])['VALOR_MES'].sum().reset_index()
+# Burn-up: acumulado mensual solo con indicadores de cobertura real
+df_burn_input = df_mensual[df_mensual['TIPO_INDICADOR'].isin(COVERAGE_INDICATORS)]
 orden_meses = {m:i for i,m in enumerate(meses)}
+df_burn = df_burn_input.groupby(['PROGRAMA','MES'])['VALOR_MES'].sum().reset_index()
 df_burn = df_burn[df_burn['MES'].isin(orden_meses)]
 df_burn['MES_ORDEN'] = df_burn['MES'].map(orden_meses)
 df_burn = df_burn.sort_values(['PROGRAMA','MES_ORDEN'])
@@ -519,7 +527,7 @@ df_burn['ACUMULADO_CALCULADO'] = df_burn.groupby('PROGRAMA')['VALOR_MES'].cumsum
 
 # Guardar burnup
 with open(f'{out_dir}/burnup.json', 'w', encoding='utf-8') as f:
-    json.dump(df_burn.to_dict(orient='records'), f, ensure_ascii=False, indent=2)
+    json.dump(df_burn.astype(object).where(pd.notna(df_burn), None).to_dict(orient='records'), f, ensure_ascii=False, indent=2)
 
 print("Burn-up guardado. Shape:", df_burn.shape)
 print(df_burn.to_string())
