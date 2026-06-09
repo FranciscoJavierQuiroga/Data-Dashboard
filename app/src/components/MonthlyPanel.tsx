@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Badge } from '@/components/ui/badge';
 import { AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
 
 const MONTHS_ORDER = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
@@ -35,6 +36,17 @@ export function MonthlyPanel({ data }: { data: DashboardData }) {
 
   const programs = useMemo(() => [...new Set(burnup.map(b => b.PROGRAMA))].sort(), [burnup]);
   const epsList = useMemo(() => [...new Set(mensual.map(m => m.EPS))].sort(), [mensual]);
+
+  const epsLatestMonth = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const m of mensual) {
+      if (m.VALOR_MES && m.VALOR_MES > 0) {
+        const order = MONTHS_ORDER.indexOf(m.MES);
+        if (order > (map[m.EPS] ?? -1)) map[m.EPS] = order;
+      }
+    }
+    return map;
+  }, [mensual]);
 
   // Burn-up data: usa burnup.json para total municipal, o calcula desde mensual cuando se filtra por EPS
   const burnData = useMemo(() => {
@@ -128,12 +140,34 @@ export function MonthlyPanel({ data }: { data: DashboardData }) {
       const targetIndicator = RITMO_INDICATORS[prog];
       const kpi = targetIndicator ? kpis.find(k => k.programa === prog && k.indicador === targetIndicator) : null;
       const meta = kpi?.meta_2026 || 0;
-      const mesesRestantes = 9;
+
+      // Determinar último mes con datos para este programa
+      const progData = selectedEps !== 'Todas'
+        ? mensual.filter(m => m.PROGRAMA === prog && m.EPS === selectedEps)
+        : burnup.filter(b => b.PROGRAMA === prog);
+      let lastMonthOrder = -1;
+      for (const d of progData) {
+        const actualVal = 'VALOR_MES' in d ? d.VALOR_MES : (d as any).ACUMULADO_CALCULADO;
+        if (actualVal && actualVal > 0) {
+          const order = MONTHS_ORDER.indexOf(d.MES);
+          if (order > lastMonthOrder) lastMonthOrder = order;
+        }
+      }
+      const mesesTranscurridos = lastMonthOrder >= 0 ? lastMonthOrder + 1 : 3;
+      const mesesRestantes = 12 - mesesTranscurridos;
       const ritmo = meta > 0 && mesesRestantes > 0 ? (meta - acum) / mesesRestantes : 0;
-      results.push({ programa: prog, acum, meta, faltan: meta - acum, ritmo_mensual: ritmo });
+      results.push({
+        programa: prog,
+        acum,
+        meta,
+        faltan: meta - acum,
+        ritmo_mensual: ritmo,
+        mesLabel: MONTH_LABELS[lastMonthOrder >= 0 ? lastMonthOrder : 2],
+        mesesTranscurridos,
+      });
     }
     return results;
-  }, [kpis, burnData, programs, selectedProgram]);
+  }, [kpis, burnData, programs, selectedProgram, mensual, burnup, selectedEps]);
 
   return (
     <div className="space-y-6">
@@ -161,7 +195,16 @@ export function MonthlyPanel({ data }: { data: DashboardData }) {
             <SelectContent>
               <SelectItem value="Todas">Todas las EPS</SelectItem>
               {epsList.map(e => (
-                <SelectItem key={e} value={e}>{e}</SelectItem>
+                <SelectItem key={e} value={e}>
+                  <span className="flex items-center gap-2">
+                    {e}
+                    {epsLatestMonth[e] !== undefined && (
+                      <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4">
+                        {MONTH_LABELS[epsLatestMonth[e]]}
+                      </Badge>
+                    )}
+                  </span>
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -181,7 +224,7 @@ export function MonthlyPanel({ data }: { data: DashboardData }) {
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-slate-500">Acumulado (Ene-Mar)</span>
+                <span className="text-slate-500">Acumulado (Ene-{r.mesLabel})</span>
                 <span className="font-semibold text-slate-800">{r.acum.toLocaleString('es-CO')}</span>
               </div>
               <div className="flex justify-between text-sm">
@@ -189,7 +232,7 @@ export function MonthlyPanel({ data }: { data: DashboardData }) {
                 <span className="font-semibold text-slate-800">{r.meta.toLocaleString('es-CO')}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-slate-500">Faltan (Abr-Dic)</span>
+                <span className="text-slate-500">Faltan</span>
                 <span className="font-semibold text-red-600">{r.faltan.toLocaleString('es-CO')}</span>
               </div>
               <div className="flex justify-between text-sm">
@@ -197,7 +240,7 @@ export function MonthlyPanel({ data }: { data: DashboardData }) {
                 <span className="font-semibold text-amber-600">{Math.ceil(r.ritmo_mensual).toLocaleString('es-CO')}/mes</span>
               </div>
               <div className="text-xs text-slate-400 mt-1">
-                A ritmo actual: {(r.acum / 3).toFixed(0)} por mes · Para meta: {Math.ceil(r.ritmo_mensual).toFixed(0)} por mes
+                A ritmo actual: {(r.acum / r.mesesTranscurridos).toFixed(0)} por mes · Para meta: {Math.ceil(r.ritmo_mensual).toFixed(0)} por mes
               </div>
             </CardContent>
           </Card>
@@ -209,12 +252,12 @@ export function MonthlyPanel({ data }: { data: DashboardData }) {
               <CardTitle className="text-base">Burn-up Chart — Avance Acumulado Mensual</CardTitle>
             <p className="text-xs text-slate-500">
               {selectedProgram !== 'Todos' && selectedEps !== 'Todas'
-                ? `Solo indicadores de cobertura real — ${selectedEps}. Línea punteada = meta proporcional mensual. Ene-Mar 2026.`
+                ? `Solo indicadores de cobertura real — ${selectedEps}. Línea punteada = meta proporcional mensual. 2026.`
                 : selectedProgram !== 'Todos'
-                  ? 'Solo indicadores de cobertura real. Línea punteada = meta proporcional mensual. Ene-Mar 2026.'
+                  ? 'Solo indicadores de cobertura real. Línea punteada = meta proporcional mensual. 2026.'
                   : selectedEps !== 'Todas'
-                    ? `Solo indicadores de cobertura real — ${selectedEps}. Ene-Mar 2026.`
-                    : 'Solo indicadores de cobertura real (CCU, mamografía, PSA, sangre oculta). Ene-Mar 2026.'}
+                    ? `Solo indicadores de cobertura real — ${selectedEps}. 2026.`
+                    : 'Solo indicadores de cobertura real (CCU, mamografía, PSA, sangre oculta). 2026.'}
             </p>
         </CardHeader>
         <CardContent>

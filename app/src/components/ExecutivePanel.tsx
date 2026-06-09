@@ -2,7 +2,11 @@ import { useMemo, useState } from 'react';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, CheckCircle2, Info, ArrowUpRight, ArrowDownRight, Users, Target, Activity } from 'lucide-react';
+
+const MONTHS_ORDER = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+const MONTH_LABELS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
 
 function kpiColor(val: number | null) {
   if (val === null || val === undefined) return 'text-slate-400';
@@ -19,7 +23,7 @@ function kpiBg(val: number | null) {
 }
 
 export function ExecutivePanel({ data }: { data: DashboardData }) {
-  const { kpis, alertas, funnel } = data;
+  const { kpis, alertas, funnel, mensual } = data;
   const [selectedEps, setSelectedEps] = useState<string>('Todas');
 
   const epsList = useMemo(() => {
@@ -32,6 +36,17 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
     if (selectedEps === 'Todas') return alertas;
     return alertas.filter(a => a.eps === selectedEps);
   }, [alertas, selectedEps]);
+
+  const epsLatestMonth = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const m of mensual) {
+      if (m.VALOR_MES && m.VALOR_MES > 0) {
+        const order = MONTHS_ORDER.indexOf(m.MES);
+        if (order > (map[m.EPS] ?? -1)) map[m.EPS] = order;
+      }
+    }
+    return map;
+  }, [mensual]);
 
   // Calcular KPIs por EPS usando datos del funnel
   const kpisPorEps = useMemo(() => {
@@ -91,7 +106,16 @@ export function ExecutivePanel({ data }: { data: DashboardData }) {
             </SelectTrigger>
             <SelectContent>
               {epsList.map(e => (
-                <SelectItem key={e} value={e}>{e}</SelectItem>
+                <SelectItem key={e} value={e}>
+                  <span className="flex items-center gap-2">
+                    {e}
+                    {epsLatestMonth[e] !== undefined && (
+                      <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-4">
+                        {MONTH_LABELS[epsLatestMonth[e]]}
+                      </Badge>
+                    )}
+                  </span>
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>

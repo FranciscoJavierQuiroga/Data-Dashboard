@@ -159,6 +159,8 @@ print(df_hist_long.head(15).to_string())
 sheet = 'Consolidado'
 df_cons = pd.read_excel(xl_consolidado, sheet_name=sheet, header=0)
 df_cons.columns = [str(c).strip().replace('\n', ' ').replace('  ', ' ') for c in df_cons.columns]
+# Filtrar filas vacías de la hoja Consolidado (el nuevo archivo tiene ~33 filas NaN al final)
+df_cons = df_cons.dropna(subset=['PROGRAMA', 'TIPO INDICADOR'])
 print("\nConsolidado cols:", df_cons.columns.tolist())
 print(df_cons.head(5).to_string())
 

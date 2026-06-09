@@ -33,11 +33,11 @@ export function TrendsPanel({ data }: { data: DashboardData }) {
   const [selectedEps, setSelectedEps] = useState<string>('Todas');
 
   const programList = useMemo(() => {
-    return [...new Set(consolidado.map(c => c.PROGRAMA))].sort();
+    return [...new Set(consolidado.filter(c => c.PROGRAMA).map(c => c.PROGRAMA))].sort();
   }, [consolidado]);
 
   const epsList = useMemo(() => {
-    return [...new Set(historico.map(h => h.EPS_CLEAN))].filter(e => e !== 'Total Municipio').sort();
+    return [...new Set(historico.map(h => h.EPS_CLEAN))].filter(e => e && e !== 'Total Municipio').sort();
   }, [historico]);
 
   const filteredHistorico = useMemo(() => {
@@ -116,6 +116,7 @@ export function TrendsPanel({ data }: { data: DashboardData }) {
   // Comparativo EPS para coberturas principales (consolidado)
   const epsComparison = useMemo(() => {
     const coberturas = filteredConsolidado.filter(c =>
+      c.TIPO_INDICADOR &&
       c.TIPO_INDICADOR.includes('COBERTURA') &&
       !c.TIPO_INDICADOR.includes('POSITIVIDAD') &&
       !c.TIPO_INDICADOR.includes('BIOPSIA')
