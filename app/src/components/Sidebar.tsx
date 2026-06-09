@@ -1,4 +1,4 @@
-import { LayoutDashboard, TrendingUp, Filter, CalendarDays, Table, AlertTriangle } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, Filter, CalendarDays, Table, AlertTriangle, Calculator } from 'lucide-react';
 import type { ViewKey } from '@/pages/Home';
 
 const items: { key: ViewKey; label: string; icon: React.ReactNode }[] = [
@@ -7,6 +7,7 @@ const items: { key: ViewKey; label: string; icon: React.ReactNode }[] = [
   { key: 'funnel', label: 'Funnel Operativo', icon: <Filter size={18} /> },
   { key: 'monthly', label: 'Avance Mensual', icon: <CalendarDays size={18} /> },
   { key: 'detail', label: 'Detalle EPS', icon: <Table size={18} /> },
+  { key: 'poisson', label: 'Riesgo Poisson', icon: <Calculator size={18} /> },
 ];
 
 export function Sidebar({ active, onChange, alertCount }: { active: ViewKey; onChange: (v: ViewKey) => void; alertCount: number }) {

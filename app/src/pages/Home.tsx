@@ -6,8 +6,9 @@ import { TrendsPanel } from '@/components/TrendsPanel';
 import { FunnelPanel } from '@/components/FunnelPanel';
 import { MonthlyPanel } from '@/components/MonthlyPanel';
 import { DetailPanel } from '@/components/DetailPanel';
+import { PoissonPanel } from '@/components/PoissonPanel';
 
-export type ViewKey = 'executive' | 'trends' | 'funnel' | 'monthly' | 'detail';
+export type ViewKey = 'executive' | 'trends' | 'funnel' | 'monthly' | 'detail' | 'poisson';
 
 export default function Home() {
   const [view, setView] = useState<ViewKey>('executive');
@@ -35,6 +36,7 @@ export default function Home() {
         {view === 'funnel' && <FunnelPanel data={data} />}
         {view === 'monthly' && <MonthlyPanel data={data} />}
         {view === 'detail' && <DetailPanel data={data} />}
+        {view === 'poisson' && <PoissonPanel data={data} />}
       </main>
     </div>
   );
