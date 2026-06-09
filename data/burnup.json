@@ -16,9 +16,16 @@
   {
     "PROGRAMA": "Dt Cervix",
     "MES": "MARZO",
-    "VALOR_MES": 232.0,
+    "VALOR_MES": 2351.0,
     "MES_ORDEN": 2,
-    "ACUMULADO_CALCULADO": 830.0
+    "ACUMULADO_CALCULADO": 2949.0
+  },
+  {
+    "PROGRAMA": "Dt Cervix",
+    "MES": "ABRIL",
+    "VALOR_MES": 34.0,
+    "MES_ORDEN": 3,
+    "ACUMULADO_CALCULADO": 2983.0
   },
   {
     "PROGRAMA": "Dt Colon Y Recto",
@@ -37,9 +44,16 @@
   {
     "PROGRAMA": "Dt Colon Y Recto",
     "MES": "MARZO",
-    "VALOR_MES": 149.0,
+    "VALOR_MES": 151.0,
     "MES_ORDEN": 2,
-    "ACUMULADO_CALCULADO": 1816.0
+    "ACUMULADO_CALCULADO": 1818.0
+  },
+  {
+    "PROGRAMA": "Dt Colon Y Recto",
+    "MES": "ABRIL",
+    "VALOR_MES": 97.0,
+    "MES_ORDEN": 3,
+    "ACUMULADO_CALCULADO": 1915.0
   },
   {
     "PROGRAMA": "Dt Mama",
@@ -58,9 +72,16 @@
   {
     "PROGRAMA": "Dt Mama",
     "MES": "MARZO",
-    "VALOR_MES": 266.0,
+    "VALOR_MES": 269.0,
     "MES_ORDEN": 2,
-    "ACUMULADO_CALCULADO": 1200.0
+    "ACUMULADO_CALCULADO": 1203.0
+  },
+  {
+    "PROGRAMA": "Dt Mama",
+    "MES": "ABRIL",
+    "VALOR_MES": 44.0,
+    "MES_ORDEN": 3,
+    "ACUMULADO_CALCULADO": 1247.0
   },
   {
     "PROGRAMA": "Dt Prostata",
@@ -79,8 +100,15 @@
   {
     "PROGRAMA": "Dt Prostata",
     "MES": "MARZO",
-    "VALOR_MES": 128.0,
+    "VALOR_MES": 152.0,
     "MES_ORDEN": 2,
-    "ACUMULADO_CALCULADO": 709.0
+    "ACUMULADO_CALCULADO": 733.0
+  },
+  {
+    "PROGRAMA": "Dt Prostata",
+    "MES": "ABRIL",
+    "VALOR_MES": 88.0,
+    "MES_ORDEN": 3,
+    "ACUMULADO_CALCULADO": 821.0
   }
 ]

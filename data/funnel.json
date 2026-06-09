@@ -5,12 +5,12 @@
     "stage": "CCU Realizadas",
     "tipo_indicador": "COBERTURA CCU",
     "poblacion_elegible": 3208.0,
-    "acumulado": 147.0,
+    "acumulado": 2228.0,
     "meta": 1058.64,
-    "pct_ejecucion": 0.13885740194967125,
+    "pct_ejecucion": 2.1045870173052217,
     "enero": 77.0,
     "febrero": 70.0,
-    "marzo": null
+    "marzo": 2081.0
   },
   {
     "programa": "Dt Cervix",
@@ -20,7 +20,7 @@
     "poblacion_elegible": 3208.0,
     "acumulado": 5.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.034013605442176874,
+    "pct_ejecucion": 0.002244165170556553,
     "enero": 1.0,
     "febrero": 2.0,
     "marzo": 2.0
@@ -31,12 +31,12 @@
     "stage": "ADN VPH Realizados",
     "tipo_indicador": "COBERTURA ADN VPH",
     "poblacion_elegible": 3208.0,
-    "acumulado": 42.0,
+    "acumulado": 108.0,
     "meta": 3760.4,
-    "pct_ejecucion": 0.011169024571854059,
+    "pct_ejecucion": 0.02872034889905329,
     "enero": 20.0,
     "febrero": 22.0,
-    "marzo": null
+    "marzo": 66.0
   },
   {
     "programa": "Dt Cervix",
@@ -46,7 +46,7 @@
     "poblacion_elegible": 3208.0,
     "acumulado": 17.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.40476190476190477,
+    "pct_ejecucion": 0.1574074074074074,
     "enero": 7.0,
     "febrero": 10.0,
     "marzo": null
@@ -200,12 +200,12 @@
     "stage": "CCU Realizadas",
     "tipo_indicador": "COBERTURA CCU",
     "poblacion_elegible": 452.0,
-    "acumulado": 13.0,
+    "acumulado": 73.0,
     "meta": 149.16,
-    "pct_ejecucion": 0.08715473317243229,
+    "pct_ejecucion": 0.48940734781442746,
     "enero": 4.0,
     "febrero": 9.0,
-    "marzo": null
+    "marzo": 38.0
   },
   {
     "programa": "Dt Cervix",
@@ -213,12 +213,12 @@
     "stage": "CCU Anormales",
     "tipo_indicador": "POSITIVIDAD CCU",
     "poblacion_elegible": 452.0,
-    "acumulado": 4.0,
+    "acumulado": 5.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.3076923076923077,
+    "pct_ejecucion": 0.0684931506849315,
     "enero": 2.0,
     "febrero": 2.0,
-    "marzo": null
+    "marzo": 0.0
   },
   {
     "programa": "Dt Cervix",
@@ -226,12 +226,12 @@
     "stage": "ADN VPH Realizados",
     "tipo_indicador": "COBERTURA ADN VPH",
     "poblacion_elegible": 452.0,
-    "acumulado": 57.0,
+    "acumulado": 182.0,
     "meta": 614.0,
-    "pct_ejecucion": 0.09283387622149837,
+    "pct_ejecucion": 0.2964169381107492,
     "enero": 2.0,
     "febrero": 55.0,
-    "marzo": null
+    "marzo": 75.0
   },
   {
     "programa": "Dt Cervix",
@@ -239,12 +239,12 @@
     "stage": "ADN VPH Positivos",
     "tipo_indicador": "POSITIVIDAD ADN VPH",
     "poblacion_elegible": 452.0,
-    "acumulado": 6.0,
+    "acumulado": 9.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.10526315789473684,
+    "pct_ejecucion": 0.04945054945054945,
     "enero": 0.0,
     "febrero": 6.0,
-    "marzo": null
+    "marzo": 3.0
   },
   {
     "programa": "Dt Cervix",
@@ -254,10 +254,10 @@
     "poblacion_elegible": 452.0,
     "acumulado": 3.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.75,
+    "pct_ejecucion": 0.6,
     "enero": 3.0,
     "febrero": 0.0,
-    "marzo": null
+    "marzo": 0.0
   },
   {
     "programa": "Dt Cervix",
@@ -265,9 +265,9 @@
     "stage": "CCU Realizadas",
     "tipo_indicador": "COBERTURA CCU",
     "poblacion_elegible": 274.0,
-    "acumulado": 166.0,
+    "acumulado": 172.0,
     "meta": 90.42,
-    "pct_ejecucion": 1.83587701835877,
+    "pct_ejecucion": 1.9022340190223401,
     "enero": 93.0,
     "febrero": 34.0,
     "marzo": 39.0
@@ -291,9 +291,9 @@
     "stage": "ADN VPH Realizados",
     "tipo_indicador": "COBERTURA ADN VPH",
     "poblacion_elegible": 274.0,
-    "acumulado": 74.0,
+    "acumulado": 87.0,
     "meta": 447.6,
-    "pct_ejecucion": 0.16532618409294011,
+    "pct_ejecucion": 0.19436997319034852,
     "enero": 36.0,
     "febrero": 10.0,
     "marzo": 28.0
@@ -306,7 +306,7 @@
     "poblacion_elegible": 274.0,
     "acumulado": 2.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.02702702702702703,
+    "pct_ejecucion": 0.022988505747126436,
     "enero": 0.0,
     "febrero": 1.0,
     "marzo": 1.0
@@ -330,9 +330,9 @@
     "stage": "CCU Realizadas",
     "tipo_indicador": "COBERTURA CCU",
     "poblacion_elegible": 41.0,
-    "acumulado": 16.0,
+    "acumulado": 22.0,
     "meta": 13.530000000000001,
-    "pct_ejecucion": 1.1825572801182556,
+    "pct_ejecucion": 1.6260162601626016,
     "enero": 2.0,
     "febrero": 6.0,
     "marzo": 8.0
@@ -382,12 +382,12 @@
     "stage": "Colposcopia + Biopsia",
     "tipo_indicador": "COBERTURA COLPOSCOPIA Y  BIOPSIA",
     "poblacion_elegible": 41.0,
-    "acumulado": 3.0,
+    "acumulado": 0.0,
     "meta": 1.0,
     "pct_ejecucion": null,
-    "enero": 1.0,
-    "febrero": 1.0,
-    "marzo": 1.0
+    "enero": 0.0,
+    "febrero": 0.0,
+    "marzo": 0.0
   },
   {
     "programa": "Dt Mama",
@@ -551,12 +551,12 @@
     "stage": "Examen Clínico Mama",
     "tipo_indicador": "COBERTURA EXAMEN CLINICO DE LA MAMA",
     "poblacion_elegible": 2331.0,
-    "acumulado": 821.0,
+    "acumulado": 1109.0,
     "meta": 2331.0,
-    "pct_ejecucion": 0.35220935220935223,
+    "pct_ejecucion": 0.47576147576147576,
     "enero": 329.0,
     "febrero": 441.0,
-    "marzo": 51.0
+    "marzo": 169.0
   },
   {
     "programa": "Dt Mama",
@@ -564,12 +564,12 @@
     "stage": "Mamografías",
     "tipo_indicador": "COBERTURA MAMOGRAFIA",
     "poblacion_elegible": 2331.0,
-    "acumulado": 170.0,
+    "acumulado": 175.0,
     "meta": 666.0,
-    "pct_ejecucion": 0.2552552552552553,
+    "pct_ejecucion": 0.2627627627627628,
     "enero": 53.0,
     "febrero": 93.0,
-    "marzo": 24.0
+    "marzo": 27.0
   },
   {
     "programa": "Dt Mama",
@@ -603,9 +603,9 @@
     "stage": "Examen Clínico Mama",
     "tipo_indicador": "COBERTURA EXAMEN CLINICO DE LA MAMA",
     "poblacion_elegible": 1778.0,
-    "acumulado": 124.0,
+    "acumulado": 176.0,
     "meta": 1778.0,
-    "pct_ejecucion": 0.06974128233970754,
+    "pct_ejecucion": 0.09898762654668167,
     "enero": 46.0,
     "febrero": 32.0,
     "marzo": 46.0
@@ -616,9 +616,9 @@
     "stage": "Mamografías",
     "tipo_indicador": "COBERTURA MAMOGRAFIA",
     "poblacion_elegible": 1778.0,
-    "acumulado": 150.0,
+    "acumulado": 192.0,
     "meta": 526.5,
-    "pct_ejecucion": 0.2849002849002849,
+    "pct_ejecucion": 0.3646723646723647,
     "enero": 37.0,
     "febrero": 24.0,
     "marzo": 89.0
@@ -631,7 +631,7 @@
     "poblacion_elegible": 1778.0,
     "acumulado": 1.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.006666666666666667,
+    "pct_ejecucion": 0.005208333333333333,
     "enero": 1.0,
     "febrero": 0.0,
     "marzo": 0.0
@@ -644,7 +644,7 @@
     "poblacion_elegible": 1778.0,
     "acumulado": 1.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.006666666666666667,
+    "pct_ejecucion": 0.005208333333333333,
     "enero": 1.0,
     "febrero": 0.0,
     "marzo": 0.0
@@ -655,9 +655,9 @@
     "stage": "Examen Clínico Mama",
     "tipo_indicador": "COBERTURA EXAMEN CLINICO DE LA MAMA",
     "poblacion_elegible": 206.0,
-    "acumulado": 10.0,
+    "acumulado": 16.0,
     "meta": 206.0,
-    "pct_ejecucion": 0.04854368932038835,
+    "pct_ejecucion": 0.07766990291262135,
     "enero": 1.0,
     "febrero": 5.0,
     "marzo": 4.0
@@ -902,12 +902,12 @@
     "stage": "Tacto Rectal",
     "tipo_indicador": "COBERTURA TACTO RECTAL",
     "poblacion_elegible": 1452.0,
-    "acumulado": 161.0,
+    "acumulado": 342.0,
     "meta": 290.40000000000003,
-    "pct_ejecucion": 0.5544077134986225,
+    "pct_ejecucion": 1.177685950413223,
     "enero": 45.0,
     "febrero": 48.0,
-    "marzo": 68.0
+    "marzo": 113.0
   },
   {
     "programa": "Dt Prostata",
@@ -915,12 +915,12 @@
     "stage": "PSA",
     "tipo_indicador": "COBERTURA PSA",
     "poblacion_elegible": 1452.0,
-    "acumulado": 77.0,
+    "acumulado": 147.0,
     "meta": 290.40000000000003,
-    "pct_ejecucion": 0.26515151515151514,
+    "pct_ejecucion": 0.5061983471074379,
     "enero": 27.0,
     "febrero": 39.0,
-    "marzo": 11.0
+    "marzo": 35.0
   },
   {
     "programa": "Dt Prostata",
@@ -941,12 +941,12 @@
     "stage": "Resultados Anormales",
     "tipo_indicador": "POSITIVIDAD CANCER DE PROSTATA",
     "poblacion_elegible": 1452.0,
-    "acumulado": 4.0,
+    "acumulado": 13.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.4,
+    "pct_ejecucion": 1.3,
     "enero": 0.0,
     "febrero": 3.0,
-    "marzo": 1.0
+    "marzo": 6.0
   },
   {
     "programa": "Dt Prostata",
@@ -967,9 +967,9 @@
     "stage": "Tacto Rectal",
     "tipo_indicador": "COBERTURA TACTO RECTAL",
     "poblacion_elegible": 1061.0,
-    "acumulado": 87.0,
+    "acumulado": 139.0,
     "meta": 212.20000000000002,
-    "pct_ejecucion": 0.40999057492931196,
+    "pct_ejecucion": 0.655042412818096,
     "enero": 16.0,
     "febrero": 33.0,
     "marzo": 38.0
@@ -980,9 +980,9 @@
     "stage": "PSA",
     "tipo_indicador": "COBERTURA PSA",
     "poblacion_elegible": 1061.0,
-    "acumulado": 246.0,
+    "acumulado": 286.0,
     "meta": 212.20000000000002,
-    "pct_ejecucion": 1.1592836946277096,
+    "pct_ejecucion": 1.3477851083883128,
     "enero": 56.0,
     "febrero": 89.0,
     "marzo": 101.0
@@ -1045,9 +1045,9 @@
     "stage": "PSA",
     "tipo_indicador": "COBERTURA PSA",
     "poblacion_elegible": 87.0,
-    "acumulado": 13.0,
+    "acumulado": 15.0,
     "meta": 17.400000000000002,
-    "pct_ejecucion": 0.7471264367816091,
+    "pct_ejecucion": 0.8620689655172413,
     "enero": 8.0,
     "febrero": 2.0,
     "marzo": 3.0
@@ -1214,12 +1214,12 @@
     "stage": "SOMF Realizadas",
     "tipo_indicador": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
     "poblacion_elegible": 3010.0,
-    "acumulado": 156.0,
+    "acumulado": 192.0,
     "meta": 1505.0,
-    "pct_ejecucion": 0.10365448504983389,
+    "pct_ejecucion": 0.12757475083056477,
     "enero": 64.0,
     "febrero": 91.0,
-    "marzo": 1.0
+    "marzo": 3.0
   },
   {
     "programa": "Dt Colon Y Recto",
@@ -1227,9 +1227,9 @@
     "stage": "SOMF Positivas",
     "tipo_indicador": "POSITIVIDAD SANGRE OCULTA EN HECES",
     "poblacion_elegible": 3010.0,
-    "acumulado": 8.0,
+    "acumulado": 16.0,
     "meta": 1.0,
-    "pct_ejecucion": 0.05128205128205128,
+    "pct_ejecucion": 0.08333333333333333,
     "enero": 1.0,
     "febrero": 7.0,
     "marzo": 0.0
@@ -1253,9 +1253,9 @@
     "stage": "SOMF Realizadas",
     "tipo_indicador": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
     "poblacion_elegible": 2291.0,
-    "acumulado": 324.0,
+    "acumulado": 385.0,
     "meta": 1145.5,
-    "pct_ejecucion": 0.2828459188127455,
+    "pct_ejecucion": 0.3360977738978612,
     "enero": 44.0,
     "febrero": 145.0,
     "marzo": 135.0
@@ -1292,9 +1292,9 @@
     "stage": "SOMF Realizadas",
     "tipo_indicador": "COBERTURA TAMIZACION SANGRE OCULTA EN HECES",
     "poblacion_elegible": 197.0,
-    "acumulado": 10.0,
+    "acumulado": 12.0,
     "meta": 98.5,
-    "pct_ejecucion": 0.10152284263959391,
+    "pct_ejecucion": 0.1218274111675127,
     "enero": 4.0,
     "febrero": 3.0,
     "marzo": 3.0

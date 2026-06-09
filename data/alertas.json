@@ -53,28 +53,28 @@
     "programa": "Dt Cervix",
     "eps": "Famisanar",
     "tipo": "Resolución incompleta",
-    "mensaje": "Famisanar: 4 citologías anormales, solo 3 colposcopias/biopsias"
+    "mensaje": "Famisanar: 5 citologías anormales, solo 3 colposcopias/biopsias"
   },
   {
     "nivel": "crítico",
     "programa": "Dt Prostata",
     "eps": "Famisanar",
     "tipo": "Biopsia pendiente",
-    "mensaje": "Famisanar: 4 tamizajes anormales de próstata sin biopsia confirmada"
+    "mensaje": "Famisanar: 13 tamizajes anormales de próstata sin biopsia confirmada"
   },
   {
     "nivel": "crítico",
     "programa": "Dt Colon Y Recto",
     "eps": "Famisanar",
     "tipo": "Colonoscopia pendiente",
-    "mensaje": "Famisanar: 8 SOMF positivas sin colonoscopia"
+    "mensaje": "Famisanar: 16 SOMF positivas sin colonoscopia"
   },
   {
     "nivel": "medio",
     "programa": "Dt Cervix",
     "eps": "Nueva Eps",
     "tipo": "Cobertura baja",
-    "mensaje": "Nueva Eps: COBERTURA ADN VPH solo 1.1% de meta"
+    "mensaje": "Nueva Eps: COBERTURA ADN VPH solo 2.9% de meta"
   },
   {
     "nivel": "medio",
@@ -117,20 +117,6 @@
     "eps": "Coosalud",
     "tipo": "Cobertura baja",
     "mensaje": "Coosalud: COBERTURA TAMIZACION SANGRE OCULTA EN HECES solo 3.4% de meta"
-  },
-  {
-    "nivel": "medio",
-    "programa": "Dt Cervix",
-    "eps": "Famisanar",
-    "tipo": "Cobertura baja",
-    "mensaje": "Famisanar: COBERTURA CCU solo 8.7% de meta"
-  },
-  {
-    "nivel": "medio",
-    "programa": "Dt Cervix",
-    "eps": "Famisanar",
-    "tipo": "Cobertura baja",
-    "mensaje": "Famisanar: COBERTURA ADN VPH solo 9.3% de meta"
   },
   {
     "nivel": "medio",
