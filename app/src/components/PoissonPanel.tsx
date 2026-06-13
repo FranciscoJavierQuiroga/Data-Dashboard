@@ -39,7 +39,7 @@ const DISEASE_MAP: Record<string, DiseaseMapping | null> = {
   'Cáncer de Cérvix':   { program: 'Dt Cervix', historicoKey: 'Cuello Uterino', kpiIndicators: ['COBERTURA CCU'] },
   'Cáncer de Próstata': { program: 'Dt Prostata', historicoKey: 'Próstata', kpiIndicators: ['COBERTURA PSA'] },
   'Cáncer de Colon':    { program: 'Dt Colon Y Recto', historicoKey: 'Colon y Recto', kpiIndicators: ['COBERTURA TAMIZACION SANGRE OCULTA EN HECES'] },
-  'Cáncer de Pulmón':   null,
+  'Cáncer de Pulmón':   { program: 'Dt Pulmon', historicoKey: 'Pulmón', kpiIndicators: [] },
   'Personalizada':      null,
 };
 
@@ -135,21 +135,13 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
 
   const diseaseInfo = DISEASE_MAP[disease];
 
-  // ─── Historical rates from dashboard data ─────────────────────────────────
-  const historicalRates = useMemo(() => {
+  // ─── Historical cases from comportamiento cancer ──────────────────────────
+  const historicalCases = useMemo(() => {
     if (!diseaseInfo) return [];
-    const byYear: Record<number, { sum: number; count: number }> = {};
-    for (const h of data.historico) {
-      if (h.INDICADOR_CLEAN === diseaseInfo.historicoKey) {
-        if (!byYear[h.AÑO]) byYear[h.AÑO] = { sum: 0, count: 0 };
-        byYear[h.AÑO].sum += h.VALOR;
-        byYear[h.AÑO].count += 1;
-      }
-    }
-    return Object.entries(byYear)
-      .map(([year, d]) => ({ year: parseInt(year), rate: d.sum / d.count }))
+    return data.comportamientoCancer
+      .filter(c => c.indicador === diseaseInfo.historicoKey)
       .sort((a, b) => a.year - b.year);
-  }, [data.historico, diseaseInfo]);
+  }, [data.comportamientoCancer, diseaseInfo]);
 
   // ─── Default population from KPIs ──────────────────────────────────────────
   const defaultPopulation = useMemo(() => {
@@ -160,11 +152,17 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
 
   const population = populationOverride ? (parseInt(populationOverride) || defaultPopulation) : defaultPopulation;
 
-  // ─── 2026 actual from KPIs ─────────────────────────────────────────────────
-  const kpi2026 = useMemo(() => {
-    if (!diseaseInfo) return null;
-    return data.kpis.find(k => k.programa === diseaseInfo.program && diseaseInfo.kpiIndicators.includes(k.indicador)) ?? null;
-  }, [data.kpis, diseaseInfo]);
+  // ─── 2026 actual from KPIs (omitido: datos de cobertura, no de mortalidad) ──
+  const kpi2026 = null;
+
+  // ─── Historical rates (cases / population) for regression ───────────────────
+  const historicalRates = useMemo(() => {
+    if (historicalCases.length === 0 || population === 0) return [];
+    return historicalCases.map(c => ({
+      year: c.year,
+      rate: c.cases / population,
+    }));
+  }, [historicalCases, population]);
 
   // ─── Effective base rate ───────────────────────────────────────────────────
   const effectiveRate = useMemo(() => {
@@ -276,9 +274,9 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
 
   // ─── Helpers for rendering ──────────────────────────────────────────────────
 
-  const hasDashboardData = historicalRates.length > 0;
+  const hasDashboardData = historicalCases.length > 0;
   const dataSource = hasDashboardData
-    ? `Dashboard Sogamoso · ${diseaseInfo!.historicoKey} (${historicalRates[0]?.year}-${historicalRates[historicalRates.length - 1]?.year})`
+    ? `Comportamiento Cáncer · ${diseaseInfo!.historicoKey} (${historicalCases[0]?.year}-${historicalCases[historicalCases.length - 1]?.year})`
     : DISEASE_PRESETS[disease]?.desc ?? '';
 
   // ─── RENDER ──────────────────────────────────────────────────────────────────
@@ -297,7 +295,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
             </p>
             <p className="text-xs text-slate-500">
               {hasDashboardData
-                ? 'La tasa base se obtiene de los datos históricos de cobertura de tamizaje del municipio de Sogamoso (2021–2025). Se aplica regresión lineal para proyectar la tendencia, y los factores de riesgo ajustan el resultado mediante el RR combinado.'
+                ? 'La tasa base se obtiene de los datos históricos de mortalidad por cáncer del municipio de Sogamoso (2005–2025). Se aplica regresión lineal para proyectar la tendencia, y los factores de riesgo ajustan el resultado mediante el RR combinado.'
                 : 'No hay datos históricos disponibles en el dashboard para esta patología. La proyección usa la tasa de incidencia de referencia (Globocan Colombia).'}
               {' '}Las barras proyectadas muestran el IC 95% (Poisson).
             </p>
@@ -510,9 +508,11 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
             <span className="flex items-center gap-1">
               <span className="w-3 h-3 rounded bg-slate-400 inline-block" /> Histórico
             </span>
-            <span className="flex items-center gap-1">
-              <span className="w-3 h-3 rounded bg-blue-500 inline-block" /> 2026* parcial
-            </span>
+            {kpi2026 && (
+              <span className="flex items-center gap-1">
+                <span className="w-3 h-3 rounded bg-blue-500 inline-block" /> 2026* parcial
+              </span>
+            )}
             <span className="flex items-center gap-1">
               <span className="w-3 h-3 rounded bg-emerald-600 inline-block" /> Proyectado
             </span>

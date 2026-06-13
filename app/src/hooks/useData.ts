@@ -69,6 +69,12 @@ export interface MensualData {
   POBLACION_CORTE: number;
 }
 
+export interface ComportamientoCancerData {
+  indicador: string;
+  year: number;
+  cases: number;
+}
+
 export interface DashboardData {
   kpis: KpiData[];
   funnel: FunnelData[];
@@ -77,6 +83,7 @@ export interface DashboardData {
   consolidado: ConsolidadoData[];
   burnup: BurnupData[];
   mensual: MensualData[];
+  comportamientoCancer: ComportamientoCancerData[];
 }
 
 export function useData(): DashboardData | null {
@@ -85,7 +92,7 @@ export function useData(): DashboardData | null {
   useEffect(() => {
     async function load() {
       const base = import.meta.env.BASE_URL;
-      const [kpis, funnel, historico, alertas, consolidado, burnup, mensual] = await Promise.all([
+      const [kpis, funnel, historico, alertas, consolidado, burnup, mensual, comportamientoCancer] = await Promise.all([
         fetch(`${base}data/kpis.json`).then(r => r.json()),
         fetch(`${base}data/funnel.json`).then(r => r.json()),
         fetch(`${base}data/historico.json`).then(r => r.json()),
@@ -93,8 +100,9 @@ export function useData(): DashboardData | null {
         fetch(`${base}data/consolidado_eps.json`).then(r => r.json()),
         fetch(`${base}data/burnup.json`).then(r => r.json()),
         fetch(`${base}data/operativo_mensual.json`).then(r => r.json()),
+        fetch(`${base}data/comportamiento_cancer.json`).then(r => r.json()),
       ]);
-      setData({ kpis, funnel, historico, alertas, consolidado, burnup, mensual });
+      setData({ kpis, funnel, historico, alertas, consolidado, burnup, mensual, comportamientoCancer });
     }
     load();
   }, []);
