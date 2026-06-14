@@ -127,13 +127,22 @@ function fmt(n: number): string {
 export function PoissonPanel({ data }: { data: DashboardData }) {
   const [disease, setDisease] = useState('Cáncer de Mama');
   const [rawRate, setRawRate] = useState('0.00103');
-  const [populationOverride, setPopulationOverride] = useState<string>('');
+
   const [projectionYears, setProjectionYears] = useState(10);
   const [riskFactors, setRiskFactors] = useState<RiskFactor[]>(
     () => RISK_FACTORS_BY_DISEASE['Cáncer de Mama'].map(rf => ({ ...rf }))
   );
 
   const diseaseInfo = DISEASE_MAP[disease];
+
+  // ─── Población lookup por año (proyecciones DANE) ──────────────────────────
+  const poblacionMap = useMemo(() => {
+    const map = new Map<number, number>();
+    for (const p of data.poblacion) {
+      map.set(p.year, p.poblacion);
+    }
+    return map;
+  }, [data.poblacion]);
 
   // ─── Historical cases from comportamiento cancer ──────────────────────────
   const historicalCases = useMemo(() => {
@@ -143,26 +152,14 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
       .sort((a, b) => a.year - b.year);
   }, [data.comportamientoCancer, diseaseInfo]);
 
-  // ─── Default population from KPIs ──────────────────────────────────────────
-  const defaultPopulation = useMemo(() => {
-    if (!diseaseInfo) return 10000;
-    const kpi = data.kpis.find(k => k.programa === diseaseInfo.program && diseaseInfo.kpiIndicators.includes(k.indicador));
-    return kpi?.poblacion ?? 10000;
-  }, [data.kpis, diseaseInfo]);
-
-  const population = populationOverride ? (parseInt(populationOverride) || defaultPopulation) : defaultPopulation;
-
-  // ─── 2026 actual from KPIs (omitido: datos de cobertura, no de mortalidad) ──
-  const kpi2026 = null;
-
-  // ─── Historical rates (cases / population) for regression ───────────────────
+  // ─── Historical rates (cases / población Sogamoso) for regression ───────────
   const historicalRates = useMemo(() => {
-    if (historicalCases.length === 0 || population === 0) return [];
+    if (historicalCases.length === 0) return [];
     return historicalCases.map(c => ({
       year: c.year,
-      rate: c.cases / population,
+      rate: c.cases / (poblacionMap.get(c.year) ?? 137839),
     }));
-  }, [historicalCases, population]);
+  }, [historicalCases, poblacionMap]);
 
   // ─── Effective base rate ───────────────────────────────────────────────────
   const effectiveRate = useMemo(() => {
@@ -195,37 +192,27 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
     const result: any[] = [];
 
     for (const h of historicalRates) {
+      const pop = poblacionMap.get(h.year) ?? 137839;
       result.push({
         year: h.year,
         label: String(h.year),
-        cases: Math.round(h.rate * population),
+        cases: Math.round(h.rate * pop),
         rate: h.rate,
         group: 'Histórico',
       });
     }
 
-    if (kpi2026) {
-      result.push({
-        year: 2026,
-        label: '2026*',
-        cases: kpi2026.acumulado_2026,
-        rate: kpi2026.tasa_cobertura,
-        group: 'Actual',
-      });
-    }
-
-    const startYear = Math.max(
-      kpi2026 ? 2027 : 2026,
-      (historicalRates[historicalRates.length - 1]?.year ?? 2025) + 1
-    );
+    const lastHistYear = historicalRates[historicalRates.length - 1]?.year ?? 2025;
+    const startYear = lastHistYear + 1;
 
     for (let i = 0; i < projectionYears; i++) {
       const year = startYear + i;
+      const pop = poblacionMap.get(year) ?? poblacionMap.get(2025) ?? 137839;
       const t = year - 2020;
       const rateBase = regression
         ? Math.max(0, regression.slope * t + regression.intercept)
         : effectiveRate;
-      const casesBase = Math.round(rateBase * population);
+      const casesBase = Math.round(rateBase * pop);
       const casesAdj = hasFactors ? Math.round(casesBase * combinedRR) : casesBase;
       const std = Math.sqrt(casesAdj || 1);
       result.push({
@@ -242,7 +229,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
     }
 
     return result;
-  }, [historicalRates, regression, effectiveRate, population, projectionYears, hasFactors, combinedRR, kpi2026]);
+  }, [historicalRates, regression, effectiveRate, poblacionMap, projectionYears, hasFactors, combinedRR]);
 
   // ─── Totals ─────────────────────────────────────────────────────────────────
   const totalProjected = useMemo(() => {
@@ -338,19 +325,6 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                 </p>
               </div>
             )}
-
-            <div>
-              <label className="text-xs font-medium text-slate-600 mb-1 block">
-                Población objetivo
-              </label>
-              <Input type="number" min={1} value={populationOverride || String(defaultPopulation)}
-                onChange={e => setPopulationOverride(e.target.value)} />
-              <p className="text-[10px] text-slate-400 mt-1">
-                {hasDashboardData
-                  ? `Valor por defecto desde KPIs de ${diseaseInfo?.program ?? ''}`
-                  : 'Valor por defecto: 10.000'}
-              </p>
-            </div>
 
             <div>
               <label className="text-xs font-medium text-slate-600 mb-1 block">
@@ -459,7 +433,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
             {hasDashboardData
               ? `Datos históricos (${historicalRates[0]?.year}-${historicalRates[historicalRates.length - 1]?.year}) · Proyección (${projectionYears} años)`
               : `Proyección basada en tasa de referencia${hasFactors ? ' · Ajustada por factores de riesgo' : ''}`}
-            {kpi2026 ? ' · 2026* = avance parcial YTD' : ''}
+
           </p>
         </CardHeader>
         <CardContent>
@@ -485,7 +459,6 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                     {chartData.map((d, i) => (
                       <Cell key={i} fill={
                         d.group === 'Histórico' ? '#94a3b8' :
-                        d.group === 'Actual' ? '#3b82f6' :
                         hasFactors ? '#f59e0b' : '#059669'
                       } />
                     ))}
@@ -508,11 +481,6 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
             <span className="flex items-center gap-1">
               <span className="w-3 h-3 rounded bg-slate-400 inline-block" /> Histórico
             </span>
-            {kpi2026 && (
-              <span className="flex items-center gap-1">
-                <span className="w-3 h-3 rounded bg-blue-500 inline-block" /> 2026* parcial
-              </span>
-            )}
             <span className="flex items-center gap-1">
               <span className="w-3 h-3 rounded bg-emerald-600 inline-block" /> Proyectado
             </span>
@@ -535,7 +503,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
         <CardHeader>
           <CardTitle className="text-base">Proyección Detallada por Año</CardTitle>
           <p className="text-xs text-slate-500">
-            Población: {population.toLocaleString('es-CO')} · Tasa base: {(effectiveRate * 100).toFixed(2)}%
+            Población según proyecciones DANE Sogamoso · Tasa base: {(effectiveRate * 100).toFixed(2)}%
             {hasFactors ? ` · RR combinado: ${combinedRR.toFixed(2)}×` : ''}
           </p>
         </CardHeader>
@@ -545,6 +513,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
               <thead className="bg-slate-100 text-slate-600">
                 <tr>
                   <th className="text-left px-3 py-2 font-medium">Año</th>
+                  <th className="text-right px-3 py-2 font-medium">Población</th>
                   <th className="text-right px-3 py-2 font-medium">Tasa</th>
                   <th className="text-right px-3 py-2 font-medium">Casos base</th>
                   {hasFactors && <th className="text-right px-3 py-2 font-medium">Casos ajustados</th>}
@@ -559,8 +528,8 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                       ${d.group === 'Proyectado' ? '' : 'text-slate-500'}`}>
                     <td className="px-3 py-2 font-medium text-slate-800">
                       {d.label}
-                      {d.group === 'Actual' && <span className="text-[10px] text-blue-500 ml-1">*</span>}
                     </td>
+                    <td className="px-3 py-2 text-right">{(poblacionMap.get(d.year) ?? 137839).toLocaleString('es-CO')}</td>
                     <td className="px-3 py-2 text-right">{(d.rate * 100).toFixed(2)}%</td>
                     <td className="px-3 py-2 text-right font-semibold">
                       {d.group === 'Proyectado' ? fmt(d.casesBase) : fmt(d.cases)}
@@ -584,6 +553,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                   <td className="px-3 py-2 text-slate-700">
                     Total {projectionYears} años (proyectado)
                   </td>
+                  <td />
                   <td />
                   <td className="px-3 py-2 text-right">
                     {fmt(totalProjected.base)}
