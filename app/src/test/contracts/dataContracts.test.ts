@@ -11,6 +11,7 @@ import {
   realMensual,
   realComportamiento,
   realPoblacion,
+  realProyeccion,
 } from "@/test/fixtures/dashboardData"
 
 const nullable = z.number().nullable()
@@ -113,6 +114,51 @@ const poblacionSchema = z.array(
   }),
 )
 
+
+const proyeccionSchema = z.array(
+  z.object({
+    indicador: z.string(),
+    n_years: z.number(),
+    first_year: z.number(),
+    last_year: z.number(),
+    observed: z.array(
+      z.object({
+        year: z.number(),
+        cases: z.number(),
+        poblacion: z.number(),
+        rate_observed: nullable,
+      }),
+    ),
+    model: z
+      .object({
+        beta0: z.number(),
+        beta1: z.number(),
+        cov_beta0_beta0: z.number(),
+        cov_beta1_beta1: z.number(),
+        cov_beta0_beta1: z.number(),
+        dispersion: z.number(),
+        overdispersed: z.boolean(),
+        cpae_pct: z.number(),
+        cpae_ci_low: z.number(),
+        cpae_ci_high: z.number(),
+        deviance: z.number(),
+        df_resid: z.number(),
+        aic: z.number(),
+      })
+      .nullable(),
+    fitted: z
+      .array(
+        z.object({
+          year: z.number(),
+          rate_fitted: z.number(),
+          cases_fitted: z.number(),
+        }),
+      )
+      .nullable(),
+    warning: z.string().nullable(),
+  }),
+)
+
 const MONTHS_ORDER = [
   "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
   "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE",
@@ -122,7 +168,7 @@ function approx(a: number, b: number, tolerance = 1e-6) {
   return Math.abs(a - b) <= tolerance
 }
 
-describe("contratos de esquema (9 JSON)", () => {
+describe("contratos de esquema (10 JSON)", () => {
   it("kpis.json cumple su esquema", () => {
     expect(() => kpiSchema.parse(realKpis)).not.toThrow()
   })
@@ -149,6 +195,9 @@ describe("contratos de esquema (9 JSON)", () => {
   })
   it("poblacion_sogamoso.json cumple su esquema", () => {
     expect(() => poblacionSchema.parse(realPoblacion)).not.toThrow()
+  })
+  it("proyeccion_poisson.json cumple su esquema", () => {
+    expect(() => proyeccionSchema.parse(realProyeccion)).not.toThrow()
   })
 })
 

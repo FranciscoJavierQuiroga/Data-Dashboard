@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
-import { StrictMode } from "react"
+import { StrictMode, act } from "react"
 import { renderHook, waitFor } from "@testing-library/react"
-import { useData } from "@/hooks/useData"
+import { useData, EMPTY_DASHBOARD } from "@/hooks/useData"
 
 const DATASETS = [
   "kpis",
@@ -13,15 +13,25 @@ const DATASETS = [
   "operativo_mensual",
   "comportamiento_cancer",
   "poblacion_sogamoso",
+  "proyeccion_poisson",
 ]
 
 const BASE = import.meta.env.BASE_URL
+const API = "/api/v1/dashboard"
 
 function jsonResponse(body: unknown, init: { ok?: boolean } = {}) {
   return {
     ok: init.ok ?? true,
+    status: init.ok === false ? 500 : 200,
     json: () => Promise.resolve(body),
   }
+}
+
+function staticFallbackMock(apiResponse: () => Promise<unknown> = () => Promise.reject(new Error("sin API"))) {
+  return vi.fn((url: string) => {
+    if (url === API) return apiResponse()
+    return Promise.resolve(jsonResponse([url]))
+  })
 }
 
 describe("useData", () => {
@@ -33,27 +43,37 @@ describe("useData", () => {
     vi.unstubAllGlobals()
   })
 
-  it("hace fetch de los 9 JSON bajo BASE_URL (/Data-Dashboard/data/)", async () => {
-    const fetchMock = vi.fn((url: string) => Promise.resolve(jsonResponse([url])))
+  it("usa la API cuando está disponible y no descarga los JSON estáticos", async () => {
+    const apiData = { kpis: [{ programa: "API" }], funnel: [] }
+    const fetchMock = vi.fn((url: string) => {
+      expect(url).toBe(API)
+      return Promise.resolve(jsonResponse(apiData))
+    })
     vi.stubGlobal("fetch", fetchMock)
 
     const { result } = renderHook(() => useData())
-
     await waitFor(() => expect(result.current).not.toBeNull())
 
-    expect(fetchMock).toHaveBeenCalledTimes(9)
-    const llamadas = fetchMock.mock.calls.map((c) => c[0]).sort()
-    expect(llamadas).toEqual(
-      DATASETS.map((name) => `${BASE}data/${name}.json`).sort(),
-    )
-    // todas las rutas usan el prefijo BASE_URL de Vite
-    for (const url of llamadas) expect(String(url).startsWith(BASE)).toBe(true)
-    expect(llamadas.every((u) => String(u).endsWith(".json"))).toBe(true)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    expect(result.current!.kpis[0]).toEqual({ programa: "API" })
   })
 
-  it("mapea cada dataset a su clave correcta del DashboardData", async () => {
-    const fetchMock = vi.fn((url: string) => Promise.resolve(jsonResponse([url])))
+  it("si la API falla, usa los 10 JSON estáticos bajo BASE_URL", async () => {
+    const fetchMock = staticFallbackMock(() => Promise.resolve(jsonResponse({}, { ok: false })))
     vi.stubGlobal("fetch", fetchMock)
+
+    const { result } = renderHook(() => useData())
+    await waitFor(() => expect(result.current).not.toBeNull())
+
+    expect(fetchMock).toHaveBeenCalledTimes(11)
+    const llamadas = fetchMock.mock.calls.map((c) => c[0]).filter((url) => url !== API).sort()
+    expect(llamadas).toEqual(DATASETS.map((name) => `${BASE}data/${name}.json`).sort())
+    expect(result.current!.kpis[0]).toBe(`${BASE}data/kpis.json`)
+    expect(result.current!.proyeccionPoisson[0]).toBe(`${BASE}data/proyeccion_poisson.json`)
+  })
+
+  it("mapea cada dataset estático a su clave correcta del DashboardData", async () => {
+    vi.stubGlobal("fetch", staticFallbackMock())
 
     const { result } = renderHook(() => useData())
     await waitFor(() => expect(result.current).not.toBeNull())
@@ -68,6 +88,7 @@ describe("useData", () => {
     expect(data.mensual[0]).toBe(`${BASE}data/operativo_mensual.json`)
     expect(data.comportamientoCancer[0]).toBe(`${BASE}data/comportamiento_cancer.json`)
     expect(data.poblacion[0]).toBe(`${BASE}data/poblacion_sogamoso.json`)
+    expect(data.proyeccionPoisson[0]).toBe(`${BASE}data/proyeccion_poisson.json`)
   })
 
   it("inicializa en null (estado de carga)", () => {
@@ -76,45 +97,34 @@ describe("useData", () => {
     expect(result.current).toBeNull()
   })
 
-  it("no verifica response.ok: una respuesta 404 con body parseable igualmente se acepta", async () => {
-    const fetchMock = vi.fn(() => Promise.resolve(jsonResponse([], { ok: false })))
-    vi.stubGlobal("fetch", fetchMock)
+  it("si API y JSON fallan, entrega un dashboard vacío en vez de quedar cargando", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.reject(new Error("sin red"))))
 
     const { result } = renderHook(() => useData())
     await waitFor(() => expect(result.current).not.toBeNull())
-    expect(result.current!.kpis).toEqual([])
+    expect(result.current).toEqual(EMPTY_DASHBOARD)
   })
 
-  it("BUG CONOCIDO: si un fetch falla, el estado queda null para siempre (sin UI de error)", async () => {
-    const rechazos: unknown[] = []
-    const onRejection = (reason: unknown) => rechazos.push(reason)
-    process.on("unhandledRejection", onRejection)
-
-    const fetchMock = vi.fn((url: string) =>
-      url.includes("kpis")
-        ? Promise.reject(new Error("404"))
-        : Promise.resolve(jsonResponse([])),
-    )
-    vi.stubGlobal("fetch", fetchMock)
-
-    try {
-      const { result } = renderHook(() => useData())
-      // deja que la microtarea rechazada se ejecute
-      await new Promise((resolve) => setTimeout(resolve, 20))
-      expect(result.current).toBeNull()
-      // caracterización: la promesa rechazada no tiene .catch (es "unhandled")
-      expect(rechazos.length).toBeGreaterThanOrEqual(0)
-    } finally {
-      process.off("unhandledRejection", onRejection)
-    }
-  })
-
-  it("en StrictMode (usado por main.tsx) el efecto se ejecuta dos veces: 18 fetch en dev", async () => {
-    const fetchMock = vi.fn(() => Promise.resolve(jsonResponse([])))
+  it("en StrictMode (usado por main.tsx) el efecto se ejecuta dos veces: 2 fetch a la API", async () => {
+    const fetchMock = vi.fn(() => Promise.resolve(jsonResponse({})))
     vi.stubGlobal("fetch", fetchMock)
 
     const { result } = renderHook(() => useData(), { wrapper: StrictMode })
     await waitFor(() => expect(result.current).not.toBeNull())
-    expect(fetchMock).toHaveBeenCalledTimes(18)
+    expect(fetchMock).toHaveBeenCalledTimes(2)
+  })
+
+  it("recarga los datos al recibir dashboard:refresh", async () => {
+    const fetchMock = vi.fn(() => Promise.resolve(jsonResponse({ kpis: [], funnel: [] })))
+    vi.stubGlobal("fetch", fetchMock)
+
+    const { result } = renderHook(() => useData())
+    await waitFor(() => expect(result.current).not.toBeNull())
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+
+    act(() => {
+      window.dispatchEvent(new Event("dashboard:refresh"))
+    })
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2))
   })
 })

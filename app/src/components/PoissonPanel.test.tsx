@@ -27,16 +27,16 @@ describe("PoissonPanel — render inicial (Cáncer de Mama)", () => {
     render(<PoissonPanel data={realData()} />)
     expect(screen.getByText("Proyección a 10 años")).toBeInTheDocument()
     expect(
-      screen.getByText(/Las barras proyectadas muestran el IC 95% \(Poisson\)/),
+      screen.getByText(/log\(tasa\) = β₀ \+ β₁·año/),
     ).toBeInTheDocument()
     expect(
-      screen.getByText(/tasa base se obtiene de los datos históricos de mortalidad/),
+      screen.getByText(/Cambio Porcentual Anual Estimado \(CPAE\)/),
     ).toBeInTheDocument()
   })
 
   it("identifica la fuente de datos de la patología", () => {
     render(<PoissonPanel data={realData()} />)
-    expect(screen.getByText("Comportamiento Cáncer · Mama (2005-2025)")).toBeInTheDocument()
+    expect(screen.getByText("Comportamiento Cáncer (defunciones) · Mama (2005-2025)")).toBeInTheDocument()
     expect(
       screen.getByText("Datos históricos (2005-2025) · Proyección (10 años)"),
     ).toBeInTheDocument()
@@ -59,52 +59,53 @@ describe("PoissonPanel — render inicial (Cáncer de Mama)", () => {
   })
 })
 
-describe("PoissonPanel — BUG CONOCIDO: la regresión no es Poisson y la tendencia sale 0.00%", () => {
-  it("la tarjeta 'Tasa de crecimiento anual' siempre muestra 0.00%", () => {
+describe("PoissonPanel — modelo GLM de Poisson del backend", () => {
+  it("la tarjeta CPAE muestra la tendencia anual estimada", () => {
     render(<PoissonPanel data={realData()} />)
-    const card = metricPorTitulo("Tasa de crecimiento anual")
-    expect(card).toHaveTextContent("0.00%")
-    expect(card).toHaveTextContent("Pendiente de regresión lineal")
+    const card = metricPorTitulo("CPAE (tendencia anual)")
+    expect(card).toHaveTextContent("+1.60%")
+    expect(card).toHaveTextContent("Cambio Porcentual Anual Estimado (GLM Poisson)")
   })
 
-  it("el bloque de tendencia muestra pendiente 0.00% y R² = 0.070 (la tendencia es ruido)", () => {
+  it("el bloque de parámetros muestra CPAE, tasa base, dispersión y bondad de ajuste", () => {
     render(<PoissonPanel data={realData()} />)
-    expect(screen.getByText("Tendencia lineal: pendiente = 0.00% anual")).toBeInTheDocument()
-    expect(screen.getByText("R² = 0.070")).toBeInTheDocument()
-    expect(screen.getByText("Tasa base actual: 0.01%")).toBeInTheDocument()
+    expect(screen.getByText(/CPAE \(GLM Poisson\): \+1.60% anual/)).toBeInTheDocument()
+    expect(screen.getByText("Tasa base actual: 0.008%")).toBeInTheDocument()
+    expect(screen.getByText(/Dispersión: 1.24 \(dentro de lo esperado\)/)).toBeInTheDocument()
+    expect(screen.getByText(/Deviance: 22.43 · AIC: 108.7 · n = 21 años/)).toBeInTheDocument()
   })
 
-  it("el IC mostrado es Wald (casos ± 1.96·√casos), no un IC exacto de Poisson", () => {
+  it("el IC 95% combina parámetros del modelo y varianza Poisson", () => {
     render(<PoissonPanel data={realData()} />)
-    // 2026: casos 11 → [4, 18]  (Garwood exacto sería [5.49, 19.68])
+    // 2026: 11 casos base → IC [3, 19] con el modelo ajustado en el backend
     const filas = screen.getAllByRole("row")
     const fila2026 = filas.find((f) => f.textContent?.startsWith("2026"))!
     const celdas = within(fila2026).getAllByRole("cell")
     // Año | Población | Tasa | Casos base | IC inf | IC sup
     expect(celdas[1]).toHaveTextContent("138.796")
     expect(celdas[3]).toHaveTextContent("11")
-    expect(celdas[4]).toHaveTextContent("4")
-    expect(celdas[5]).toHaveTextContent("18")
+    expect(celdas[4]).toHaveTextContent("3")
+    expect(celdas[5]).toHaveTextContent("19")
   })
 })
 
 describe("PoissonPanel — métricas de resumen", () => {
-  it("Casos esperados año 1 = 11 (2026) y acumulados 10 años = 120", () => {
+  it("Casos esperados año 1 = 11 (2026) y acumulados 10 años = 121", () => {
     render(<PoissonPanel data={realData()} />)
     const card1 = metricPorTitulo("Casos esperados año 1")
     expect(card1).toHaveTextContent("11")
     expect(card1).toHaveTextContent("2026")
 
     const card2 = metricPorTitulo("Casos acumulados a 10 años")
-    expect(card2).toHaveTextContent("120")
+    expect(card2).toHaveTextContent("121")
     expect(card2).toHaveTextContent("Sin factores de riesgo")
   })
 
-  it("el footer suma 120 casos proyectados", () => {
+  it("el footer suma 121 casos proyectados", () => {
     render(<PoissonPanel data={realData()} />)
     const tabla = screen.getByText("Proyección Detallada por Año").closest('[data-slot="card"]')!
     const footer = within(tabla).getByText(/Total 10 años/).closest("tr")!
-    expect(footer).toHaveTextContent("120")
+    expect(footer).toHaveTextContent("121")
   })
 })
 
@@ -136,10 +137,10 @@ describe("PoissonPanel — factores de riesgo", () => {
     expect(screen.getByText("Casos ajustados")).toBeInTheDocument()
     expect(screen.getByText("Ajustado por RR")).toBeInTheDocument()
     expect(screen.getByText("Base (sin RR)")).toBeInTheDocument()
-    // 120 base × RR 10 → 1.200 ajustados
+    // 121 base × RR 10 → 1.210 ajustados
     const card = metricPorTitulo("Casos acumulados a 10 años")
-    expect(card).toHaveTextContent("1.200")
-    expect(card).toHaveTextContent("120 base · RR 10.00×")
+    expect(card).toHaveTextContent("1.210")
+    expect(card).toHaveTextContent("121 base · RR 10.00×")
   })
 
   it("dos factores activos muestran la multiplicación combinada", async () => {
@@ -157,7 +158,7 @@ describe("PoissonPanel — factores de riesgo", () => {
     const user = userEvent.setup()
     render(<PoissonPanel data={realData()} />)
     await seleccionarPatologia(user, "Cáncer de Cérvix")
-    expect(screen.getByText("Comportamiento Cáncer · Cuello Uterino (2005-2025)")).toBeInTheDocument()
+    expect(screen.getByText("Comportamiento Cáncer (defunciones) · Cuello Uterino (2005-2025)")).toBeInTheDocument()
 
     for (const factor of [
       /Infección VPH oncogénico/,
@@ -175,7 +176,7 @@ describe("PoissonPanel — factores de riesgo", () => {
     expect(p).toHaveTextContent("RR combinado = 20.0 × 2.3 × 5.0 × 1.8 × 1.5 × 2.0 = 50.00×.")
   })
 
-  it("BUG CONOCIDO: un RR negativo propaga NaN a los intervalos de confianza", async () => {
+  it("un RR negativo produce casos ajustados negativos sin NaN", async () => {
     const user = userEvent.setup()
     render(<PoissonPanel data={realData()} />)
     const sw = screen.getByRole("switch", { name: /Mutación BRCA1\/BRCA2/ })
@@ -183,11 +184,10 @@ describe("PoissonPanel — factores de riesgo", () => {
 
     fireEvent.change(inputRrDe(sw), { target: { value: "-2" } })
 
-    // casos ajustados = casos base × -2 → Math.sqrt(negativo) = NaN
-    expect(screen.getAllByText("NaN").length).toBeGreaterThan(0)
+    expect(screen.queryByText("NaN")).not.toBeInTheDocument()
     const card = metricPorTitulo("Casos acumulados a 10 años")
-    expect(card).toHaveTextContent("-240")
-    expect(card).toHaveTextContent("120 base · RR -2.00×")
+    expect(card).toHaveTextContent("-242")
+    expect(card).toHaveTextContent("121 base · RR -2.00×")
   })
 })
 
@@ -205,7 +205,7 @@ describe("PoissonPanel — patología Personalizada", () => {
     expect(labelTasa.parentElement!.querySelector("input")).not.toBeNull()
     // sin regresión no hay bloque de tendencia
     expect(screen.queryByText(/R² =/)).not.toBeInTheDocument()
-    expect(metricPorTitulo("Tasa de crecimiento anual")).toHaveTextContent("—")
+    expect(metricPorTitulo("CPAE (tendencia anual)")).toHaveTextContent("—")
   })
 
   it("proyecta con la tasa de referencia: 139 casos en 2026 y 1.435 en 10 años", async () => {
@@ -213,7 +213,7 @@ describe("PoissonPanel — patología Personalizada", () => {
     render(<PoissonPanel data={realData()} />)
     await seleccionarPatologia(user, "Personalizada")
 
-    expect(screen.getByText(/Tasa base: 0\.10%/)).toBeInTheDocument()
+    expect(screen.getByText(/Tasa base: 0\.100%/)).toBeInTheDocument()
     const card1 = metricPorTitulo("Casos esperados año 1")
     expect(card1).toHaveTextContent("139")
     const card2 = metricPorTitulo("Casos acumulados a 10 años")

@@ -1,0 +1,22 @@
+# Backend
+backend/.venv/
+backend/.env
+backend/data/
+backend/uploads/
+backend/.pytest_cache/
+backend/.ruff_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.sqlite3
+*.db
+
+# Node
+node_modules/
+dist/
+coverage/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

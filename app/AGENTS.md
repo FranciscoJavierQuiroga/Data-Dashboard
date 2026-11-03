@@ -13,7 +13,7 @@
 ## Critical Build & Path Quirks
 
 - **Base path is hardcoded to `/Data-Dashboard/`** in `vite.config.ts`. All fetched assets and `BrowserRouter` use this prefix. Do not change without updating both `vite.config.ts` and the router.
-- **Data comes from 9 static JSON files** in `public/data/`. These are fetched at runtime (not bundled). Use `import.meta.env.BASE_URL` as the prefix. Do not move them out of `public/`.
+- **Data comes from the FastAPI backend first** (`VITE_API_URL`, default `/api/v1/dashboard`). If the API is unavailable, `useData` falls back to the 10 static JSON files in `public/data/` using `import.meta.env.BASE_URL`. Do not move them out of `public/`.
 - **TypeScript is strict** (`noUnusedLocals`, `noUnusedParameters` in `tsconfig.app.json`). Build will fail on unused variables.
 
 ## Testing
@@ -33,5 +33,6 @@
 ## Entrypoints
 
 - **Main**: `src/main.tsx` (renders `App.tsx` with `BrowserRouter`)
-- **Data Loading**: `src/hooks/useData.ts` fetches the 9 JSON datasets asynchronously.
+- **Data Loading**: `src/hooks/useData.ts` loads `/api/v1/dashboard`, then falls back to the static JSON datasets. Listen for the `dashboard:refresh` event to reload after imports.
+- **Admin panel**: `src/components/AdminPanel.tsx` (view `admin` in the sidebar) handles login, Excel imports, catalog CRUD, users, and audit. API client lives in `src/lib/api.ts`.
 - **Viz library**: `recharts` is used for all charts.

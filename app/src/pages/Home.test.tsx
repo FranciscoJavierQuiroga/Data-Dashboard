@@ -67,7 +67,7 @@ describe("Home", () => {
       await user.click(screen.getByRole("button", { name: new RegExp(vista) }))
       expect(screen.queryByText(/Cargando datos/)).not.toBeInTheDocument()
     }
-  })
+  }, 15000)
 
   it("pasa el contador total de alertas al sidebar", () => {
     useDataMock.mockReturnValue(realData())

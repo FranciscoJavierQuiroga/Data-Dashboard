@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getDashboard } from '@/lib/api';
 
 export interface KpiData {
   programa: string;
@@ -135,49 +136,76 @@ export interface DashboardData {
   proyeccionPoisson: ProyeccionPoissonData[];
 }
 
+export const EMPTY_DASHBOARD: DashboardData = {
+  kpis: [],
+  funnel: [],
+  historico: [],
+  alertas: [],
+  consolidado: [],
+  burnup: [],
+  mensual: [],
+  comportamientoCancer: [],
+  poblacion: [],
+  proyeccionPoisson: [],
+};
+
+async function loadStaticData(): Promise<DashboardData> {
+  const base = import.meta.env.BASE_URL;
+  const [kpis, funnel, historico, alertas, consolidado, burnup, mensual, comportamientoCancer, poblacion, proyeccionPoisson] =
+    await Promise.all([
+      fetch(`${base}data/kpis.json`).then(r => r.json()),
+      fetch(`${base}data/funnel.json`).then(r => r.json()),
+      fetch(`${base}data/historico.json`).then(r => r.json()),
+      fetch(`${base}data/alertas.json`).then(r => r.json()),
+      fetch(`${base}data/consolidado_eps.json`).then(r => r.json()),
+      fetch(`${base}data/burnup.json`).then(r => r.json()),
+      fetch(`${base}data/operativo_mensual.json`).then(r => r.json()),
+      fetch(`${base}data/comportamiento_cancer.json`).then(r => r.json()),
+      fetch(`${base}data/poblacion_sogamoso.json`).then(r => r.json()),
+      fetch(`${base}data/proyeccion_poisson.json`).then(r => r.json()),
+    ]);
+  return {
+    kpis,
+    funnel,
+    historico,
+    alertas,
+    consolidado,
+    burnup,
+    mensual,
+    comportamientoCancer,
+    poblacion,
+    proyeccionPoisson,
+  };
+}
+
 export function useData(): DashboardData | null {
   const [data, setData] = useState<DashboardData | null>(null);
 
   useEffect(() => {
+    let active = true;
+
     async function load() {
-      const base = import.meta.env.BASE_URL;
-      const [
-        kpis,
-        funnel,
-        historico,
-        alertas,
-        consolidado,
-        burnup,
-        mensual,
-        comportamientoCancer,
-        poblacion,
-        proyeccionPoisson,
-      ] = await Promise.all([
-        fetch(`${base}data/kpis.json`).then(r => r.json()),
-        fetch(`${base}data/funnel.json`).then(r => r.json()),
-        fetch(`${base}data/historico.json`).then(r => r.json()),
-        fetch(`${base}data/alertas.json`).then(r => r.json()),
-        fetch(`${base}data/consolidado_eps.json`).then(r => r.json()),
-        fetch(`${base}data/burnup.json`).then(r => r.json()),
-        fetch(`${base}data/operativo_mensual.json`).then(r => r.json()),
-        fetch(`${base}data/comportamiento_cancer.json`).then(r => r.json()),
-        fetch(`${base}data/poblacion_sogamoso.json`).then(r => r.json()),
-        fetch(`${base}data/proyeccion_poisson.json`).then(r => r.json()),
-      ]);
-      setData({
-        kpis,
-        funnel,
-        historico,
-        alertas,
-        consolidado,
-        burnup,
-        mensual,
-        comportamientoCancer,
-        poblacion,
-        proyeccionPoisson,
-      });
+      try {
+        const apiData = await getDashboard<DashboardData>();
+        if (active) setData(apiData);
+        return;
+      } catch {
+        // Sin API disponible: se conserva el modo estático para GitHub Pages.
+      }
+      try {
+        const staticData = await loadStaticData();
+        if (active) setData(staticData);
+      } catch {
+        if (active) setData(EMPTY_DASHBOARD);
+      }
     }
+
     load();
+    window.addEventListener('dashboard:refresh', load);
+    return () => {
+      active = false;
+      window.removeEventListener('dashboard:refresh', load);
+    };
   }, []);
 
   return data;

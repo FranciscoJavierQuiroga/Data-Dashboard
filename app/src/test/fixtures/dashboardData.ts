@@ -9,6 +9,7 @@ import burnupJson from "../../../public/data/burnup.json"
 import mensualJson from "../../../public/data/operativo_mensual.json"
 import comportamientoJson from "../../../public/data/comportamiento_cancer.json"
 import poblacionJson from "../../../public/data/poblacion_sogamoso.json"
+import proyeccionJson from "../../../public/data/proyeccion_poisson.json"
 
 export const realKpis = kpisJson
 export const realFunnel = funnelJson
@@ -19,9 +20,10 @@ export const realBurnup = burnupJson
 export const realMensual = mensualJson
 export const realComportamiento = comportamientoJson
 export const realPoblacion = poblacionJson
+export const realProyeccion = proyeccionJson
 
 /**
- * Fixture base: los 9 datasets reales del dashboard.
+ * Fixture base: los 10 datasets reales del dashboard.
  * Se castea porque los JSON contienen `null` en campos que la interfaz
  * `DashboardData` declara como `number` (documentado en dataContracts.test.ts).
  */
@@ -36,6 +38,7 @@ export function realData(): DashboardData {
     mensual: mensualJson as DashboardData["mensual"],
     comportamientoCancer: comportamientoJson as DashboardData["comportamientoCancer"],
     poblacion: poblacionJson as DashboardData["poblacion"],
+    proyeccionPoisson: proyeccionJson as DashboardData["proyeccionPoisson"],
   }
 }
 

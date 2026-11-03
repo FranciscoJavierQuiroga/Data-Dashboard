@@ -1,5 +1,16 @@
 # React + TypeScript + Vite
 
+## Administración e importación
+
+La vista **Administración** del menú permite iniciar sesión con un usuario del backend
+y desde allí cargar los Excel originales, confirmar o revertir importaciones,
+administrar EPS/programas/indicadores, gestionar usuarios y revisar la auditoría.
+
+El dashboard consulta `GET /api/v1/dashboard`; si la API no está disponible,
+usa automáticamente los JSON de `public/data/` como respaldo. En desarrollo Vite
+proxya `/api` a `http://localhost:8000`; en Docker, nginx hace el proxy al servicio
+`api`.
+
 ## Estudios adicionales
 
 La opción **Nuevos estudios** del menú permite cargar uno o varios archivos `.xlsx`, consultar sus hojas, obtener indicadores básicos y generar gráficos comparativos de barras, líneas y distribución a partir de sus columnas numéricas. La tabla muestra una vista previa de hasta 100 filas por hoja. Los documentos se guardan en el almacenamiento local del navegador; no se envían a un servidor ni reemplazan los datos base del dashboard.

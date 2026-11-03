@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { Sidebar } from "@/components/Sidebar"
 
-const ITEMS = ["Ejecutivo", "Tendencias", "Funnel Operativo", "Avance Mensual", "Detalle EPS", "Proyección", "Nuevos estudios"]
+const ITEMS = ["Ejecutivo", "Tendencias", "Funnel Operativo", "Avance Mensual", "Detalle EPS", "Proyección", "Nuevos estudios", "Administración"]
 
 describe("Sidebar", () => {
   it("renderiza los items de navegación en orden", () => {

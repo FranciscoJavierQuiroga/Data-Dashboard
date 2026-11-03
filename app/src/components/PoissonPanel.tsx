@@ -1,5 +1,5 @@
 import { useMemo, useState, useCallback } from 'react';
-import { BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ComposedChart, Cell, ErrorBar } from 'recharts';
+import { Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ComposedChart, Cell, ErrorBar } from 'recharts';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Calculator, AlertTriangle, Activity, Info, TrendingUp } from 'lucide-react';
+import { AlertTriangle, Activity, Info, TrendingUp } from 'lucide-react';
 
 // ─── Disease → Dashboard Data Mapping ────────────────────────────────────────────
 

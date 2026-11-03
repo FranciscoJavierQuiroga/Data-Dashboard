@@ -1,0 +1,53 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: dashboard
+      POSTGRES_USER: dashboard
+      POSTGRES_PASSWORD: dashboard
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dashboard -d dashboard"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://dashboard:dashboard@db:5432/dashboard
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production-use-at-least-32-chars}
+      ACCESS_TOKEN_EXPIRE_MINUTES: 480
+      CORS_ORIGINS: http://localhost:3000,http://localhost
+      ALLOW_PUBLIC_READS: "true"
+      SEED_ON_STARTUP: "true"
+      SEED_DATA_DIR: /code/seed
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@sogamoso.gov.co}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ChangeMe123!}
+      ADMIN_NAME: Administrador
+      UPLOAD_DIR: /code/uploads
+    volumes:
+      - ./app/public/data:/code/seed:ro
+      - uploads:/code/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: ./app
+      args:
+        VITE_API_URL: /api/v1
+    depends_on:
+      - api
+    ports:
+      - "3000:80"
+
+volumes:
+  pgdata:
+  uploads:
