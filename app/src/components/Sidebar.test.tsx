@@ -3,13 +3,13 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { Sidebar } from "@/components/Sidebar"
 
-const ITEMS = ["Ejecutivo", "Tendencias", "Funnel Operativo", "Avance Mensual", "Detalle EPS", "Proyección"]
+const ITEMS = ["Ejecutivo", "Tendencias", "Funnel Operativo", "Avance Mensual", "Detalle EPS", "Proyección", "Nuevos estudios"]
 
 describe("Sidebar", () => {
-  it("renderiza los 6 items de navegación en orden", () => {
+  it("renderiza los items de navegación en orden", () => {
     render(<Sidebar active="executive" onChange={() => {}} alertCount={0} />)
     const botones = screen.getAllByRole("button")
-    expect(botones).toHaveLength(6)
+    expect(botones).toHaveLength(ITEMS.length)
     expect(botones.map((b) => b.textContent)).toEqual(ITEMS.map((i) => expect.stringContaining(i)))
   })
 

@@ -1,5 +1,14 @@
 # React + TypeScript + Vite
 
+## Estudios adicionales
+
+La opción **Nuevos estudios** del menú permite cargar uno o varios archivos `.xlsx`, consultar sus hojas, obtener indicadores básicos y generar gráficos comparativos de barras, líneas y distribución a partir de sus columnas numéricas. La tabla muestra una vista previa de hasta 100 filas por hoja. Los documentos se guardan en el almacenamiento local del navegador; no se envían a un servidor ni reemplazan los datos base del dashboard.
+
+En `public/pruebas_carga/` hay ejemplos para probar la funcionalidad:
+
+- `05_dashboard_completo.xlsx` reúne hojas con KPIs, funnel, histórico, consolidado EPS, avance mensual y alertas.
+- `06_estudio_comparativo_completo.xlsx` contiene datos mensuales por programa y EPS, además de un resumen anual.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

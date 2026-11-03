@@ -1,0 +1,1287 @@
+[
+  {
+    "indicador": "Colon y Recto",
+    "n_years": 21,
+    "first_year": 2005,
+    "last_year": 2025,
+    "observed": [
+      {
+        "year": 2005,
+        "cases": 10,
+        "poblacion": 118121.0,
+        "rate_observed": 8.465895141422778e-05
+      },
+      {
+        "year": 2006,
+        "cases": 6,
+        "poblacion": 118894.0,
+        "rate_observed": 5.046512019109459e-05
+      },
+      {
+        "year": 2007,
+        "cases": 9,
+        "poblacion": 119668.0,
+        "rate_observed": 7.520807567603704e-05
+      },
+      {
+        "year": 2008,
+        "cases": 5,
+        "poblacion": 120441.0,
+        "rate_observed": 4.151410234056509e-05
+      },
+      {
+        "year": 2009,
+        "cases": 6,
+        "poblacion": 121214.0,
+        "rate_observed": 4.9499232761892193e-05
+      },
+      {
+        "year": 2010,
+        "cases": 6,
+        "poblacion": 121987.0,
+        "rate_observed": 4.9185568954068873e-05
+      },
+      {
+        "year": 2011,
+        "cases": 10,
+        "poblacion": 122761.0,
+        "rate_observed": 8.145909531528742e-05
+      },
+      {
+        "year": 2012,
+        "cases": 10,
+        "poblacion": 123534.0,
+        "rate_observed": 8.094937426133696e-05
+      },
+      {
+        "year": 2013,
+        "cases": 8,
+        "poblacion": 124307.0,
+        "rate_observed": 6.435679406630359e-05
+      },
+      {
+        "year": 2014,
+        "cases": 15,
+        "poblacion": 125080.0,
+        "rate_observed": 0.00011992324912056284
+      },
+      {
+        "year": 2015,
+        "cases": 11,
+        "poblacion": 125854.0,
+        "rate_observed": 8.74028636356413e-05
+      },
+      {
+        "year": 2016,
+        "cases": 13,
+        "poblacion": 126627.0,
+        "rate_observed": 0.00010266372890457802
+      },
+      {
+        "year": 2017,
+        "cases": 12,
+        "poblacion": 127400.0,
+        "rate_observed": 9.419152276295133e-05
+      },
+      {
+        "year": 2018,
+        "cases": 8,
+        "poblacion": 128183.0,
+        "rate_observed": 6.241077209926433e-05
+      },
+      {
+        "year": 2019,
+        "cases": 11,
+        "poblacion": 130006.0,
+        "rate_observed": 8.46114794701783e-05
+      },
+      {
+        "year": 2020,
+        "cases": 17,
+        "poblacion": 131421.0,
+        "rate_observed": 0.00012935527807580218
+      },
+      {
+        "year": 2021,
+        "cases": 15,
+        "poblacion": 133104.0,
+        "rate_observed": 0.00011269383339343671
+      },
+      {
+        "year": 2022,
+        "cases": 16,
+        "poblacion": 134382.0,
+        "rate_observed": 0.00011906356506079683
+      },
+      {
+        "year": 2023,
+        "cases": 12,
+        "poblacion": 135514.0,
+        "rate_observed": 8.855173635196363e-05
+      },
+      {
+        "year": 2024,
+        "cases": 11,
+        "poblacion": 136725.0,
+        "rate_observed": 8.045346498445785e-05
+      },
+      {
+        "year": 2025,
+        "cases": 22,
+        "poblacion": 137839.0,
+        "rate_observed": 0.00015960649743541379
+      }
+    ],
+    "model": {
+      "beta0": -84.23685975648858,
+      "beta1": 0.037150014579320566,
+      "cov_beta0_beta0": 495.1829343275995,
+      "cov_beta1_beta1": 0.00012176176030883092,
+      "cov_beta0_beta1": -0.24554800584806993,
+      "dispersion": 0.7446059041119828,
+      "overdispersed": false,
+      "cpae_pct": 3.78487015970419,
+      "cpae_ci_low": 1.5643351090886215,
+      "cpae_ci_high": 6.053953511312571,
+      "deviance": 14.221201700791452,
+      "df_resid": 19,
+      "aic": 106.26932194962035
+    },
+    "fitted": [
+      {
+        "year": 2005,
+        "rate_fitted": 5.8231708910458424e-05,
+        "cases_fitted": 6.87838768821226
+      },
+      {
+        "year": 2006,
+        "rate_fitted": 6.0435703484496425e-05,
+        "cases_fitted": 7.185442530085718
+      },
+      {
+        "year": 2007,
+        "rate_fitted": 6.272311639148781e-05,
+        "cases_fitted": 7.505949892336564
+      },
+      {
+        "year": 2008,
+        "rate_fitted": 6.509710490702604e-05,
+        "cases_fitted": 7.840360412107123
+      },
+      {
+        "year": 2009,
+        "rate_fitted": 6.756094580548368e-05,
+        "cases_fitted": 8.189332484865899
+      },
+      {
+        "year": 2010,
+        "rate_fitted": 7.011803988288964e-05,
+        "cases_fitted": 8.55348933119406
+      },
+      {
+        "year": 2011,
+        "rate_fitted": 7.27719166509859e-05,
+        "cases_fitted": 8.93355325999168
+      },
+      {
+        "year": 2012,
+        "rate_fitted": 7.552623920895418e-05,
+        "cases_fitted": 9.330058434438946
+      },
+      {
+        "year": 2013,
+        "rate_fitted": 7.838480929952102e-05,
+        "cases_fitted": 9.74378048959556
+      },
+      {
+        "year": 2014,
+        "rate_fitted": 8.135157255643883e-05,
+        "cases_fitted": 10.175454695359369
+      },
+      {
+        "year": 2015,
+        "rate_fitted": 8.443062395057793e-05,
+        "cases_fitted": 10.625931746676036
+      },
+      {
+        "year": 2016,
+        "rate_fitted": 8.762621344213578e-05,
+        "cases_fitted": 11.095844529537327
+      },
+      {
+        "year": 2017,
+        "rate_fitted": 9.094275184678498e-05,
+        "cases_fitted": 11.586106585280406
+      },
+      {
+        "year": 2018,
+        "rate_fitted": 9.438481692384817e-05,
+        "cases_fitted": 12.09852898774963
+      },
+      {
+        "year": 2019,
+        "rate_fitted": 9.795715969489075e-05,
+        "cases_fitted": 12.735018503293967
+      },
+      {
+        "year": 2020,
+        "rate_fitted": 0.00010166471100147544,
+        "cases_fitted": 13.360877984524903
+      },
+      {
+        "year": 2021,
+        "rate_fitted": 0.00010551258831112023,
+        "cases_fitted": 14.044147554563347
+      },
+      {
+        "year": 2022,
+        "rate_fitted": 0.0001095061027808398,
+        "cases_fitted": 14.715649103894815
+      },
+      {
+        "year": 2023,
+        "rate_fitted": 0.0001136507665880473,
+        "cases_fitted": 15.401269983412641
+      },
+      {
+        "year": 2024,
+        "rate_fitted": 0.00011795230053891218,
+        "cases_fitted": 16.127028291182768
+      },
+      {
+        "year": 2025,
+        "rate_fitted": 0.0001224166419646946,
+        "cases_fitted": 16.87378751177154
+      }
+    ],
+    "warning": null
+  },
+  {
+    "indicador": "Cuello Uterino",
+    "n_years": 21,
+    "first_year": 2005,
+    "last_year": 2025,
+    "observed": [
+      {
+        "year": 2005,
+        "cases": 1,
+        "poblacion": 118121.0,
+        "rate_observed": 8.465895141422778e-06
+      },
+      {
+        "year": 2006,
+        "cases": 1,
+        "poblacion": 118894.0,
+        "rate_observed": 8.410853365182432e-06
+      },
+      {
+        "year": 2007,
+        "cases": 3,
+        "poblacion": 119668.0,
+        "rate_observed": 2.506935855867901e-05
+      },
+      {
+        "year": 2008,
+        "cases": 2,
+        "poblacion": 120441.0,
+        "rate_observed": 1.6605640936226037e-05
+      },
+      {
+        "year": 2009,
+        "cases": 5,
+        "poblacion": 121214.0,
+        "rate_observed": 4.124936063491016e-05
+      },
+      {
+        "year": 2010,
+        "cases": 7,
+        "poblacion": 121987.0,
+        "rate_observed": 5.7383163779747024e-05
+      },
+      {
+        "year": 2011,
+        "cases": 5,
+        "poblacion": 122761.0,
+        "rate_observed": 4.072954765764371e-05
+      },
+      {
+        "year": 2012,
+        "cases": 1,
+        "poblacion": 123534.0,
+        "rate_observed": 8.094937426133696e-06
+      },
+      {
+        "year": 2013,
+        "cases": 5,
+        "poblacion": 124307.0,
+        "rate_observed": 4.0222996291439744e-05
+      },
+      {
+        "year": 2014,
+        "cases": 8,
+        "poblacion": 125080.0,
+        "rate_observed": 6.395906619763352e-05
+      },
+      {
+        "year": 2015,
+        "cases": 0,
+        "poblacion": 125854.0,
+        "rate_observed": 0.0
+      },
+      {
+        "year": 2016,
+        "cases": 3,
+        "poblacion": 126627.0,
+        "rate_observed": 2.3691629747210312e-05
+      },
+      {
+        "year": 2017,
+        "cases": 3,
+        "poblacion": 127400.0,
+        "rate_observed": 2.3547880690737832e-05
+      },
+      {
+        "year": 2018,
+        "cases": 5,
+        "poblacion": 128183.0,
+        "rate_observed": 3.900673256204021e-05
+      },
+      {
+        "year": 2019,
+        "cases": 4,
+        "poblacion": 130006.0,
+        "rate_observed": 3.076781071642847e-05
+      },
+      {
+        "year": 2020,
+        "cases": 6,
+        "poblacion": 131421.0,
+        "rate_observed": 4.565480402675372e-05
+      },
+      {
+        "year": 2021,
+        "cases": 4,
+        "poblacion": 133104.0,
+        "rate_observed": 3.0051688904916458e-05
+      },
+      {
+        "year": 2022,
+        "cases": 6,
+        "poblacion": 134382.0,
+        "rate_observed": 4.4648836897798814e-05
+      },
+      {
+        "year": 2023,
+        "cases": 8,
+        "poblacion": 135514.0,
+        "rate_observed": 5.903449090130909e-05
+      },
+      {
+        "year": 2024,
+        "cases": 5,
+        "poblacion": 136725.0,
+        "rate_observed": 3.656975681111721e-05
+      },
+      {
+        "year": 2025,
+        "cases": 4,
+        "poblacion": 137839.0,
+        "rate_observed": 2.901936317007523e-05
+      }
+    ],
+    "model": {
+      "beta0": -73.39858201582145,
+      "beta1": 0.031281016250852334,
+      "cov_beta0_beta0": 1327.0555761173775,
+      "cov_beta1_beta1": 0.0003263802830346596,
+      "cov_beta0_beta1": -0.6581192744613116,
+      "dispersion": 1.201679737238896,
+      "overdispersed": false,
+      "cpae_pct": 3.177540880772267,
+      "cpae_ci_low": -0.4119829910974038,
+      "cpae_ci_high": 6.896444591840556,
+      "deviance": 25.844771210214695,
+      "df_resid": 19,
+      "aic": 93.63293308891268
+    },
+    "fitted": [
+      {
+        "year": 2005,
+        "rate_fitted": 2.299705409964535e-05,
+        "cases_fitted": 2.7164350273042084
+      },
+      {
+        "year": 2006,
+        "rate_fitted": 2.3727794895034867e-05,
+        "cases_fitted": 2.8210924462502756
+      },
+      {
+        "year": 2007,
+        "rate_fitted": 2.448175527793054e-05,
+        "cases_fitted": 2.929682690599392
+      },
+      {
+        "year": 2008,
+        "rate_fitted": 2.525967306021738e-05,
+        "cases_fitted": 3.042300283045641
+      },
+      {
+        "year": 2009,
+        "rate_fitted": 2.6062309498055174e-05,
+        "cases_fitted": 3.15911678349726
+      },
+      {
+        "year": 2010,
+        "rate_fitted": 2.689045003682924e-05,
+        "cases_fitted": 3.2802853286426883
+      },
+      {
+        "year": 2011,
+        "rate_fitted": 2.77449050797731e-05,
+        "cases_fitted": 3.4059922924980253
+      },
+      {
+        "year": 2012,
+        "rate_fitted": 2.862651078101432e-05,
+        "cases_fitted": 3.5363473828218233
+      },
+      {
+        "year": 2013,
+        "rate_fitted": 2.9536129863819906e-05,
+        "cases_fitted": 3.6715476949818613
+      },
+      {
+        "year": 2014,
+        "rate_fitted": 3.0474652464840735e-05,
+        "cases_fitted": 3.811769530302279
+      },
+      {
+        "year": 2015,
+        "rate_fitted": 3.1442997005184284e-05,
+        "cases_fitted": 3.9572269450904627
+      },
+      {
+        "year": 2016,
+        "rate_fitted": 3.244211108916398e-05,
+        "cases_fitted": 4.108047200887568
+      },
+      {
+        "year": 2017,
+        "rate_fitted": 3.3472972431607684e-05,
+        "cases_fitted": 4.264456687786819
+      },
+      {
+        "year": 2018,
+        "rate_fitted": 3.4536589814631607e-05,
+        "cases_fitted": 4.427003692208923
+      },
+      {
+        "year": 2019,
+        "rate_fitted": 3.563400407481612e-05,
+        "cases_fitted": 4.632634333750544
+      },
+      {
+        "year": 2020,
+        "rate_fitted": 3.6766289121749674e-05,
+        "cases_fitted": 4.831862482669464
+      },
+      {
+        "year": 2021,
+        "rate_fitted": 3.7934552988936156e-05,
+        "cases_fitted": 5.049240741039358
+      },
+      {
+        "year": 2022,
+        "rate_fitted": 3.9139938918097777e-05,
+        "cases_fitted": 5.259703271691816
+      },
+      {
+        "year": 2023,
+        "rate_fitted": 4.038362647792958e-05,
+        "cases_fitted": 5.472546758530149
+      },
+      {
+        "year": 2024,
+        "rate_fitted": 4.1666832718404116e-05,
+        "cases_fitted": 5.696897703423803
+      },
+      {
+        "year": 2025,
+        "rate_fitted": 4.299081336175435e-05,
+        "cases_fitted": 5.9258107229708585
+      }
+    ],
+    "warning": null
+  },
+  {
+    "indicador": "Mama",
+    "n_years": 21,
+    "first_year": 2005,
+    "last_year": 2025,
+    "observed": [
+      {
+        "year": 2005,
+        "cases": 8,
+        "poblacion": 118121.0,
+        "rate_observed": 6.772716113138223e-05
+      },
+      {
+        "year": 2006,
+        "cases": 7,
+        "poblacion": 118894.0,
+        "rate_observed": 5.887597355627702e-05
+      },
+      {
+        "year": 2007,
+        "cases": 9,
+        "poblacion": 119668.0,
+        "rate_observed": 7.520807567603704e-05
+      },
+      {
+        "year": 2008,
+        "cases": 5,
+        "poblacion": 120441.0,
+        "rate_observed": 4.151410234056509e-05
+      },
+      {
+        "year": 2009,
+        "cases": 5,
+        "poblacion": 121214.0,
+        "rate_observed": 4.124936063491016e-05
+      },
+      {
+        "year": 2010,
+        "cases": 5,
+        "poblacion": 121987.0,
+        "rate_observed": 4.098797412839073e-05
+      },
+      {
+        "year": 2011,
+        "cases": 6,
+        "poblacion": 122761.0,
+        "rate_observed": 4.8875457189172455e-05
+      },
+      {
+        "year": 2012,
+        "cases": 4,
+        "poblacion": 123534.0,
+        "rate_observed": 3.2379749704534784e-05
+      },
+      {
+        "year": 2013,
+        "cases": 9,
+        "poblacion": 124307.0,
+        "rate_observed": 7.240139332459154e-05
+      },
+      {
+        "year": 2014,
+        "cases": 7,
+        "poblacion": 125080.0,
+        "rate_observed": 5.596418292292933e-05
+      },
+      {
+        "year": 2015,
+        "cases": 6,
+        "poblacion": 125854.0,
+        "rate_observed": 4.7674289255804345e-05
+      },
+      {
+        "year": 2016,
+        "cases": 15,
+        "poblacion": 126627.0,
+        "rate_observed": 0.00011845814873605155
+      },
+      {
+        "year": 2017,
+        "cases": 12,
+        "poblacion": 127400.0,
+        "rate_observed": 9.419152276295133e-05
+      },
+      {
+        "year": 2018,
+        "cases": 15,
+        "poblacion": 128183.0,
+        "rate_observed": 0.00011702019768612062
+      },
+      {
+        "year": 2019,
+        "cases": 6,
+        "poblacion": 130006.0,
+        "rate_observed": 4.615171607464271e-05
+      },
+      {
+        "year": 2020,
+        "cases": 15,
+        "poblacion": 131421.0,
+        "rate_observed": 0.00011413701006688429
+      },
+      {
+        "year": 2021,
+        "cases": 10,
+        "poblacion": 133104.0,
+        "rate_observed": 7.512922226229114e-05
+      },
+      {
+        "year": 2022,
+        "cases": 9,
+        "poblacion": 134382.0,
+        "rate_observed": 6.697325534669822e-05
+      },
+      {
+        "year": 2023,
+        "cases": 9,
+        "poblacion": 135514.0,
+        "rate_observed": 6.641380226397273e-05
+      },
+      {
+        "year": 2024,
+        "cases": 9,
+        "poblacion": 136725.0,
+        "rate_observed": 6.582556226001097e-05
+      },
+      {
+        "year": 2025,
+        "cases": 6,
+        "poblacion": 137839.0,
+        "rate_observed": 4.352904475511285e-05
+      }
+    ],
+    "model": {
+      "beta0": -41.67023013741215,
+      "beta1": 0.015901870304894167,
+      "cov_beta0_beta0": 630.9818865858255,
+      "cov_beta1_beta1": 0.00015527100714711863,
+      "cov_beta0_beta1": -0.3130052967354821,
+      "dispersion": 1.2394333780069426,
+      "overdispersed": false,
+      "cpae_pct": 1.6028977900221175,
+      "cpae_ci_low": -0.8485053054533398,
+      "cpae_ci_high": 4.114908919244531,
+      "deviance": 22.425304742219677,
+      "df_resid": 19,
+      "aic": 108.74869390716918
+    },
+    "fitted": [
+      {
+        "year": 2005,
+        "rate_fitted": 5.61782899174362e-05,
+        "cases_fitted": 6.635835783337481
+      },
+      {
+        "year": 2006,
+        "rate_fitted": 5.707877048499501e-05,
+        "cases_fitted": 6.786323338042997
+      },
+      {
+        "year": 2007,
+        "rate_fitted": 5.79936848356708e-05,
+        "cases_fitted": 6.939988276915054
+      },
+      {
+        "year": 2008,
+        "rate_fitted": 5.8923264328254175e-05,
+        "cases_fitted": 7.096776878959261
+      },
+      {
+        "year": 2009,
+        "rate_fitted": 5.9867744029980667e-05,
+        "cases_fitted": 7.256808724850076
+      },
+      {
+        "year": 2010,
+        "rate_fitted": 6.0827362775973336e-05,
+        "cases_fitted": 7.420147502952659
+      },
+      {
+        "year": 2011,
+        "rate_fitted": 6.180236322963816e-05,
+        "cases_fitted": 7.5869199124336095
+      },
+      {
+        "year": 2012,
+        "rate_fitted": 6.279299194402748e-05,
+        "cases_fitted": 7.7570694668134905
+      },
+      {
+        "year": 2013,
+        "rate_fitted": 6.379949942418708e-05,
+        "cases_fitted": 7.930724374922423
+      },
+      {
+        "year": 2014,
+        "rate_fitted": 6.482214019050255e-05,
+        "cases_fitted": 8.107953295028059
+      },
+      {
+        "year": 2015,
+        "rate_fitted": 6.586117284306118e-05,
+        "cases_fitted": 8.288892046990622
+      },
+      {
+        "year": 2016,
+        "rate_fitted": 6.691686012704527e-05,
+        "cases_fitted": 8.473481247307362
+      },
+      {
+        "year": 2017,
+        "rate_fitted": 6.798946899917388e-05,
+        "cases_fitted": 8.661858350494752
+      },
+      {
+        "year": 2018,
+        "rate_fitted": 6.907927069520942e-05,
+        "cases_fitted": 8.854788155524028
+      },
+      {
+        "year": 2019,
+        "rate_fitted": 7.018654079854633e-05,
+        "cases_fitted": 9.124671423055815
+      },
+      {
+        "year": 2020,
+        "rate_fitted": 7.131155930989923e-05,
+        "cases_fitted": 9.371836436066266
+      },
+      {
+        "year": 2021,
+        "rate_fitted": 7.245461071810793e-05,
+        "cases_fitted": 9.643998505023038
+      },
+      {
+        "year": 2022,
+        "rate_fitted": 7.361598407207762e-05,
+        "cases_fitted": 9.892663171573934
+      },
+      {
+        "year": 2023,
+        "rate_fitted": 7.479597305387199e-05,
+        "cases_fitted": 10.13590149242241
+      },
+      {
+        "year": 2024,
+        "rate_fitted": 7.599487605297806e-05,
+        "cases_fitted": 10.390399428343425
+      },
+      {
+        "year": 2025,
+        "rate_fitted": 7.721299624176076e-05,
+        "cases_fitted": 10.642962188968061
+      }
+    ],
+    "warning": null
+  },
+  {
+    "indicador": "Próstata",
+    "n_years": 21,
+    "first_year": 2005,
+    "last_year": 2025,
+    "observed": [
+      {
+        "year": 2005,
+        "cases": 6,
+        "poblacion": 118121.0,
+        "rate_observed": 5.079537084853667e-05
+      },
+      {
+        "year": 2006,
+        "cases": 8,
+        "poblacion": 118894.0,
+        "rate_observed": 6.728682692145945e-05
+      },
+      {
+        "year": 2007,
+        "cases": 10,
+        "poblacion": 119668.0,
+        "rate_observed": 8.356452852893004e-05
+      },
+      {
+        "year": 2008,
+        "cases": 9,
+        "poblacion": 120441.0,
+        "rate_observed": 7.472538421301716e-05
+      },
+      {
+        "year": 2009,
+        "cases": 11,
+        "poblacion": 121214.0,
+        "rate_observed": 9.074859339680235e-05
+      },
+      {
+        "year": 2010,
+        "cases": 7,
+        "poblacion": 121987.0,
+        "rate_observed": 5.7383163779747024e-05
+      },
+      {
+        "year": 2011,
+        "cases": 9,
+        "poblacion": 122761.0,
+        "rate_observed": 7.331318578375869e-05
+      },
+      {
+        "year": 2012,
+        "cases": 8,
+        "poblacion": 123534.0,
+        "rate_observed": 6.475949940906957e-05
+      },
+      {
+        "year": 2013,
+        "cases": 9,
+        "poblacion": 124307.0,
+        "rate_observed": 7.240139332459154e-05
+      },
+      {
+        "year": 2014,
+        "cases": 10,
+        "poblacion": 125080.0,
+        "rate_observed": 7.99488327470419e-05
+      },
+      {
+        "year": 2015,
+        "cases": 13,
+        "poblacion": 125854.0,
+        "rate_observed": 0.00010329429338757608
+      },
+      {
+        "year": 2016,
+        "cases": 10,
+        "poblacion": 126627.0,
+        "rate_observed": 7.89720991573677e-05
+      },
+      {
+        "year": 2017,
+        "cases": 13,
+        "poblacion": 127400.0,
+        "rate_observed": 0.00010204081632653062
+      },
+      {
+        "year": 2018,
+        "cases": 7,
+        "poblacion": 128183.0,
+        "rate_observed": 5.460942558685629e-05
+      },
+      {
+        "year": 2019,
+        "cases": 13,
+        "poblacion": 130006.0,
+        "rate_observed": 9.999538482839253e-05
+      },
+      {
+        "year": 2020,
+        "cases": 5,
+        "poblacion": 131421.0,
+        "rate_observed": 3.804567002229476e-05
+      },
+      {
+        "year": 2021,
+        "cases": 17,
+        "poblacion": 133104.0,
+        "rate_observed": 0.00012771967784589493
+      },
+      {
+        "year": 2022,
+        "cases": 11,
+        "poblacion": 134382.0,
+        "rate_observed": 8.185620097929782e-05
+      },
+      {
+        "year": 2023,
+        "cases": 15,
+        "poblacion": 135514.0,
+        "rate_observed": 0.00011068967043995454
+      },
+      {
+        "year": 2024,
+        "cases": 15,
+        "poblacion": 136725.0,
+        "rate_observed": 0.00010970927043335162
+      },
+      {
+        "year": 2025,
+        "cases": 16,
+        "poblacion": 137839.0,
+        "rate_observed": 0.00011607745268030093
+      }
+    ],
+    "model": {
+      "beta0": -59.533272430965084,
+      "beta1": 0.024874750661608703,
+      "cov_beta0_beta0": 508.8446355344546,
+      "cov_beta1_beta1": 0.000125175343640651,
+      "cov_beta0_beta1": -0.2523771746014866,
+      "dispersion": 0.6080280026781528,
+      "overdispersed": false,
+      "cpae_pct": 2.5186708525867463,
+      "cpae_ci_low": 0.2950263807891096,
+      "cpae_ci_high": 4.7916158222792715,
+      "deviance": 12.784365684253084,
+      "df_resid": 19,
+      "aic": 104.21063033903184
+    },
+    "fitted": [
+      {
+        "year": 2005,
+        "rate_fitted": 6.382297297553338e-05,
+        "cases_fitted": 7.538833390842979
+      },
+      {
+        "year": 2006,
+        "rate_fitted": 6.543046359312252e-05,
+        "cases_fitted": 7.779289538440709
+      },
+      {
+        "year": 2007,
+        "rate_fitted": 6.707844160835448e-05,
+        "cases_fitted": 8.027142950388564
+      },
+      {
+        "year": 2008,
+        "rate_fitted": 6.87679267655136e-05,
+        "cases_fitted": 8.282477867565223
+      },
+      {
+        "year": 2009,
+        "rate_fitted": 7.049996449288485e-05,
+        "cases_fitted": 8.545582696040544
+      },
+      {
+        "year": 2010,
+        "rate_fitted": 7.227562654965123e-05,
+        "cases_fitted": 8.816686855912303
+      },
+      {
+        "year": 2011,
+        "rate_fitted": 7.409601168908182e-05,
+        "cases_fitted": 9.096100490963373
+      },
+      {
+        "year": 2012,
+        "rate_fitted": 7.596224633842407e-05,
+        "cases_fitted": 9.383920139170879
+      },
+      {
+        "year": 2013,
+        "rate_fitted": 7.787548529592018e-05,
+        "cases_fitted": 9.680467950679951
+      },
+      {
+        "year": 2014,
+        "rate_fitted": 7.983691244537852e-05,
+        "cases_fitted": 9.986001008667944
+      },
+      {
+        "year": 2015,
+        "rate_fitted": 8.184774148874554e-05,
+        "cases_fitted": 10.300865657324582
+      },
+      {
+        "year": 2016,
+        "rate_fitted": 8.390921669712322e-05,
+        "cases_fitted": 10.625172382706621
+      },
+      {
+        "year": 2017,
+        "rate_fitted": 8.60226136807076e-05,
+        "cases_fitted": 10.959280982922147
+      },
+      {
+        "year": 2018,
+        "rate_fitted": 8.818924017811697e-05,
+        "cases_fitted": 11.304361373751567
+      },
+      {
+        "year": 2019,
+        "rate_fitted": 9.041043686560101e-05,
+        "cases_fitted": 11.753899255149324
+      },
+      {
+        "year": 2020,
+        "rate_fitted": 9.268757818663068e-05,
+        "cases_fitted": 12.18109421286519
+      },
+      {
+        "year": 2021,
+        "rate_fitted": 9.5022073202386e-05,
+        "cases_fitted": 12.647818031530386
+      },
+      {
+        "year": 2022,
+        "rate_fitted": 9.741536646365824e-05,
+        "cases_fitted": 13.090871776119322
+      },
+      {
+        "year": 2023,
+        "rate_fitted": 9.986893890471907e-05,
+        "cases_fitted": 13.5336393867341
+      },
+      {
+        "year": 2024,
+        "rate_fitted": 0.00010238430875969999,
+        "cases_fitted": 13.998494615169982
+      },
+      {
+        "year": 2025,
+        "rate_fitted": 0.00010496303250205308,
+        "cases_fitted": 14.467999437050494
+      }
+    ],
+    "warning": null
+  },
+  {
+    "indicador": "Pulmón",
+    "n_years": 21,
+    "first_year": 2005,
+    "last_year": 2025,
+    "observed": [
+      {
+        "year": 2005,
+        "cases": 5,
+        "poblacion": 118121.0,
+        "rate_observed": 4.232947570711389e-05
+      },
+      {
+        "year": 2006,
+        "cases": 11,
+        "poblacion": 118894.0,
+        "rate_observed": 9.251938701700674e-05
+      },
+      {
+        "year": 2007,
+        "cases": 4,
+        "poblacion": 119668.0,
+        "rate_observed": 3.342581141157201e-05
+      },
+      {
+        "year": 2008,
+        "cases": 6,
+        "poblacion": 120441.0,
+        "rate_observed": 4.981692280867811e-05
+      },
+      {
+        "year": 2009,
+        "cases": 14,
+        "poblacion": 121214.0,
+        "rate_observed": 0.00011549820977774845
+      },
+      {
+        "year": 2010,
+        "cases": 9,
+        "poblacion": 121987.0,
+        "rate_observed": 7.377835343110331e-05
+      },
+      {
+        "year": 2011,
+        "cases": 13,
+        "poblacion": 122761.0,
+        "rate_observed": 0.00010589682390987365
+      },
+      {
+        "year": 2012,
+        "cases": 7,
+        "poblacion": 123534.0,
+        "rate_observed": 5.666456198293587e-05
+      },
+      {
+        "year": 2013,
+        "cases": 6,
+        "poblacion": 124307.0,
+        "rate_observed": 4.826759554972769e-05
+      },
+      {
+        "year": 2014,
+        "cases": 4,
+        "poblacion": 125080.0,
+        "rate_observed": 3.197953309881676e-05
+      },
+      {
+        "year": 2015,
+        "cases": 10,
+        "poblacion": 125854.0,
+        "rate_observed": 7.945714875967391e-05
+      },
+      {
+        "year": 2016,
+        "cases": 6,
+        "poblacion": 126627.0,
+        "rate_observed": 4.7383259494420625e-05
+      },
+      {
+        "year": 2017,
+        "cases": 10,
+        "poblacion": 127400.0,
+        "rate_observed": 7.849293563579278e-05
+      },
+      {
+        "year": 2018,
+        "cases": 9,
+        "poblacion": 128183.0,
+        "rate_observed": 7.021211861167238e-05
+      },
+      {
+        "year": 2019,
+        "cases": 2,
+        "poblacion": 130006.0,
+        "rate_observed": 1.5383905358214235e-05
+      },
+      {
+        "year": 2020,
+        "cases": 11,
+        "poblacion": 131421.0,
+        "rate_observed": 8.370047404904848e-05
+      },
+      {
+        "year": 2021,
+        "cases": 5,
+        "poblacion": 133104.0,
+        "rate_observed": 3.756461113114557e-05
+      },
+      {
+        "year": 2022,
+        "cases": 10,
+        "poblacion": 134382.0,
+        "rate_observed": 7.441472816299802e-05
+      },
+      {
+        "year": 2023,
+        "cases": 6,
+        "poblacion": 135514.0,
+        "rate_observed": 4.4275868175981815e-05
+      },
+      {
+        "year": 2024,
+        "cases": 20,
+        "poblacion": 136725.0,
+        "rate_observed": 0.00014627902724446883
+      },
+      {
+        "year": 2025,
+        "cases": 17,
+        "poblacion": 137839.0,
+        "rate_observed": 0.00012333229347281973
+      }
+    ],
+    "model": {
+      "beta0": -45.54865150025485,
+      "beta1": 0.017847714779765565,
+      "cov_beta0_beta0": 605.0103590427345,
+      "cov_beta1_beta1": 0.00014886953172629327,
+      "cov_beta0_beta1": -0.300111319580179,
+      "dispersion": 2.0552814483954,
+      "overdispersed": true,
+      "cpae_pct": 1.800793702210135,
+      "cpae_ci_low": -0.6048292314513759,
+      "cpae_ci_high": 4.264638998731063,
+      "deviance": 40.1298199837422,
+      "df_resid": 19,
+      "aic": 126.18112680263897
+    },
+    "fitted": [
+      {
+        "year": 2005,
+        "rate_fitted": 5.7485180901767364e-05,
+        "cases_fitted": 6.790207053297663
+      },
+      {
+        "year": 2006,
+        "rate_fitted": 5.8520370419150304e-05,
+        "cases_fitted": 6.957720920614456
+      },
+      {
+        "year": 2007,
+        "rate_fitted": 5.957420156416864e-05,
+        "cases_fitted": 7.129125552780932
+      },
+      {
+        "year": 2008,
+        "rate_fitted": 6.064701003407796e-05,
+        "cases_fitted": 7.304386535514384
+      },
+      {
+        "year": 2009,
+        "rate_fitted": 6.173913757135062e-05,
+        "cases_fitted": 7.483647821573694
+      },
+      {
+        "year": 2010,
+        "rate_fitted": 6.285093207253415e-05,
+        "cases_fitted": 7.666996650732224
+      },
+      {
+        "year": 2011,
+        "rate_fitted": 6.398274769907697e-05,
+        "cases_fitted": 7.8545860902863875
+      },
+      {
+        "year": 2012,
+        "rate_fitted": 6.513494499014273e-05,
+        "cases_fitted": 8.046380294412291
+      },
+      {
+        "year": 2013,
+        "rate_fitted": 6.630789097746303e-05,
+        "cases_fitted": 8.242535003735497
+      },
+      {
+        "year": 2014,
+        "rate_fitted": 6.750195930225381e-05,
+        "cases_fitted": 8.443145069525906
+      },
+      {
+        "year": 2015,
+        "rate_fitted": 6.871753033423703e-05,
+        "cases_fitted": 8.648376062685067
+      },
+      {
+        "year": 2016,
+        "rate_fitted": 6.995499129281057e-05,
+        "cases_fitted": 8.858190682434724
+      },
+      {
+        "year": 2017,
+        "rate_fitted": 7.121473637039292e-05,
+        "cases_fitted": 9.072757413588059
+      },
+      {
+        "year": 2018,
+        "rate_fitted": 7.249716685799679e-05,
+        "cases_fitted": 9.292904339358602
+      },
+      {
+        "year": 2019,
+        "rate_fitted": 7.380269127305613e-05,
+        "cases_fitted": 9.594792681644934
+      },
+      {
+        "year": 2020,
+        "rate_fitted": 7.51317254895632e-05,
+        "cases_fitted": 9.873886495563886
+      },
+      {
+        "year": 2021,
+        "rate_fitted": 7.648469287054082e-05,
+        "cases_fitted": 10.180418559840465
+      },
+      {
+        "year": 2022,
+        "rate_fitted": 7.786202440290858e-05,
+        "cases_fitted": 10.46325456331166
+      },
+      {
+        "year": 2023,
+        "rate_fitted": 7.926415883476921e-05,
+        "cases_fitted": 10.741403220334915
+      },
+      {
+        "year": 2024,
+        "rate_fitted": 8.069154281517588e-05,
+        "cases_fitted": 11.032551191404922
+      },
+      {
+        "year": 2025,
+        "rate_fitted": 8.21446310364075e-05,
+        "cases_fitted": 11.322733797427373
+      }
+    ],
+    "warning": "Dispersión = 2.06 (> 1.5): la varianza observada excede la esperada bajo Poisson. Los intervalos de confianza podrían ser más estrechos de lo real; se recomienda considerar un modelo binomial negativo en trabajo futuro."
+  }
+]

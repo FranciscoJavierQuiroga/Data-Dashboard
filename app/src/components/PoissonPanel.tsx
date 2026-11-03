@@ -1,5 +1,5 @@
 import { useMemo, useState, useCallback } from 'react';
-import { BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ComposedChart, Cell } from 'recharts';
+import { BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ComposedChart, Cell, ErrorBar } from 'recharts';
 import type { DashboardData } from '@/hooks/useData';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -8,23 +8,6 @@ import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Calculator, AlertTriangle, Activity, Info, TrendingUp } from 'lucide-react';
-
-// ─── Linear Regression ──────────────────────────────────────────────────────────
-
-function linearRegression(points: { x: number; y: number }[]): { slope: number; intercept: number; r2: number } | null {
-  const n = points.length;
-  if (n < 2) return null;
-  const sumX = points.reduce((s, p) => s + p.x, 0);
-  const sumY = points.reduce((s, p) => s + p.y, 0);
-  const sumXY = points.reduce((s, p) => s + p.x * p.y, 0);
-  const sumX2 = points.reduce((s, p) => s + p.x * p.x, 0);
-  const sumY2 = points.reduce((s, p) => s + p.y * p.y, 0);
-  const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-  const intercept = (sumY - slope * sumX) / n;
-  const denom = (n * sumX2 - sumX * sumX) * (n * sumY2 - sumY * sumY);
-  const r2 = denom > 0 ? (n * sumXY - sumX * sumY) ** 2 / denom : 0;
-  return { slope, intercept, r2 };
-}
 
 // ─── Disease → Dashboard Data Mapping ────────────────────────────────────────────
 
@@ -43,7 +26,7 @@ const DISEASE_MAP: Record<string, DiseaseMapping | null> = {
   'Personalizada':      null,
 };
 
-// ─── Presets de patologías ────────────────────────────────────────────────────────
+// ─── Presets de patologías (fallback cuando no hay modelo ajustado) ───────────────
 
 const DISEASE_PRESETS: Record<string, { rate: number; desc: string }> = {
   'Cáncer de Pulmón':    { rate: 0.00061, desc: '61 por 100.000 · Globocan Colombia' },
@@ -144,37 +127,23 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
     return map;
   }, [data.poblacion]);
 
-  // ─── Historical cases from comportamiento cancer ──────────────────────────
-  const historicalCases = useMemo(() => {
-    if (!diseaseInfo) return [];
-    return data.comportamientoCancer
-      .filter(c => c.indicador === diseaseInfo.historicoKey)
-      .sort((a, b) => a.year - b.year);
-  }, [data.comportamientoCancer, diseaseInfo]);
+  // ─── Modelo GLM de Poisson precalculado en el backend ──────────────────────
+  const proyeccion = useMemo(() => {
+    if (!diseaseInfo) return null;
+    return data.proyeccionPoisson.find(p => p.indicador === diseaseInfo.historicoKey) ?? null;
+  }, [data.proyeccionPoisson, diseaseInfo]);
 
-  // ─── Historical rates (cases / población Sogamoso) for regression ───────────
-  const historicalRates = useMemo(() => {
-    if (historicalCases.length === 0) return [];
-    return historicalCases.map(c => ({
-      year: c.year,
-      rate: c.cases / (poblacionMap.get(c.year) ?? 137839),
-    }));
-  }, [historicalCases, poblacionMap]);
+  const model = proyeccion?.model ?? null;
+  const hasModel = model !== null;
 
-  // ─── Effective base rate ───────────────────────────────────────────────────
+  // ─── Tasa efectiva base (para mostrar / para el caso sin modelo) ───────────
   const effectiveRate = useMemo(() => {
-    if (historicalRates.length > 0) {
-      const recent = historicalRates.slice(-2);
-      return recent.reduce((s, r) => s + r.rate, 0) / recent.length;
+    if (model) {
+      const lastYear = proyeccion!.last_year;
+      return Math.exp(model.beta0 + model.beta1 * lastYear);
     }
     return parseFloat(rawRate) || 0.001;
-  }, [historicalRates, rawRate]);
-
-  // ─── Linear regression on historical rates ─────────────────────────────────
-  const regression = useMemo(() => {
-    if (historicalRates.length < 2) return null;
-    return linearRegression(historicalRates.map(r => ({ x: r.year - 2020, y: r.rate })));
-  }, [historicalRates]);
+  }, [model, proyeccion, rawRate]);
 
   // ─── Combined risk factor RR ────────────────────────────────────────────────
   const combinedRR = useMemo(() => {
@@ -191,45 +160,87 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
   const chartData = useMemo(() => {
     const result: any[] = [];
 
-    for (const h of historicalRates) {
-      const pop = poblacionMap.get(h.year) ?? 137839;
+    // Puntos históricos: usar los observados que ya vienen con el modelo
+    // ajustado (mismos datos que antes, solo que ahora los sirve el backend).
+    const observed = proyeccion?.observed ?? [];
+    for (const o of observed) {
       result.push({
-        year: h.year,
-        label: String(h.year),
-        cases: Math.round(h.rate * pop),
-        rate: h.rate,
+        year: o.year,
+        label: String(o.year),
+        cases: o.cases,
+        rate: o.rate_observed ?? 0,
+        errorY: [0, 0],
         group: 'Histórico',
       });
     }
 
-    const lastHistYear = historicalRates[historicalRates.length - 1]?.year ?? 2025;
+    const lastHistYear = observed.length > 0 ? observed[observed.length - 1].year : 2025;
     const startYear = lastHistYear + 1;
 
     for (let i = 0; i < projectionYears; i++) {
       const year = startYear + i;
       const pop = poblacionMap.get(year) ?? poblacionMap.get(2025) ?? 137839;
-      const t = year - 2020;
-      const rateBase = regression
-        ? Math.max(0, regression.slope * t + regression.intercept)
-        : effectiveRate;
+
+      let rateBase: number;
+      let ciLowBase: number;
+      let ciHighBase: number;
+
+      if (model) {
+        // log(tasa) = beta0 + beta1 * año  →  propagación de varianza (método delta)
+        const logRate = model.beta0 + model.beta1 * year;
+        rateBase = Math.exp(logRate);
+
+        const varLogRate =
+          model.cov_beta0_beta0 +
+          year * year * model.cov_beta1_beta1 +
+          2 * year * model.cov_beta0_beta1;
+        const seLogRate = Math.sqrt(Math.max(varLogRate, 0));
+
+        const casesBase = rateBase * pop;
+
+        // Varianza total = incertidumbre de los parámetros del modelo
+        // (propagada a la escala de conteos) + varianza de Poisson del
+        // proceso (media = varianza), ajustada por la dispersión estimada.
+        const varParam = (casesBase * seLogRate) ** 2;
+        const varPoisson = casesBase * model.dispersion;
+        const seTotal = Math.sqrt(varParam + varPoisson);
+
+        ciLowBase = Math.max(0, casesBase - 1.96 * seTotal);
+        ciHighBase = casesBase + 1.96 * seTotal;
+      } else {
+        // Sin modelo ajustado (datos insuficientes): usar tasa de referencia fija.
+        rateBase = effectiveRate;
+        const casesBase = rateBase * pop;
+        const std = Math.sqrt(casesBase || 1);
+        ciLowBase = Math.max(0, casesBase - 1.96 * std);
+        ciHighBase = casesBase + 1.96 * std;
+      }
+
       const casesBase = Math.round(rateBase * pop);
       const casesAdj = hasFactors ? Math.round(casesBase * combinedRR) : casesBase;
-      const std = Math.sqrt(casesAdj || 1);
+      const ciLow = hasFactors ? Math.round(ciLowBase * combinedRR) : Math.round(ciLowBase);
+      const ciHigh = hasFactors ? Math.round(ciHighBase * combinedRR) : Math.round(ciHighBase);
+
       result.push({
         year,
         label: String(year),
         cases: casesAdj,
         casesBase,
         rate: rateBase,
-        ciLow: Math.max(0, Math.round(casesAdj - 1.96 * std)),
-        ciHigh: Math.round(casesAdj + 1.96 * std),
+        ciLow,
+        ciHigh,
+        // Rango de error asimétrico para el ErrorBar visual: distancia
+        // desde la barra (casesAdj) hasta el límite inferior y superior
+        // del IC 95%. No modifica casesAdj/casesBase, solo se usa para
+        // dibujar la incertidumbre encima de la barra ya calculada.
+        errorY: [Math.max(0, casesAdj - ciLow), Math.max(0, ciHigh - casesAdj)],
         group: 'Proyectado',
         isAdjusted: hasFactors,
       });
     }
 
     return result;
-  }, [historicalRates, regression, effectiveRate, poblacionMap, projectionYears, hasFactors, combinedRR]);
+  }, [proyeccion, model, effectiveRate, poblacionMap, projectionYears, hasFactors, combinedRR]);
 
   // ─── Totals ─────────────────────────────────────────────────────────────────
   const totalProjected = useMemo(() => {
@@ -261,9 +272,9 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
 
   // ─── Helpers for rendering ──────────────────────────────────────────────────
 
-  const hasDashboardData = historicalCases.length > 0;
+  const hasDashboardData = (proyeccion?.observed.length ?? 0) > 0;
   const dataSource = hasDashboardData
-    ? `Comportamiento Cáncer · ${diseaseInfo!.historicoKey} (${historicalCases[0]?.year}-${historicalCases[historicalCases.length - 1]?.year})`
+    ? `Comportamiento Cáncer (defunciones) · ${diseaseInfo!.historicoKey} (${proyeccion!.first_year}-${proyeccion!.last_year})`
     : DISEASE_PRESETS[disease]?.desc ?? '';
 
   // ─── RENDER ──────────────────────────────────────────────────────────────────
@@ -278,17 +289,29 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
           <div className="text-sm text-slate-700 space-y-1">
             <p>
               <strong className="text-slate-800">Proyección a {projectionYears} años</strong>
-              {' — '}casos anuales esperados según tendencia histórica y factores de riesgo.
+              {' — '}defunciones anuales esperadas mediante un modelo lineal generalizado (GLM)
+              de Poisson, ajustado sobre la serie histórica municipal.
             </p>
             <p className="text-xs text-slate-500">
-              {hasDashboardData
-                ? 'La tasa base se obtiene de los datos históricos de mortalidad por cáncer del municipio de Sogamoso (2005–2025). Se aplica regresión lineal para proyectar la tendencia, y los factores de riesgo ajustan el resultado mediante el RR combinado.'
-                : 'No hay datos históricos disponibles en el dashboard para esta patología. La proyección usa la tasa de incidencia de referencia (Globocan Colombia).'}
-              {' '}Las barras proyectadas muestran el IC 95% (Poisson).
+              {hasModel
+                ? 'La tasa se modela como log(tasa) = β₀ + β₁·año, con la población como offset. β₁ corresponde al Cambio Porcentual Anual Estimado (CPAE). El intervalo de confianza combina la incertidumbre de los parámetros del modelo con la varianza de Poisson del proceso.'
+                : hasDashboardData
+                  ? 'No hay suficientes años de datos históricos para ajustar un modelo confiable; se usa la tasa de referencia (Globocan Colombia) mientras se acumula más histórico.'
+                  : 'No hay datos históricos disponibles en el dashboard para esta patología. La proyección usa la tasa de incidencia de referencia (Globocan Colombia).'}
             </p>
           </div>
         </CardContent>
       </Card>
+
+      {/* ── Advertencia del modelo (datos insuficientes / sobredispersión) ──── */}
+      {proyeccion?.warning && (
+        <Card className="border-amber-200 bg-amber-50/50">
+          <CardContent className="p-4 flex items-start gap-3">
+            <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
+            <p className="text-xs text-amber-800">{proyeccion.warning}</p>
+          </CardContent>
+        </Card>
+      )}
 
       {/* ── Parámetros + Factores ────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -313,7 +336,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
               <p className="text-[10px] text-slate-400 mt-1">{dataSource}</p>
             </div>
 
-            {!hasDashboardData && (
+            {!hasModel && (
               <div>
                 <label className="text-xs font-medium text-slate-600 mb-1 block">
                   Tasa de incidencia (por persona-año)
@@ -334,11 +357,15 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                 min={5} max={20} step={1} />
             </div>
 
-            {regression && (
+            {model && (
               <div className="bg-slate-50 rounded p-2 text-[10px] text-slate-500 space-y-0.5">
-                <p>Tendencia lineal: pendiente = {(regression.slope * 100).toFixed(2)}% anual</p>
-                <p>R² = {regression.r2.toFixed(3)}</p>
-                <p>Tasa base actual: {(effectiveRate * 100).toFixed(2)}%</p>
+                <p>
+                  CPAE (GLM Poisson): {model.cpae_pct >= 0 ? '+' : ''}{model.cpae_pct.toFixed(2)}% anual
+                  {' '}(IC95%: {model.cpae_ci_low.toFixed(2)}% a {model.cpae_ci_high.toFixed(2)}%)
+                </p>
+                <p>Tasa base actual: {(effectiveRate * 100).toFixed(3)}%</p>
+                <p>Dispersión: {model.dispersion.toFixed(2)} {model.overdispersed ? '(sobredispersión)' : '(dentro de lo esperado)'}</p>
+                <p>Deviance: {model.deviance.toFixed(2)} · AIC: {model.aic.toFixed(1)} · n = {proyeccion!.n_years} años</p>
               </div>
             )}
           </CardContent>
@@ -412,13 +439,13 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
 
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
           <div className="text-xs text-amber-700 font-medium">
-            Tasa de crecimiento anual
+            CPAE (tendencia anual)
           </div>
           <div className="text-2xl font-bold text-amber-800">
-            {regression ? `${(regression.slope * 100).toFixed(2)}%` : '—'}
+            {model ? `${model.cpae_pct >= 0 ? '+' : ''}${model.cpae_pct.toFixed(2)}%` : '—'}
           </div>
           <div className="text-[10px] text-amber-600">
-            Pendiente de regresión lineal
+            {model ? 'Cambio Porcentual Anual Estimado (GLM Poisson)' : 'Sin modelo ajustado'}
           </div>
         </div>
       </div>
@@ -431,9 +458,8 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
           </CardTitle>
           <p className="text-xs text-slate-500">
             {hasDashboardData
-              ? `Datos históricos (${historicalRates[0]?.year}-${historicalRates[historicalRates.length - 1]?.year}) · Proyección (${projectionYears} años)`
+              ? `Datos históricos (${proyeccion!.first_year}-${proyeccion!.last_year}) · Proyección (${projectionYears} años)`
               : `Proyección basada en tasa de referencia${hasFactors ? ' · Ajustada por factores de riesgo' : ''}`}
-
           </p>
         </CardHeader>
         <CardContent>
@@ -447,8 +473,14 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                   <YAxis tick={{ fontSize: 11 }}
                     tickFormatter={v => v >= 1000 ? v.toLocaleString('es-CO') : String(v)} />
                   <Tooltip
-                    formatter={(val: number, name: string) => {
-                      if (name === 'cases') return [val.toLocaleString('es-CO'), 'Casos'];
+                    formatter={(val: number, name: string, props: any) => {
+                      if (name === 'cases') {
+                        const p = props?.payload;
+                        if (p?.group === 'Proyectado') {
+                          return [`${val.toLocaleString('es-CO')}  (IC95%: ${p.ciLow.toLocaleString('es-CO')} – ${p.ciHigh.toLocaleString('es-CO')})`, 'Casos'];
+                        }
+                        return [val.toLocaleString('es-CO'), 'Casos'];
+                      }
                       if (name === 'casesBase') return [val.toLocaleString('es-CO'), 'Casos (base)'];
                       return [val, name];
                     }}
@@ -462,6 +494,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                         hasFactors ? '#f59e0b' : '#059669'
                       } />
                     ))}
+                    <ErrorBar dataKey="errorY" width={4} strokeWidth={1.5} stroke="#334155" />
                   </Bar>
 
                   {hasFactors && (
@@ -484,6 +517,9 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
             <span className="flex items-center gap-1">
               <span className="w-3 h-3 rounded bg-emerald-600 inline-block" /> Proyectado
             </span>
+            <span className="flex items-center gap-1">
+              <span className="w-0.5 h-3 bg-slate-700 inline-block" /> IC 95% (parámetros del modelo + Poisson)
+            </span>
             {hasFactors && (
               <>
                 <span className="flex items-center gap-1">
@@ -503,8 +539,9 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
         <CardHeader>
           <CardTitle className="text-base">Proyección Detallada por Año</CardTitle>
           <p className="text-xs text-slate-500">
-            Población según proyecciones DANE Sogamoso · Tasa base: {(effectiveRate * 100).toFixed(2)}%
+            Población según proyecciones DANE Sogamoso · Tasa base: {(effectiveRate * 100).toFixed(3)}%
             {hasFactors ? ` · RR combinado: ${combinedRR.toFixed(2)}×` : ''}
+            {model ? ` · IC 95% del modelo (parámetros + Poisson)` : ` · IC 95% aproximado (Poisson)`}
           </p>
         </CardHeader>
         <CardContent>
@@ -530,7 +567,7 @@ export function PoissonPanel({ data }: { data: DashboardData }) {
                       {d.label}
                     </td>
                     <td className="px-3 py-2 text-right">{(poblacionMap.get(d.year) ?? 137839).toLocaleString('es-CO')}</td>
-                    <td className="px-3 py-2 text-right">{(d.rate * 100).toFixed(2)}%</td>
+                    <td className="px-3 py-2 text-right">{(d.rate * 100).toFixed(3)}%</td>
                     <td className="px-3 py-2 text-right font-semibold">
                       {d.group === 'Proyectado' ? fmt(d.casesBase) : fmt(d.cases)}
                     </td>

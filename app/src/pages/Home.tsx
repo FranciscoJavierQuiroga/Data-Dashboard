@@ -7,15 +7,18 @@ import { FunnelPanel } from '@/components/FunnelPanel';
 import { MonthlyPanel } from '@/components/MonthlyPanel';
 import { DetailPanel } from '@/components/DetailPanel';
 import { PoissonPanel } from '@/components/PoissonPanel';
+import { StudiesPanel } from '@/components/StudiesPanel';
+import { useStudies } from '@/hooks/useStudies';
 
 const MONTHS_ORDER = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
 const MONTH_LABELS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
 
-export type ViewKey = 'executive' | 'trends' | 'funnel' | 'monthly' | 'detail' | 'poisson';
+export type ViewKey = 'executive' | 'trends' | 'funnel' | 'monthly' | 'detail' | 'poisson' | 'studies';
 
 export default function Home() {
   const [view, setView] = useState<ViewKey>('executive');
   const data = useData();
+  const { studies, addStudy, removeStudy } = useStudies();
 
   const epsLatestMonth = useMemo(() => {
     if (!data) return {};
@@ -57,6 +60,7 @@ export default function Home() {
         {view === 'monthly' && <MonthlyPanel data={data} />}
         {view === 'detail' && <DetailPanel data={data} />}
         {view === 'poisson' && <PoissonPanel data={data} />}
+        {view === 'studies' && <StudiesPanel studies={studies} onAdd={addStudy} onRemove={removeStudy} />}
       </main>
     </div>
   );

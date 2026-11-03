@@ -80,6 +80,48 @@ export interface PoblacionData {
   poblacion: number;
 }
 
+// ─── Proyección Poisson (GLM ajustado en backend) ──────────────────────────
+
+export interface ProyeccionObservado {
+  year: number;
+  cases: number;
+  poblacion: number;
+  rate_observed: number | null;
+}
+
+export interface ProyeccionFitted {
+  year: number;
+  rate_fitted: number;
+  cases_fitted: number;
+}
+
+export interface ProyeccionModelo {
+  beta0: number;
+  beta1: number;
+  cov_beta0_beta0: number;
+  cov_beta1_beta1: number;
+  cov_beta0_beta1: number;
+  dispersion: number;
+  overdispersed: boolean;
+  cpae_pct: number;
+  cpae_ci_low: number;
+  cpae_ci_high: number;
+  deviance: number;
+  df_resid: number;
+  aic: number;
+}
+
+export interface ProyeccionPoissonData {
+  indicador: string;
+  n_years: number;
+  first_year: number;
+  last_year: number;
+  observed: ProyeccionObservado[];
+  model: ProyeccionModelo | null;
+  fitted: ProyeccionFitted[] | null;
+  warning: string | null;
+}
+
 export interface DashboardData {
   kpis: KpiData[];
   funnel: FunnelData[];
@@ -90,6 +132,7 @@ export interface DashboardData {
   mensual: MensualData[];
   comportamientoCancer: ComportamientoCancerData[];
   poblacion: PoblacionData[];
+  proyeccionPoisson: ProyeccionPoissonData[];
 }
 
 export function useData(): DashboardData | null {
@@ -98,7 +141,18 @@ export function useData(): DashboardData | null {
   useEffect(() => {
     async function load() {
       const base = import.meta.env.BASE_URL;
-      const [kpis, funnel, historico, alertas, consolidado, burnup, mensual, comportamientoCancer, poblacion] = await Promise.all([
+      const [
+        kpis,
+        funnel,
+        historico,
+        alertas,
+        consolidado,
+        burnup,
+        mensual,
+        comportamientoCancer,
+        poblacion,
+        proyeccionPoisson,
+      ] = await Promise.all([
         fetch(`${base}data/kpis.json`).then(r => r.json()),
         fetch(`${base}data/funnel.json`).then(r => r.json()),
         fetch(`${base}data/historico.json`).then(r => r.json()),
@@ -108,8 +162,20 @@ export function useData(): DashboardData | null {
         fetch(`${base}data/operativo_mensual.json`).then(r => r.json()),
         fetch(`${base}data/comportamiento_cancer.json`).then(r => r.json()),
         fetch(`${base}data/poblacion_sogamoso.json`).then(r => r.json()),
+        fetch(`${base}data/proyeccion_poisson.json`).then(r => r.json()),
       ]);
-      setData({ kpis, funnel, historico, alertas, consolidado, burnup, mensual, comportamientoCancer, poblacion });
+      setData({
+        kpis,
+        funnel,
+        historico,
+        alertas,
+        consolidado,
+        burnup,
+        mensual,
+        comportamientoCancer,
+        poblacion,
+        proyeccionPoisson,
+      });
     }
     load();
   }, []);

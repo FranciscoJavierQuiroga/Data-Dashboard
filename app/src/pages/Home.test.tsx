@@ -58,12 +58,12 @@ describe("Home", () => {
     expect(screen.getByText(/Evolución Histórica Anual por Programa/)).toBeInTheDocument()
   })
 
-  it("renderiza todos los paneles sin crashear al recorrer las 6 vistas", async () => {
+  it("renderiza todos los paneles sin crashear al recorrer las vistas", async () => {
     const user = userEvent.setup()
     useDataMock.mockReturnValue(realData())
     render(<Home />)
 
-    for (const vista of ["Tendencias", "Funnel Operativo", "Avance Mensual", "Detalle EPS", "Proyección", "Ejecutivo"]) {
+    for (const vista of ["Tendencias", "Funnel Operativo", "Avance Mensual", "Detalle EPS", "Proyección", "Nuevos estudios", "Ejecutivo"]) {
       await user.click(screen.getByRole("button", { name: new RegExp(vista) }))
       expect(screen.queryByText(/Cargando datos/)).not.toBeInTheDocument()
     }
